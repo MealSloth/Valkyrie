@@ -1,4 +1,5 @@
 import os,sys
+from google.appengine.api import memcache
 os.environ['DJANGO_SETTINGS_MODULE'] = 'Valkyrie.settings'
 
 # Google App Engine imports.

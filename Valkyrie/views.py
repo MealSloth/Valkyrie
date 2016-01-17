@@ -3,5 +3,5 @@ from django.shortcuts import render
 
 
 def home(request):
-    response = render(request, 'home.html')
+    response = render(request, 'page/home.html')
     return HttpResponse(response)
