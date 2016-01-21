@@ -1,10 +1,10 @@
-import sys
 import os
 
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
 
 DEBUG = True
+USE_TEST_DB = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -13,21 +13,33 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine')\
+        or os.getenv('SETTINGS_MODE') == 'prod'\
+        or USE_TEST_DB is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/chimera-1196:chimera-1196-cloudsqlg1-instance',
+            'NAME': 'chimera_prod01',
+            'USER': 'root',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'msdb_test',
+            'USER': 'root',
+            'PASSWORD': '',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+        }
+    }
+
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'admin.mealsloth.com']
 
 TIME_ZONE = 'America/Chicago'
 
@@ -67,6 +79,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    # 'Valkyrie.startup.StartupMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
