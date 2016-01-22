@@ -1,5 +1,4 @@
-import os,sys
-from google.appengine.api import memcache
+import os
 os.environ['DJANGO_SETTINGS_MODULE'] = 'Valkyrie.settings'
 
 # Google App Engine imports.
@@ -29,8 +28,10 @@ import django.dispatch.dispatcher
 
 app = django.core.handlers.wsgi.WSGIHandler()
 
+
 def main():
-  util.run_wsgi_app(app)
+    util.run_wsgi_app(app)
+
 
 if __name__ == '__main__':
-  main()
+    main()

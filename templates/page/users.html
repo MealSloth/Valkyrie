@@ -2,6 +2,7 @@
 <html lang="en">
 
     {% load staticfiles %}
+    {% load tags-user %}
 
     <head>
         <meta charset="UTF-8">
@@ -14,16 +15,19 @@
 
         {% include './fragment/navbar.html' %}
 
-        <section class="valkyrie-page-users__section-header">
+        <section class="valkyrie-page-users__section-users">
 
             <div>
-                <div>
-                    <h1>MealSloth</h1>
-                    <h4>
-                        Welcome to MealSloth! We provide a mobile application platform for people to buy and sell
-                        homemade meals in their local area. You can learn more <a href="http://mealsloth.com/">here</a>
-                    </h4>
-                </div>
+                <table>
+                    <tr>
+                        <td><h4>ID</h4></td>
+                        <td><h4>Name</h4></td>
+                        <td><h4>Email</h4></td>
+                        <td><h4>Phone Number</h4></td>
+                        <td><h4>Date of Birth</h4></td>
+                    </tr>
+                    {% user_entry user_list %}
+                </table>
             </div>
 
         </section>
