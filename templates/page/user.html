@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load staticfiles %}
+    {% load tags-user %}
+
+    <head>
+        <meta charset="UTF-8">
+        <title>MealSloth Admin</title>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    </head>
+
+    <body>
+
+        {% include './fragment/navbar.html' %}
+
+        <section class="valkyrie-page-user__section-basic">
+
+            <div>
+                <h3>{{ user.8 }} {{ user.9 }} #{{ user.0 }}</h3>
+            </div>
+
+        </section>
+
+    </body>
+
+</html>

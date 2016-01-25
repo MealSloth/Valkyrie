@@ -4,7 +4,7 @@ import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
 
 DEBUG = False
-USE_TEST_DB = True
+USE_TEST_DB = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -36,7 +36,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'msdb_test',
+            'NAME': 'msdb_test_01',
             'USER': 'root',
             'HOST': '127.0.0.1',
             'PORT': '3306',
