@@ -1,59 +1,44 @@
-from django.http import HttpResponse
-from django.template import Context
-from django.shortcuts import render
-from Valkyrie.models import User
+from view.home import view_home
+from view.order import view_order, view_orders
+from view.post import view_post, view_posts
+from view.user import view_user, view_users, view_user_add
 
+
+# home
 
 def home(request):
-    response = render(request, 'page/home.html')
-    return HttpResponse(response)
+    return view_home.home(request)
 
+
+# user
 
 def users(request):
-    user_list = list(User.objects.all().values())
-    response = render(request, 'page/users.html', Context({"user_list": user_list}))
-    return HttpResponse(response)
-
-
-def posts(request):
-    response = render(request, 'page/posts.html')
-    return HttpResponse(response)
-
-
-def orders(request):
-    response = render(request, 'page/orders.html')
-    return HttpResponse(response)
+    return view_users.users(request)
 
 
 def user(request, user_id):
-    temp_user = User.objects.filter(id=user_id)
-    result = [
-        temp_user.get("id"),
-        temp_user.get("user_login_id"),
-        temp_user.get("consumer_id"),
-        temp_user.get("chef_id"),
-        temp_user.get("location_id"),
-        temp_user.get("billing_id"),
-        temp_user.get("profile_photo_id"),
-        temp_user.get("email"),
-        temp_user.get("first_name"),
-        temp_user.get("last_name"),
-        temp_user.get("phone_number"),
-        temp_user.get("date_of_birth"),
-        temp_user.get("gender"),
-    ]
-    response = render(request, 'page/user.html', Context({"user": result}))
-    return HttpResponse(response)
+    return view_user.user(request, user_id)
 
 
-# Not to be used right now
-# def generate_users():
-#     for i in range(21, 32):
-#         temp_user = User(i, i, i, i, i, i, i,
-#                          "TestPerson" + str(i) + "@gmail.com",
-#                          "Test",
-#                          "Person " + str(i),
-#                          "+0" + str(i) + "_1234567890",
-#                          "2000-12-" + str(i) + "T23:59:59.999999",
-#                          0, )
-#         temp_user.save()
+def user_add(request):
+    return view_user_add.user_add(request)
+
+
+# post
+
+def posts(request):
+    return view_posts.posts(request)
+
+
+def post(request):
+    pass
+
+
+# order
+
+def orders(request):
+    return view_orders.orders(request)
+
+
+def order(request):
+    pass

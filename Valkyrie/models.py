@@ -18,7 +18,7 @@ class User(Model):
     gender = IntegerField(choices=Gender.Gender)
 
     class Meta:
-        db_table = "User"
+        db_table = "users"
 
 
 class Post(Model):
@@ -28,13 +28,13 @@ class Post(Model):
     album_id = CharField(editable=False)
     name = CharField(max_length=50)
     description = CharField(max_length=255)
-    order_count = IntegerField
-    capacity = IntegerField
+    order_count = IntegerField()
+    capacity = IntegerField()
     status = IntegerField(choices=PostStatus.PostStatus)
     expire_time = CharField(max_length=30)
 
     class Meta:
-        db_table = "Post"
+        db_table = "posts"
 
 
 class Order(Model):
@@ -47,8 +47,10 @@ class Order(Model):
     order_summary_id = CharField(editable=False)
     order_status = IntegerField(choices=OrderStatus.OrderStatus)
     order_type = IntegerField(choices=OrderType.OrderType)
-    times = DictWrapper
-    amount = IntegerField
+    amount = IntegerField()
+
+    class Meta:
+        db_table = "orders"
 
 
 class Location(Model):
@@ -56,23 +58,57 @@ class Location(Model):
     user_id = CharField(editable=False)
     purpose = IntegerField(choices=LocationPurpose.LocationPurpose)
     type = IntegerField(choices=LocationType.LocationType)
-    address_line_one = CharField
-    address_line_two = CharField
-    city = CharField
-    state = CharField
-    country = CharField
-    zip = CharField
+    address_line_one = CharField()
+    address_line_two = CharField()
+    city = CharField()
+    state = CharField()
+    country = CharField()
+    zip = CharField()
+
+    class Meta:
+        db_table = "locations"
 
 
 class Consumer(Model):
     id = CharField(primary_key=True, editable=False)
     user_id = CharField(editable=False)
-    location_ids = CharField
-    favorite_post_ids = CharField
-    favorite_chef_ids = CharField
+    location_id = CharField(editable=False)
+
+    class Meta:
+        db_table = "consumers"
 
 
 class Album(Model):
     id = CharField(primary_key=True, editable=False)
     post_id = CharField(editable=False)
-    photo_ids = CharField
+
+    class Meta:
+        db_table = "albums"
+
+
+class OrderTime(Model):
+    id = CharField(editable=False)
+    order_id = CharField(editable=False)
+    status = IntegerField(choices=OrderStatus.OrderStatus)
+    time = CharField(editable=False)
+
+    class Meta:
+        db_table = "order_times"
+
+
+class FavoritePost(Model):
+    id = CharField(editable=False)
+    consumer_id = CharField(editable=False)
+    post_id = CharField(editable=False)
+
+    class Meta:
+        db_table = "favorite_posts"
+
+
+class FavoriteChef(Model):
+    id = CharField(editable=False)
+    consumer_id = CharField(editable=False)
+    chef_id = CharField(editable=False)
+
+    class Meta:
+        db_table = "favorite_chefs"

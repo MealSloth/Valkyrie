@@ -2,7 +2,7 @@
 <html lang="en">
 
     {% load staticfiles %}
-    {% load tags-user %}
+    {% load tags_user %}
 
     <head>
         <meta charset="UTF-8">
@@ -14,6 +14,26 @@
     <body>
 
         {% include './fragment/navbar.html' %}
+
+        <section class="valkyrie-page-users__section-searchbar">
+
+            <div>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div>
+                    <a class="btn btn-primary pull-right" href="/user-add">Add User</a>
+                </div>
+            </div>
+
+
+        </section>
 
         <section class="valkyrie-page-users__section-users">
 

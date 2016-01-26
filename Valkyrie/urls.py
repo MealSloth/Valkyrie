@@ -10,4 +10,5 @@ urlpatterns = patterns(
     url(r'^posts/', views.posts, name='posts'),
     url(r'^orders/', views.orders, name='orders'),
     url(r'^user/([^/]+)/', views.user, name='user'),
+    url(r'^user-add/', views.user_add, name='user-add'),
 ) + staticfiles_urlpatterns()

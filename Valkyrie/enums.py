@@ -1,7 +1,4 @@
-from abc import ABCMeta
-
-
-class Gender(metaclass=ABCMeta):
+class Gender:
     def __init__(self):
         pass
 
@@ -16,7 +13,7 @@ class Gender(metaclass=ABCMeta):
     )
 
 
-class PostStatus(metaclass=ABCMeta):
+class PostStatus:
     def __init__(self):
         pass
 
@@ -31,7 +28,7 @@ class PostStatus(metaclass=ABCMeta):
     )
 
 
-class OrderStatus(metaclass=ABCMeta):
+class OrderStatus:
     def __init__(self):
         pass
 
@@ -56,7 +53,7 @@ class OrderStatus(metaclass=ABCMeta):
     )
 
 
-class OrderType(metaclass=ABCMeta):
+class OrderType:
     def __init__(self):
         pass
 
@@ -71,7 +68,7 @@ class OrderType(metaclass=ABCMeta):
     )
 
 
-class LocationPurpose(metaclass=ABCMeta):
+class LocationPurpose:
     def __init__(self):
         pass
 
@@ -86,7 +83,7 @@ class LocationPurpose(metaclass=ABCMeta):
     )
 
 
-class LocationType(metaclass=ABCMeta):
+class LocationType:
     def __init__(self):
         pass
 
