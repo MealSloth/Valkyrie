@@ -7,42 +7,75 @@ DEBUG = False
 USE_TEST_DB = False
 TEMPLATE_DEBUG = DEBUG
 
+G1 = False
+
 ADMINS = (
     ('Michael', 'michael@mealsloth.com'),
 )
 
 MANAGERS = ADMINS
 
-if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/mealsloth-chimera-ap01:mealsloth-chimera-ap01-cloudsqlg1-in01',
-            'NAME': 'chimera_prod01',
-            'USER': 'root',
+if G1:
+    if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'HOST': '/cloudsql/mealsloth-chimera-ap01:mealsloth-chimera-ap01-cloudsqlg1-in01',
+                'NAME': 'chimera_prod01',
+                'USER': 'root',
+            }
         }
-    }
-elif os.getenv('SETTINGS_MODE') == 'prod' or USE_TEST_DB is True:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '173.194.107.52',
-            'NAME': 'chimera_prod01',
-            'USER': 'generic',
-            'PASSWORD': 'ZtuQGCRWhWpaLtV6e93kD59uWjjC8r',
+    elif os.getenv('SETTINGS_MODE') == 'prod' or USE_TEST_DB is True:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'HOST': '173.194.107.52',
+                'NAME': 'chimera_prod01',
+                'USER': 'generic',
+                'PASSWORD': 'ZtuQGCRWhWpaLtV6e93kD59uWjjC8r',
+            }
         }
-    }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'msdb_test_01',
+                'USER': 'root',
+                'HOST': '127.0.0.1',
+                'PORT': '3306',
+            }
+        }
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'msdb_test_01',
-            'USER': 'root',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
+    if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'HOST': '/cloudsql/mealsloth-chimera-ap01:mealsloth-chimera-ap01-cloudsqlg2-in01',
+                'NAME': 'chimera_prod01',
+                'USER': 'root',
+                'PASSWORD': 'HSnwYMVq53ZR7vfdRU39QhPk32H77yra',
+            }
         }
-    }
-
+    elif os.getenv('SETTINGS_MODE') == 'prod' or USE_TEST_DB is True:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'HOST': '104.196.63.245	',
+                'NAME': 'chimera_prod01',
+                'USER': 'root',
+                'PASSWORD': 'HSnwYMVq53ZR7vfdRU39QhPk32H77yra',
+            }
+        }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'msdb_test_01',
+                'USER': 'root',
+                'HOST': '127.0.0.1',
+                'PORT': '3306',
+            }
+        }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
