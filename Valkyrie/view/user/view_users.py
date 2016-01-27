@@ -6,5 +6,5 @@ from Valkyrie.models import User
 
 def users(request):
     user_list = list(User.objects.all().values())
-    response = render(request, 'page/users.html', Context({"user_list": user_list}))
+    response = render(request, 'page/user/users.html', Context({"user_list": user_list}))
     return HttpResponse(response)

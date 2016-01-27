@@ -21,5 +21,5 @@ def user(request, user_id):
         temp_user.get("date_of_birth"),
         temp_user.get("gender"),
     ]
-    response = render(request, 'page/user.html', Context({"user": result}))
+    response = render(request, 'page/user/user.html', Context({"user": result}))
     return HttpResponse(response)

@@ -1,15 +1,16 @@
 from django.db.models import *
 from enums import *
+from uuid import uuid4
 
 
 class User(Model):
-    id = CharField(primary_key=True, editable=False)
-    user_login_id = CharField(editable=False)
-    consumer_id = CharField(editable=False)
-    chef_id = CharField(editable=False)
-    location_id = CharField(editable=False)
-    billing_id = CharField(editable=False)
-    profile_photo_id = CharField(editable=False)
+    id = CharField(primary_key=True, default=uuid4, max_length=36, editable=False)
+    user_login_id = CharField(default=uuid4, editable=False)
+    consumer_id = CharField(default=uuid4, editable=False)
+    chef_id = CharField(default=uuid4, editable=False)
+    location_id = CharField(default=uuid4, editable=False)
+    billing_id = CharField(default=uuid4, editable=False)
+    profile_photo_id = CharField(default=uuid4, editable=False)
     email = EmailField(max_length=254)
     first_name = CharField(max_length=30)
     last_name = CharField(max_length=30)
@@ -22,7 +23,7 @@ class User(Model):
 
 
 class Post(Model):
-    id = CharField(primary_key=True, editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     chef_id = CharField(editable=False)
     location_id = CharField(editable=False)
     album_id = CharField(editable=False)
@@ -38,7 +39,7 @@ class Post(Model):
 
 
 class Order(Model):
-    id = CharField(primary_key=True, editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     post_id = CharField(editable=False)
     consumer_id = CharField(editable=False)
     chef_id = CharField(editable=False)
@@ -54,8 +55,8 @@ class Order(Model):
 
 
 class Location(Model):
-    id = CharField(primary_key=True, editable=False)
-    user_id = CharField(editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
+    user_id = CharField(default=uuid4, editable=False)
     purpose = IntegerField(choices=LocationPurpose.LocationPurpose)
     type = IntegerField(choices=LocationType.LocationType)
     address_line_one = CharField()
@@ -70,7 +71,7 @@ class Location(Model):
 
 
 class Consumer(Model):
-    id = CharField(primary_key=True, editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     user_id = CharField(editable=False)
     location_id = CharField(editable=False)
 
@@ -79,7 +80,7 @@ class Consumer(Model):
 
 
 class Album(Model):
-    id = CharField(primary_key=True, editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     post_id = CharField(editable=False)
 
     class Meta:
@@ -87,7 +88,7 @@ class Album(Model):
 
 
 class OrderTime(Model):
-    id = CharField(editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     order_id = CharField(editable=False)
     status = IntegerField(choices=OrderStatus.OrderStatus)
     time = CharField(editable=False)
@@ -97,7 +98,7 @@ class OrderTime(Model):
 
 
 class FavoritePost(Model):
-    id = CharField(editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     consumer_id = CharField(editable=False)
     post_id = CharField(editable=False)
 
@@ -106,7 +107,7 @@ class FavoritePost(Model):
 
 
 class FavoriteChef(Model):
-    id = CharField(editable=False)
+    id = CharField(primary_key=True, default=uuid4, editable=False)
     consumer_id = CharField(editable=False)
     chef_id = CharField(editable=False)
 

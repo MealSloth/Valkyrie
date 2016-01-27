@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load staticfiles %}
+
+    <head>
+        <meta charset="UTF-8">
+        <title>MealSloth Admin</title>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    </head>
+
+    <body>
+
+        {% include 'fragment/navbar.html' %}
+
+        <section class="valkyrie-page-user-add__section-form">
+
+            <div>
+                <form action="/user-add/" method="post"> {% csrf_token %}
+                    <div>
+                        <table>
+                            <tr>
+                                <td><label for="first_name">First Name:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.first_name.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.first_name }}</td>
+                            </tr>
+                            <tr>
+                                <td><label for="last_name">Last Name:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.last_name.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <td><label for="gender">Gender:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.gender.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.gender }}</td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">Email:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.email.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.email }}</td>
+                            </tr>
+                            <tr>
+                                <td><label for="phone_number">Phone Number:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.phone_number.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.phone_number }}</td>
+                            </tr>
+                            <tr>
+                                <td><label for="date_of_birth">Date of Birth:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.dob_year.errors }} {{ form.dob_month.errors }} {{ form.dob_day.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.dob_year }} {{ form.dob_month }} {{ form.dob_day }}</td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Submit"/></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% if success %}
+                                    {{ success }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+    </body>
+
+</html>

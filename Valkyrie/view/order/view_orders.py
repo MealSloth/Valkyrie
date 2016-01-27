@@ -3,5 +3,5 @@ from django.shortcuts import render
 
 
 def orders(request):
-    response = render(request, 'page/orders.html')
+    response = render(request, 'page/order/orders.html')
     return HttpResponse(response)
