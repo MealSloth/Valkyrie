@@ -27,12 +27,13 @@ class Post(Model):
     id = CharField(primary_key=True, default=uuid4, editable=False)
     chef_id = CharField(editable=False)
     location_id = CharField(editable=False)
-    album_id = CharField(editable=False)
+    album_id = CharField(default=uuid4, editable=False)
     name = CharField(max_length=50)
     description = CharField(max_length=255)
-    order_count = IntegerField()
-    capacity = IntegerField()
-    status = IntegerField(choices=PostStatus.PostStatus)
+    order_count = IntegerField(default=0)
+    capacity = IntegerField(default=1)
+    status = IntegerField(choices=PostStatus.PostStatus, default=0)
+    post_time = CharField(max_length=30)
     expire_time = CharField(max_length=30)
 
     class Meta:

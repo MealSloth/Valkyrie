@@ -3,6 +3,7 @@
 
     {% load staticfiles %}
     {% load tags_users %}
+    {% load tags %}
 
     <head>
         <meta charset="UTF-8">
@@ -15,7 +16,7 @@
 
         {% include './fragment/navbar.html' %}
 
-        <section class="valkyrie-page-users__section-searchbar">
+        <section class="valkyrie-page-multi-listable__section-searchbar">
 
             <div>
                 <table>
@@ -35,26 +36,26 @@
 
         </section>
 
-        <section class="valkyrie-page-users__section-users">
+        <section class="valkyrie-page-multi-listable__section-listables">
 
             <div>
                 <table>
                     <tr>
                         <td><h4>ID</h4></td>
                         <td><h4>Name</h4></td>
-                        <td><h4>Gender</h4></td>
+                        <td class="valkyrie-page-multi-listable__section-listables__desktop-only"><h4>Gender</h4></td>
                         <td><h4>Email</h4></td>
-                        <td><h4>Phone Number</h4></td>
-                        <td><h4>Date of Birth</h4></td>
+                        <td class="valkyrie-page-multi-listable__section-listables__desktop-only"><h4>Phone Number</h4></td>
+                        <td class="valkyrie-page-multi-listable__section-listables__desktop-only"><h4>Date of Birth</h4></td>
                     </tr>
                     {% for user in user_list %}
-                        <tr class="valkyrie-page-users__section-users__tr-user">
+                        <tr>
                             <td>{% generate_link_with_key user 'id' 'user' %}</td>
                             <td>{% entry_for_key user 'first_name' %} {% entry_for_key user 'last_name' %}</td>
-                            <td class="valkyrie-page-users__section-users__desktop-only">{% entry_for_gender user %}</td>
+                            <td class="valkyrie-page-multi-listable__section-listables__desktop-only">{% entry_for_user_gender user %}</td>
                             <td>{% entry_for_key user 'email' %}</td>
-                            <td class="valkyrie-page-users__section-users__desktop-only">{% entry_for_key user 'phone_number' %}</td>
-                            <td class="valkyrie-page-users__section-users__desktop-only">{% entry_for_dob user %}</td>
+                            <td class="valkyrie-page-multi-listable__section-listables__desktop-only">{% entry_for_key user 'phone_number' %}</td>
+                            <td class="valkyrie-page-multi-listable__section-listables__desktop-only">{% entry_for_date user 'date_of_birth' %}</td>
                         </tr>
                     {% endfor %}
                 </table>

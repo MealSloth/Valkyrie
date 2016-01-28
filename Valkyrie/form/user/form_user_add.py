@@ -58,6 +58,7 @@ class UserAddForm(Form):
             self.cleaned_data['dob_month'],
             self.cleaned_data['dob_day'],
         ])
+        join_date = datetime.utcnow()
 
         user = User(
             first_name=first_name,
@@ -66,6 +67,7 @@ class UserAddForm(Form):
             phone_number=phone_number,
             date_of_birth=date_of_birth,
             gender=gender,
+            join_date=join_date
         )
 
         user.save()

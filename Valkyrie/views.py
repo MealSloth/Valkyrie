@@ -1,8 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 from view.home import view_home
 from view.order import view_order, view_orders
-from view.post import view_post, view_posts
+from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add
 
 
@@ -32,8 +30,12 @@ def posts(request):
     return view_posts.posts(request)
 
 
-def post(request):
-    pass
+def post(request, post_id):
+    return view_post.post(request, post_id)
+
+
+def post_add(request, user_id):
+    return view_post_add.post_add(request, user_id)
 
 
 # order

@@ -1,6 +1,6 @@
 @import "../imports";
 
-section.valkyrie-page-user__section-header
+section.valkyrie-page-single-listable__section-header
 {
     background-color: rgba(245,245,245,0.9);
     border-bottom: 2px solid rgba(0,0,0,0.3);
@@ -18,6 +18,8 @@ section.valkyrie-page-user__section-header
             {
                 > div
                 {
+                    @media (max-width: @screen-md-min) { text-align: center; }
+
                     img
                     {
                         max-height: 100%;
@@ -25,6 +27,8 @@ section.valkyrie-page-user__section-header
                         height: auto;
                         width: auto;
                         float: left;
+
+                        @media (max-width: @screen-md-min) { float: none; }
                     }
                 }
 
@@ -37,13 +41,15 @@ section.valkyrie-page-user__section-header
                         font-size: 24px;
                     }
 
-                    > div.valkyrie-page-user__section-header__basic-info
+                    > div.valkyrie-page-single-listable__section-header__basic-info
                     {
                         background-color: rgba(225,225,225,0.9);
                         border: 2px solid rgba(0,0,0,0.2);
                         padding: 15px 45px 15px 45px;
                         border-radius: 6px;
                         width: 150%;
+
+                        @media (max-width: @screen-md-min) { width: 100%; }
                     }
                 }
 
@@ -58,7 +64,7 @@ section.valkyrie-page-user__section-header
                     }
                 }
 
-                > div.valkyrie-page-user__section-header__id-pool
+                > div.valkyrie-page-single-listable__section-header__id-pool
                 {
                     background-color: rgba(215,215,215,0.9);
                     border: 3px solid rgba(0,0,0,0.2);
@@ -70,12 +76,64 @@ section.valkyrie-page-user__section-header
 
                     }
                 }
+
+                table
+                {
+                    margin: 30px 0 0 50px;
+                    table-layout: fixed;
+
+                    @media (max-width: @screen-md-min) { margin: 50px auto 30px auto; }
+
+                    tr
+                    {
+                        td
+                        {
+                            padding: 5px 15px 15px 15px;
+                            text-align: center;
+                            width: 33%;
+                        }
+
+                        td:nth-child(1)
+                        {
+                            background-color: rgba(0,120,0,0.3);
+                            border-bottom-left-radius: 10px;
+                            border-top-left-radius: 10px;
+                        }
+
+                        td:nth-child(2)
+                        {
+                            background-color: rgba(120,120,0,0.3);
+                        }
+
+                        td:nth-child(3)
+                        {
+                            background-color: rgba(120,0,0,0.3);
+                            border-bottom-right-radius: 10px;
+                            border-top-right-radius: 10px;
+                        }
+                    }
+
+                    tr.valkyrie-page-multi-listable__section-header__0 td:nth-child(1)
+                    {
+                        background-color: rgba(0,255,0,0.8);
+                    }
+
+                    tr.valkyrie-page-multi-listable__section-header__1 td:nth-child(2)
+                    {
+                        background-color: rgba(255,255,0,0.8);
+                    }
+
+                    tr.valkyrie-page-multi-listable__section-header__2 td:nth-child(3)
+                    {
+                        background-color: rgba(255,0,0,0.8);
+                    }
+                }
             }
         }
     }
 }
 
-section.valkyrie-page-user__section-listable
+section.valkyrie-page-single-listable__section-listable
 {
     border-bottom: 1px solid rgba(0,0,0,0.2);
     background-color: rgba(225,225,225,0.9);

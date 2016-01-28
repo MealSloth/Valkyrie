@@ -15,7 +15,7 @@
 
         {% include 'fragment/navbar.html' %}
 
-        <section class="valkyrie-page-user-add__section-form">
+        <section class="valkyrie-page-form-add__section-form">
 
             <div>
                 <form action="/user-add/" method="post"> {% csrf_token %}
@@ -77,13 +77,6 @@
                             </tr>
                             <tr>
                                 <td><input type="submit" value="Submit"/></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {% if success %}
-                                    {{ success }}
-                                    {% endif %}
-                                </td>
                             </tr>
                         </table>
                     </div>

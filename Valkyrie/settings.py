@@ -40,7 +40,7 @@ if G1:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'msdb_test_01',
+                'NAME': 'chimera_prod01',
                 'USER': 'root',
                 'HOST': 'localhost',
                 'PORT': '3306',
@@ -71,7 +71,7 @@ else:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'msdb_test_01',
+                'NAME': 'chimera_prod01',
                 'USER': 'root',
                 'HOST': 'localhost',
                 'PORT': '3306',
