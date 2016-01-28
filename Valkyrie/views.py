@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from django.shortcuts import render
 from view.home import view_home
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts

@@ -2,7 +2,7 @@
 <html lang="en">
 
     {% load staticfiles %}
-    {% load tags_user %}
+    {% load tags_users %}
 
     <head>
         <meta charset="UTF-8">
@@ -15,10 +15,73 @@
 
         {% include './fragment/navbar.html' %}
 
-        <section class="valkyrie-page-user__section-basic">
+        <section class="valkyrie-page-user__section-header">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-7">
+                        <div class="col-md-3">
+                            <img src="{% static 'images/default_profile_picture.png' %}" />
+                        </div>
+                        <div class="col-md-4">
+                            <h2>{% entry_for_key user 'id' %}</h2>
+                            <br />
+                            <div class="valkyrie-page-user__section-header__basic-info">
+                                <h3>{% entry_for_key user 'first_name' %} {% entry_for_key user 'last_name' %}</h3>
+                                <h4>{% entry_for_gender user %}</h4>
+                                <br />
+                                <h4>Date of Birth: {% entry_for_dob user %}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <h3>ID Pool</h3>
+                        <div class="valkyrie-page-user__section-header__id-pool">
+                            <h5>User Login ID: <a>{% entry_for_key user 'user_login_id' %}</a></h5>
+                            <h5>Consumer ID: <a>{% entry_for_key user 'consumer_id' %}</a></h5>
+                            <h5>Chef ID: <a>{% entry_for_key user 'chef_id' %}</a></h5>
+                            <h5>Location ID: <a>{% entry_for_key user 'location_id' %}</a></h5>
+                            <h5>Billing ID: <a>{% entry_for_key user 'billing_id' %}</a></h5>
+                            <h5>Profile Photo ID: <a>{% entry_for_key user 'profile_photo_id' %}</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="valkyrie-page-user__section-listable">
 
             <div>
-                <h3>{{ user.8 }} {{ user.9 }} #{{ user.0 }}</h3>
+                <h3>Email Addresses</h3>
+                <div>
+                    <div>
+                        <div>
+                            <h4><a href="mailto:{% entry_for_key user 'email' %}">{% entry_for_key user 'email' %}</a></h4>
+                        </div>
+                        <div>
+                            <h4>Primary</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="valkyrie-page-user__section-listable">
+
+            <div>
+                <h3>Phone Numbers</h3>
+                <div>
+                    <div>
+                        <div>
+                            <h4><a href="tel:{% entry_for_key user 'phone_number' %}">{% entry_for_key user 'phone_number' %}</a></h4>
+                        </div>
+                        <div>
+                            <h4>Primary</h4>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>

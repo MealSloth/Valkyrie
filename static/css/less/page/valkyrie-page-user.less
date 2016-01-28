@@ -1,21 +1,135 @@
 @import "../imports";
 
-section.valkyrie-page-user__section-basic
+section.valkyrie-page-user__section-header
 {
     background-color: rgba(245,245,245,0.9);
-    margin: 0 auto;
-    width: 70%;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    width: 100%;
 
     > div
     {
-        background-color: rgba(225,225,225,0.9);
+        background-color: rgba(245,245,245,0.9);
         padding: 30px;
         width: 100%;
 
-        h3
+        > div
         {
-            font-size: 36px;
-            color: black;
+            > div
+            {
+                > div
+                {
+                    img
+                    {
+                        max-height: 100%;
+                        max-width: 100%;
+                        height: auto;
+                        width: auto;
+                        float: left;
+                    }
+                }
+
+                > div
+                {
+                    white-space: nowrap;
+
+                    h2
+                    {
+                        font-size: 24px;
+                    }
+
+                    > div.valkyrie-page-user__section-header__basic-info
+                    {
+                        background-color: rgba(225,225,225,0.9);
+                        border: 2px solid rgba(0,0,0,0.2);
+                        padding: 15px 45px 15px 45px;
+                        border-radius: 6px;
+                        width: 150%;
+                    }
+                }
+
+                > h3
+                {
+                    padding: 0 0 0 15px;
+
+                    @media (max-width: @screen-md-min)
+                    {
+                        text-align: center;
+                        padding: 0;
+                    }
+                }
+
+                > div.valkyrie-page-user__section-header__id-pool
+                {
+                    background-color: rgba(215,215,215,0.9);
+                    border: 3px solid rgba(0,0,0,0.2);
+                    border-radius: 12px;
+                    padding: 15px;
+
+                    h5
+                    {
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+section.valkyrie-page-user__section-listable
+{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(225,225,225,0.9);
+    padding: 30px;
+
+    > div
+    {
+        > h3
+        {
+            padding: 0 0 0 15px;
+        }
+
+        > div
+        {
+            background-color: rgba(215,215,215,0.9);
+            border: 3px solid rgba(0,0,0,0.2);
+            border-radius: 4px;
+            padding: 15px;
+
+            > div
+            {
+                background-color: rgba(245,245,245,0.9);
+                border: 1px solid rgba(0,0,0,0.3);
+                position: relative;
+                height: 50px;
+
+                > div:first-child
+                {
+                    padding: 5px 5px 5px 20px;
+                    position: absolute;
+                    height: 50px;
+                    left: 0;
+
+                    a:hover
+                    {
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+
+                > div:last-child
+                {
+                    background-color: rgba(166,12,12,0.9);
+                    padding: 5px 20px 5px 20px;
+                    position: absolute;
+                    height: 48px;
+                    right: 0;
+
+                    h4
+                    {
+                        color: white;
+                    }
+                }
+            }
         }
     }
 }

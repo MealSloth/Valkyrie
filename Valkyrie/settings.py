@@ -4,10 +4,11 @@ import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
 
 DEBUG = False
-USE_TEST_DB = False
+USE_PROD_DB = False
+USE_LOCAL_DB = not USE_PROD_DB
 TEMPLATE_DEBUG = DEBUG
 
-G1 = False
+G1 = True
 
 ADMINS = (
     ('Michael', 'michael@mealsloth.com'),
@@ -25,7 +26,7 @@ if G1:
                 'USER': 'root',
             }
         }
-    elif os.getenv('SETTINGS_MODE') == 'prod' or USE_TEST_DB is True:
+    elif os.getenv('SETTINGS_MODE') == 'prod' or USE_PROD_DB is True:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
@@ -41,7 +42,7 @@ if G1:
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME': 'msdb_test_01',
                 'USER': 'root',
-                'HOST': '127.0.0.1',
+                'HOST': 'localhost',
                 'PORT': '3306',
             }
         }
@@ -56,7 +57,7 @@ else:
                 'PASSWORD': 'HSnwYMVq53ZR7vfdRU39QhPk32H77yra',
             }
         }
-    elif os.getenv('SETTINGS_MODE') == 'prod' or USE_TEST_DB is True:
+    elif os.getenv('SETTINGS_MODE') == 'prod' or USE_PROD_DB is True:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
@@ -72,7 +73,7 @@ else:
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME': 'msdb_test_01',
                 'USER': 'root',
-                'HOST': '127.0.0.1',
+                'HOST': 'localhost',
                 'PORT': '3306',
             }
         }

@@ -86,6 +86,8 @@ section.valkyrie-page-users__section-users
             {
                 td
                 {
+                    padding: 5px 0 5px 0;
+
                     h4
                     {
 
@@ -97,6 +99,15 @@ section.valkyrie-page-users__section-users
                     }
                 }
             }
+
+            tr td:first-child
+            {
+                padding: 0 20px 0 0;
+                white-space: nowrap;
+                width: 1%;
+            }
+
+            tr td.valkyrie-page-users__section-users__desktop-only { @media (max-width: @screen-md-min) { display: none; } }
         }
     }
 }
