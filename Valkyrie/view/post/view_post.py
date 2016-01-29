@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
-from Valkyrie.models import Post
+from _include.Chimera.models import Post
 
 
 def post(request, post_id):

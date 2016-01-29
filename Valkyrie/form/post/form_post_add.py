@@ -1,7 +1,6 @@
 from django.forms import *
-from Valkyrie.models import Post
+from _include.Chimera.models import Post, User
 from datetime import datetime, timedelta
-from Valkyrie.models import User
 
 
 class PostAddForm(Form):
@@ -10,9 +9,12 @@ class PostAddForm(Form):
     capacity = IntegerField(max_value=20)
 
     def process(self, **kwargs):
-        user = User.objects.filter(id=kwargs.pop('user_id')).values()[0]
-        chef_id = user.get("chef_id")
-        location_id = user.get("location_id")
+        if User.objects.filter(id=kwargs.get('user_id')):
+            user = User.objects.filter(id=kwargs.pop('user_id')).values()[0]
+            chef_id = user.get("chef_id")
+            location_id = user.get("location_id")
+        else:
+            return
         name = self.cleaned_data['name']
         description = self.cleaned_data['description']
         capacity = self.cleaned_data['capacity']

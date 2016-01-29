@@ -21,7 +21,7 @@ if G1:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
-                'HOST': '/cloudsql/mealsloth-chimera-ap01:mealsloth-chimera-ap01-cloudsqlg1-in01',
+                'HOST': '/cloudsql/mealsloth-chimera-ap01:mealsloth-chimera-ap01-cloudsqlg1-in02',
                 'NAME': 'chimera_prod01',
                 'USER': 'root',
             }
@@ -30,7 +30,7 @@ if G1:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
-                'HOST': '173.194.107.52',
+                'HOST': '173.194.108.241',
                 'NAME': 'chimera_prod01',
                 'USER': 'generic',
                 'PASSWORD': 'ZtuQGCRWhWpaLtV6e93kD59uWjjC8r',
@@ -102,8 +102,7 @@ STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-)
+STATICFILES_DIRS = ()
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -145,10 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    '_include.Chimera',
     'Valkyrie',
 )
 

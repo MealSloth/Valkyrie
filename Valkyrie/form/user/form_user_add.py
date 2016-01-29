@@ -1,6 +1,6 @@
 from django.forms import *
-from Valkyrie.enums import *
-from Valkyrie.models import User
+from _include.Chimera.enums import *
+from _include.Chimera.models import User
 from datetime import datetime
 
 

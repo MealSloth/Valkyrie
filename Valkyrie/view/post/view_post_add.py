@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from Valkyrie.form.post.form_post_add import PostAddForm
 
@@ -10,6 +10,8 @@ def post_add(request, user_id):
         if form.is_valid():
             form.process(**keys)
             return HttpResponseRedirect('/posts/')
+        else:
+            return HttpResponse("Invalid form")
     else:
         form = PostAddForm()
 
