@@ -9,6 +9,7 @@ urlpatterns = patterns(
     url(r'^users/', views.users, name='users'),
     url(r'^posts/', views.posts, name='posts'),
     url(r'^orders/', views.orders, name='orders'),
+    url(r'^tools/', views.tools, name='tools'),
     url(r'^user/([^/]+)/', views.user, name='user'),
     url(r'^user-add/', views.user_add, name='user-add'),
     url(r'^post/([^/]+)/', views.post, name='post'),

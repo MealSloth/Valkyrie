@@ -2,6 +2,7 @@ from view.home import view_home
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add
+from view.tool import view_tools
 
 
 # home
@@ -46,3 +47,9 @@ def orders(request):
 
 def order(request):
     pass
+
+
+# tools
+
+def tools(request):
+    return view_tools.tools(request)
