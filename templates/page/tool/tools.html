@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MealSloth | Admin</title>
-</head>
-<body>
-    Tools (not yet implemented)
-</body>
+
+    {% load staticfiles %}
+
+    <head>
+        <meta charset="UTF-8">
+        <title>MealSloth Admin</title>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    </head>
+
+    <body>
+
+        {% include './fragment/navbar.html' %}
+
+        <section class="valkyrie-page-tools__section-header">
+
+            <div>
+
+            </div>
+
+        </section>
+
+        <section class="valkyrie-page-tools__section-body-1">
+
+            <div>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div>
+                                <a href="/blog-post-add">Make a Blog Post</a>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+
+    </body>
+
 </html>

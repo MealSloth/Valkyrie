@@ -2,7 +2,7 @@ from view.home import view_home
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add
-from view.tool import view_tools
+from view.tool import view_tools, view_blog_post_add
 
 
 # home
@@ -45,11 +45,15 @@ def orders(request):
     return view_orders.orders(request)
 
 
-def order(request):
-    pass
+def order(request, order_id):
+    return view_order.order(request, order_id)
 
 
 # tools
 
 def tools(request):
     return view_tools.tools(request)
+
+
+def blog_post_add(request):
+    return view_blog_post_add.blog_post_add(request)

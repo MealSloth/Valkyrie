@@ -1,6 +1,6 @@
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import url, patterns
-from Valkyrie import views
+import views
 
 
 urlpatterns = patterns(
@@ -14,4 +14,6 @@ urlpatterns = patterns(
     url(r'^user-add/', views.user_add, name='user-add'),
     url(r'^post/([^/]+)/', views.post, name='post'),
     url(r'^post-add/([^/]+)/', views.post_add, name='post-add'),
+    url(r'^order/([^/]+)/', views.order, name='order'),
+    url(r'^blog-post-add/', views.blog_post_add, name='blog-post-add'),
 ) + staticfiles_urlpatterns()

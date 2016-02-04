@@ -32,7 +32,7 @@ class Post(Model):
     description = CharField(max_length=255)
     order_count = IntegerField(default=0)
     capacity = IntegerField(default=1)
-    status = IntegerField(choices=PostStatus.PostStatus, default=0)
+    post_status = IntegerField(choices=PostStatus.PostStatus, default=0)
     post_time = CharField(max_length=30)
     expire_time = CharField(max_length=30)
 
