@@ -2,6 +2,8 @@
 <html lang="en">
 
     {% load staticfiles %}
+    {% load tags_orders %}
+    {% load tags %}
 
     <head>
         <meta charset="UTF-8">
@@ -14,16 +16,45 @@
 
         {% include './fragment/navbar.html' %}
 
-        <section class="valkyrie-page-orders__section-header">
+        <section class="valkyrie-page-multi-listable__section-searchbar">
 
             <div>
-                <div>
-                    <h1>MealSloth</h1>
-                    <h4>
-                        Welcome to MealSloth! We provide a mobile application platform for people to buy and sell
-                        homemade meals in their local area. You can learn more <a href="http://mealsloth.com/">here</a>.
-                    </h4>
-                </div>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+
+        <section class="valkyrie-page-multi-listable__section-listables">
+
+            <div>
+                <table>
+                    <tr>
+                        <td><h4>ID</h4></td>
+                        <td><h4>Consumer</h4></td>
+                        <td><h4>Chef</h4></td>
+                        <td><h4>Status</h4></td>
+                        <td><h4>Type</h4></td>
+                        <td><h4>Amount</h4></td>
+                    </tr>
+                    {% for order in order_list %}
+                        <tr>
+                            <td>{% generate_link_with_key order 'id' 'order' %}</td>
+                            <td>{% entry_for_key order 'chef_id' %}</td>
+                            <td>{% entry_for_key order 'consumer_id' %}</td>
+                            <td>{% entry_for_order_status order %}</td>
+                            <td>{% entry_for_order_type order %}</td>
+                            <td>{% entry_for_key order 'amount' %}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
 
         </section>

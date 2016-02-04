@@ -6,4 +6,4 @@ register = template.Library()
 
 @register.simple_tag
 def entry_for_post_status(dictionary):
-    return PostStatus.PostStatus[int(dictionary.get("status"))][1]
+    return PostStatus.PostStatus[int(dictionary.get("post_status"))][1]
