@@ -34,7 +34,7 @@ def days():
 class UserAddForm(Form):
     first_name = CharField(max_length=30, required=True)
     last_name = CharField(max_length=30, required=True)
-    email = CharField(max_length=254, required=True)
+    email = EmailField(max_length=254, required=True)
     phone_number = CharField(max_length=30, required=True)
     dob_year = ChoiceField(choices=years(), required=True)
     dob_month = ChoiceField(choices=Months.Months, required=True)
