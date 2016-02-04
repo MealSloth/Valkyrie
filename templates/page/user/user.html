@@ -89,6 +89,26 @@
 
         </section>
 
+        <section class="valkyrie-page-single-listable__section-listable">
+
+            <div>
+                <h3>Posts</h3>
+                {% for post in posts %}
+                <div>
+                    <div>
+                        <div>
+                            <h4><a href="/post/{{ post.id }}">{{ post.id }}</a> - {{ post.name }}</h4>
+                        </div>
+                        <div class="valkyrie-page-single-listable__section-listable__status-{% status_for_status_lower post.status %}">
+                            <h4>{% status_for_status post.status %}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </section>
+
     </body>
 
 </html>
