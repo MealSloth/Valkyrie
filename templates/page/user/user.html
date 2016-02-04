@@ -56,7 +56,13 @@
         <section class="valkyrie-page-single-listable__section-listable">
 
             <div>
-                <h3>Email Addresses</h3>
+                <table>
+                    <tr>
+                        <td>
+                            <h3>Email Addresses</h3>
+                        </td>
+                    </tr>
+                 </table>
                 <div>
                     <div>
                         <div>
@@ -74,8 +80,14 @@
         <section class="valkyrie-page-single-listable__section-listable">
 
             <div>
-                <h3>Phone Numbers</h3>
-                <div>
+                <table>
+                    <tr>
+                        <td>
+                            <h3>Phone Numbers</h3>
+                        </td>
+                    </tr>
+                 </table>
+                 <div>
                     <div>
                         <div>
                             <h4><a href="tel:{% entry_for_key user 'phone_number' %}">{% entry_for_key user 'phone_number' %}</a></h4>
@@ -92,7 +104,16 @@
         <section class="valkyrie-page-single-listable__section-listable">
 
             <div>
-                <h3>Posts</h3>
+                <table>
+                    <tr>
+                        <td>
+                            <h3>Posts</h3>
+                        </td>
+                        <td>
+                            <a href="/post-add/{% entry_for_key user 'id' %}">+</a>
+                        </td>
+                    </tr>
+                </table>
                 {% for post in posts %}
                 <div>
                     <div>
