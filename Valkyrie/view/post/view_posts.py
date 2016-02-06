@@ -6,5 +6,5 @@ from _include.Chimera.models import Post
 
 def posts(request):
     post_list = list(Post.objects.all().order_by('post_status').values())
-    response = render(request, 'page/post/posts.html', Context({"post_list": post_list}))
+    response = render(request, 'page/post/posts.html', Context({'post_list': post_list}))
     return HttpResponse(response)

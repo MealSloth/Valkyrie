@@ -29,6 +29,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = '/login/'
+
 MEDIA_ROOT = ''
 
 MEDIA_URL = ''
@@ -53,8 +55,11 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
+
 MIDDLEWARE_CLASSES = (
-    # 'Valkyrie.startup.StartupMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -79,11 +84,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    '_include.Chimera',
     'Valkyrie',
+    '_include.Chimera',
+    '_include.Siren',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 LOGGING = {
     'version': 1,
@@ -106,5 +114,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'Valkyrie.gae_memcached_cache.GaeMemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
     }
 }

@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.template import Context
 from Valkyrie.form.tool.form_blog_post_add import BlogPostAddForm
 
 
@@ -12,4 +13,4 @@ def blog_post_add(request):
         else:
             return HttpResponse("Invalid form")
     else:
-        return render(request, 'page/tool/blog-post-add.html', {'form': BlogPostAddForm()})
+        return render(request, 'page/tool/blog-post-add.html', Context({'form': BlogPostAddForm()}))

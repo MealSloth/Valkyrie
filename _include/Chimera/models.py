@@ -27,7 +27,7 @@ class Post(Model):
     id = CharField(primary_key=True, default=uuid4, max_length=36, editable=False)
     chef_id = CharField(max_length=36, editable=False)
     location_id = CharField(max_length=36, editable=False)
-    album_id = CharField(max_length=36, default=uuid4, editable=False)
+    album_id = CharField(default=uuid4, max_length=36, editable=False)
     name = CharField(max_length=50)
     description = CharField(max_length=255)
     order_count = IntegerField(default=0)
@@ -61,12 +61,12 @@ class Location(Model):
     user_id = CharField(default=uuid4, max_length=36, editable=False)
     purpose = IntegerField(choices=LocationPurpose.LocationPurpose)
     type = IntegerField(choices=LocationType.LocationType)
-    address_line_one = CharField()
-    address_line_two = CharField()
-    city = CharField()
-    state = CharField()
-    country = CharField()
-    zip = CharField()
+    address_line_one = CharField(max_length=255)
+    address_line_two = CharField(max_length=255)
+    city = CharField(max_length=255)
+    state = CharField(max_length=255)
+    country = CharField(max_length=255)
+    zip = CharField(max_length=255)
 
     class Meta:
         db_table = "locations"
@@ -93,7 +93,7 @@ class OrderTime(Model):
     id = CharField(primary_key=True, default=uuid4, max_length=36, editable=False)
     order_id = CharField(max_length=36, editable=False)
     status = IntegerField(choices=OrderStatus.OrderStatus)
-    time = CharField(editable=False)
+    time = CharField(editable=False, max_length=30)
 
     class Meta:
         db_table = "order_times"
