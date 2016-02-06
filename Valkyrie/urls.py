@@ -8,6 +8,7 @@ urlpatterns = patterns(
     url(r'^$', views.home, name='home'),
     url(r'^login/', views.login, name='login'),
     url(r'^logout/', views.logout, name='logout'),
+    url(r'^auth-user-add/', views.auth_user_add, name='auth-user-add'),
     url(r'^users/', views.users, name='users'),
     url(r'^posts/', views.posts, name='posts'),
     url(r'^orders/', views.orders, name='orders'),

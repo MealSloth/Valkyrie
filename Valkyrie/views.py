@@ -3,7 +3,7 @@ from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add
 from view.tool import view_tools, view_blog_post_add
-from view.auth import view_login, view_logout
+from view.auth import view_login, view_logout, view_auth_user_add
 
 from django.contrib.auth.decorators import login_required
 
@@ -23,6 +23,10 @@ def login(request):
 
 def logout(request):
     return view_logout.logout(request)
+
+
+def auth_user_add(request):
+    return view_auth_user_add.auth_user_add(request)
 
 
 # user
