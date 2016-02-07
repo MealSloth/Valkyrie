@@ -2,43 +2,64 @@
 
 section.valkyrie-page-tools__section-header
 {
-
+    background-color: rgba(253,253,253,0.9);
 }
 
 section.valkyrie-page-tools__section-body-1
 {
-    div
+    background-color: rgba(253,253,253,0.9);
+
+    > div
     {
         padding: 50px;
 
-        table
+        > a, > a:hover
         {
-            table-layout: fixed;
-            width: 100%;
+            color: rgba(10,10,10,0.9);
+            text-decoration: none;
+            cursor: pointer;
 
-            tr
+            > span
             {
-                td
-                {
-                    padding: 30px;
-                    width: 33%;
+                background-color: rgba(240,240,240,0.9);
+                font-size: 32px;
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+        }
 
-                    div
+        > div
+        {
+            table
+            {
+                background-color: rgba(240,240,240,0.9);
+                table-layout: fixed;
+                width: 100%;
+
+                tr
+                {
+                    td
                     {
-                        background-color: rgba(200,200,200,0.9);
-                        border: 2px solid rgba(100,100,100,0.9);
-                        border-radius: 10px;
-                        text-align: center;
                         padding: 30px;
 
-                        a
+                        div
                         {
-                            font-size: 26px;
-                        }
+                            background-color: rgba(200,200,200,0.9);
+                            border: 2px solid rgba(100,100,100,0.9);
+                            border-radius: 10px;
+                            text-align: center;
+                            padding: 30px;
 
-                        a:hover
-                        {
-                            text-decoration: none;
+                            a
+                            {
+                                font-size: 26px;
+                            }
+
+                            a:hover
+                            {
+                                text-decoration: none;
+                            }
                         }
                     }
                 }

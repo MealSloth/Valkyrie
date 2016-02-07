@@ -1,6 +1,7 @@
 from databases import databases
 import os
 
+
 PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
 
 DEBUG = False
