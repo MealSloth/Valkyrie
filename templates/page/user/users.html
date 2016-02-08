@@ -8,8 +8,9 @@
     <head>
         <meta charset="UTF-8">
         <title>MealSloth Admin</title>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
     </head>
 
     <body>
@@ -42,7 +43,7 @@
                 <table>
                     <tr>
                         <td><h4>ID</h4></td>
-                        <td><h4>Name</h4></td>
+                        <td class="valkyrie-page-multi-listable__section-listables__desktop-only"><h4>Name</h4></td>
                         <td class="valkyrie-page-multi-listable__section-listables__desktop-only"><h4>Gender</h4></td>
                         <td><h4>Email</h4></td>
                         <td class="valkyrie-page-multi-listable__section-listables__desktop-only"><h4>Phone Number</h4></td>
@@ -51,7 +52,7 @@
                     {% for user in user_list %}
                         <tr>
                             <td>{% generate_link_with_key user 'id' 'user' %}</td>
-                            <td>{% entry_for_key user 'first_name' %} {% entry_for_key user 'last_name' %}</td>
+                            <td class="valkyrie-page-multi-listable__section-listables__desktop-only">{% entry_for_key user 'first_name' %} {% entry_for_key user 'last_name' %}</td>
                             <td class="valkyrie-page-multi-listable__section-listables__desktop-only">{% entry_for_user_gender user %}</td>
                             <td>{% entry_for_key user 'email' %}</td>
                             <td class="valkyrie-page-multi-listable__section-listables__desktop-only">{% entry_for_key user 'phone_number' %}</td>

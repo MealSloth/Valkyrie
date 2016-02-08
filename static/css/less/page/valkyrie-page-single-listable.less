@@ -39,6 +39,8 @@ section.valkyrie-page-single-listable__section-header
                     h2
                     {
                         font-size: 24px;
+
+                        @media (max-width: @screen-md-min) { font-size: 42px; }
                     }
 
                     > div.valkyrie-page-single-listable__section-header__basic-info
@@ -50,6 +52,10 @@ section.valkyrie-page-single-listable__section-header
                         width: 150%;
 
                         @media (max-width: @screen-md-min) { width: 100%; }
+
+                        h3 { @media (max-width: @screen-md-min) { font-size: 48px; } }
+
+                        h4 { @media (max-width: @screen-md-min) { font-size: 42px; } }
                     }
                 }
 
@@ -60,7 +66,8 @@ section.valkyrie-page-single-listable__section-header
                     @media (max-width: @screen-md-min)
                     {
                         text-align: center;
-                        padding: 0;
+                        font-size: 42px;
+                        padding: 10px;
                     }
                 }
 
@@ -71,10 +78,7 @@ section.valkyrie-page-single-listable__section-header
                     border-radius: 12px;
                     padding: 15px;
 
-                    h5
-                    {
-
-                    }
+                    h5 { @media (max-width: @screen-md-min) { font-size: 32px; } }
                 }
 
                 table
@@ -205,6 +209,8 @@ section.valkyrie-page-single-listable__section-listable
                         text-align: left;
                         padding: 8px;
                         margin: 0;
+
+                        @media (max-width: @screen-md-min) { font-size: 42px; }
                     }
                 }
 
@@ -242,12 +248,18 @@ section.valkyrie-page-single-listable__section-listable
                 position: relative;
                 height: 50px;
 
+                @media (max-width: @screen-md-min) { height: 75px; }
+
                 > div:first-child
                 {
                     padding: 5px 5px 5px 20px;
                     position: absolute;
                     height: 50px;
                     left: 0;
+
+                    @media (max-width: @screen-md-min) { height: 75px; }
+
+                    a{ @media (max-width: @screen-md-min) { font-size: 36px; } }
 
                     a:hover
                     {
@@ -264,9 +276,13 @@ section.valkyrie-page-single-listable__section-listable
                     height: 48px;
                     right: 0;
 
+                    @media (max-width: @screen-md-min) { height: 72px; }
+
                     h4
                     {
                         color: white;
+
+                        @media (max-width: @screen-md-min) { font-size: 38px; }
                     }
                 }
 

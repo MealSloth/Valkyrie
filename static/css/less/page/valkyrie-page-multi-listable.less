@@ -58,6 +58,12 @@ section.valkyrie-page-multi-listable__section-searchbar
             {
                 background-color: rgba(166,12,12,1.0);
                 border: 1px solid rgba(83,6,6,0.8);
+
+                @media (max-width: @screen-md-min)
+                {
+                    padding: 10px 20px 10px 20px;
+                    font-size: 36px;
+                }
             }
 
             > a:hover
@@ -88,15 +94,15 @@ section.valkyrie-page-multi-listable__section-listables
                 {
                     padding: 5px 0 5px 0;
 
-                    h4
+                    @media (max-width: @screen-md-min)
                     {
-
+                        padding: 15px 0 15px 0;
+                        font-size: 28px;
                     }
 
-                    h5
-                    {
+                    h4 { @media (max-width: @screen-md-min) { font-size: 48px; } }
 
-                    }
+                    h5 { @media (max-width: @screen-md-min) { font-size: 42px; } }
                 }
             }
 
