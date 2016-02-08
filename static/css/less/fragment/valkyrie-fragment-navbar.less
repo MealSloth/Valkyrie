@@ -1,43 +1,43 @@
 @import "../imports";
 
-section.valkyrie-fragment-navbar__section-navbar
+section.valkyrie-fragment-navbar__desktop-only { @media (max-width: @screen-md-min) { display: none; } }
+
+section.valkyrie-fragment-navbar__mobile-only { @media (min-width: @screen-md-min) { display: none; } }
+
+section.valkyrie-fragment-navbar__section-navbar__desktop-only
 {
     font-family: "Avenir", "Avenir Next", sans-serif;
-    background-color: rgba(10,10,10,0.9);
+    background-color: rgba(20,20,20,1.0);
+    height: 40px;
 
     > div
     {
-        overflow: auto;
-        height: 100%;
-
         > div
         {
             table
             {
-                @media (max-width: @screen-md-min) { margin: 0 auto; }
-
                 td
                 {
                     vertical-align: middle;
                     font-size: 16px;
                     padding: 10px;
 
-                    @media (max-width: @screen-md-min)
-                    {
-                        padding: 10px 20px 10px 20px;
-                        text-align: left;
-                        font-size: 38px;
-                    }
-
-                    a
+                    a, a:hover
                     {
                         color: rgba(240, 240, 240, 0.9);
-                    }
-
-                    a:hover
-                    {
+                        background-color: transparent;
                         text-decoration: none;
                         cursor: pointer;
+                    }
+
+                    ul
+                    {
+                        background-color: rgba(20,20,20,1.0);
+
+                        li
+                        {
+                            border: none;
+                        }
                     }
                 }
 
@@ -48,13 +48,6 @@ section.valkyrie-fragment-navbar__section-navbar
                         font-size: 20px;
                         padding: 0;
                         margin: 0;
-
-                        @media (max-width: @screen-md-min)
-                        {
-                            text-align: left;
-                            font-size: 44px;
-                            padding: 0;
-                        }
                     }
 
                     h5
@@ -62,13 +55,6 @@ section.valkyrie-fragment-navbar__section-navbar
                         color: rgba(240, 240, 240, 0.9);
                         padding: 0;
                         margin: 0;
-
-                        @media (max-width: @screen-md-min)
-                        {
-                            text-align: left;
-                            font-size: 42px;
-                            padding: 0;
-                        }
                     }
                 }
             }
@@ -78,16 +64,88 @@ section.valkyrie-fragment-navbar__section-navbar
         {
             padding: 0 0 0 150px;
             float: left;
-
-            @media (max-width: @screen-md-min) { padding: 5px 0 5px 0; }
         }
 
         > div:last-of-type
         {
             padding: 0 50px 0 0;
             float: right;
-
-            @media (max-width: @screen-md-min) { display: none; }
         }
+    }
+}
+
+section.valkyrie-fragment-navbar__section-navbar__mobile-only
+{
+    font-family: "Avenir", "Avenir Next", sans-serif;
+    background-color: rgba(20,20,20,1.0);
+    overflow: auto;
+    padding: 15px;
+
+    > div
+    {
+        background-color: rgba(20,20,20,1.0);
+
+        h2
+        {
+            font-size: 64px;
+
+            a, a:hover
+            {
+                color: rgba(253,253,253,0.9);
+                text-decoration: none;
+            }
+        }
+
+        ul
+        {
+            list-style-type: none;
+            text-align: right;
+
+            li
+            {
+                border-top: 1px solid rgba(100,100,100,0.9);
+                padding: 10px 40px 10px 0;
+                list-style-type: none;
+            }
+
+            li:first-of-type
+            {
+                padding: 30px 40px 10px 0;
+                border: none;
+            }
+
+            a, a:hover, a:active
+            {
+                color: rgba(253,253,253,0.9);
+                text-decoration: none;
+                font-size: 54px;
+                display: block;
+            }
+        }
+    }
+
+    button, button:active, button:hover
+    {
+        background-color: rgba(40,40,40,0.9);
+        border: 1px solid rgba(60,60,60,0.9);
+        padding: 10px 20px 10px 20px;
+        float: right;
+
+        span
+        {
+            color: rgba(240,240,240,0.9);
+            font-size: 72px;
+        }
+    }
+
+    > div:nth-of-type(1)
+    {
+        padding: 0 0 0 30px;
+        float: left;
+    }
+
+    > div:nth-of-type(2)
+    {
+        clear: both;
     }
 }
