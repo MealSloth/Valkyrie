@@ -3,6 +3,7 @@
 section.valkyrie-page-multi-listable__section-header
 {
     background-color: rgba(253,253,253,0.9);
+    padding: 50px;
     width: 100%;
 
     > div
@@ -42,8 +43,10 @@ section.valkyrie-page-multi-listable__section-header
 section.valkyrie-page-multi-listable__section-searchbar
 {
     background-color: rgba(240,240,240,0.9);
-    padding: 15px 30px 15px 30px;
+    padding: 60px 30px 15px 30px;
     width: 100%;
+
+    @media (max-width: @screen-md-min) { padding: 150px 30px 15px 30px; }
 
     > div
     {
