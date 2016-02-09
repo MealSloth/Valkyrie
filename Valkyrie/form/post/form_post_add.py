@@ -1,5 +1,5 @@
 from django.forms import *
-from _include.Chimera.models import Post, User
+from _include.Chimera.Chimera.models import Post, User
 from datetime import datetime, timedelta
 
 

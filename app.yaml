@@ -8,6 +8,7 @@ threadsafe: true
 skip_files:
 - ^(.*/)?.*\.pyc$
 - ^(.*/)?.*\.less$
+- ^(.*/)?.*\.pack$
 - ^(.*/)?.*\.DS_Store$
 - ^(.*/)?.*\.csslintrc$
 

@@ -86,8 +86,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Valkyrie',
-    '_include.Chimera',
-    '_include.Siren',
+    '_include.Chimera.Chimera',
+    '_include.Siren.Siren',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

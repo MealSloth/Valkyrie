@@ -1,5 +1,5 @@
 from django.forms import *
-from _include.Siren.models import BlogPost, Author
+from _include.Siren.Siren.models import BlogPost, Author
 from datetime import datetime
 
 

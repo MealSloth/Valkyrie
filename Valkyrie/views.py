@@ -25,6 +25,7 @@ def logout(request):
     return view_logout.logout(request)
 
 
+@login_required
 def auth_user_add(request):
     return view_auth_user_add.auth_user_add(request)
 

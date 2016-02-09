@@ -1,5 +1,5 @@
 from django import template
-from _include.Chimera.enums import *
+from _include.Chimera.Chimera.enums import *
 
 register = template.Library()
 

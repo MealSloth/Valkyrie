@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
-from _include.Chimera.models import Order
+from _include.Chimera.Chimera.models import Order
 
 
 def order(request, order_id):

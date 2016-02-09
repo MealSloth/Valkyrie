@@ -1,0 +1,6 @@
+[submodule "_include/Chimera"]
+	path = _include/Chimera
+	url = https://MealSloth@mealsloth.git.cloudforge.com/chimera.git
+[submodule "_include/Siren"]
+	path = _include/Siren
+	url = https://MealSloth@mealsloth.git.cloudforge.com/siren.git
