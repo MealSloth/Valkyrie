@@ -60,7 +60,7 @@ class UserAddForm(Form):
         ])
         join_date = datetime.utcnow()
 
-        user = User(
+        temp_user = User(
             first_name=first_name,
             last_name=last_name,
             email=email,
@@ -70,4 +70,13 @@ class UserAddForm(Form):
             join_date=join_date
         )
 
-        user.save()
+        temp_user.save()
+
+        if not User.objects.filter(email=email).values().count() > 0:
+            return
+        else:
+            pass
+
+        user = User.objects.filter(email=email).values()[0]
+
+
