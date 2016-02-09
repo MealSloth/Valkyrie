@@ -1,6 +1,6 @@
 from django.forms import *
 from _include.Chimera.Chimera.enums import *
-from _include.Chimera.Chimera.models import User
+from _include.Chimera.Chimera.models import User, UserLogin, Consumer, Chef
 from datetime import datetime
 
 
@@ -40,12 +40,21 @@ class UserAddForm(Form):
     dob_month = ChoiceField(choices=Months.Months, required=True)
     dob_day = ChoiceField(choices=days(), required=True)
     gender = ChoiceField(choices=Gender.Gender, required=True)
+    password = CharField(max_length=255, required=True, widget=PasswordInput())
+    password_confirm = CharField(max_length=255, required=True, widget=PasswordInput())
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if email and User.objects.filter(email=email).count():
             raise forms.ValidationError(u'This email address is already in use.')
         return email
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        password_confirm = self.cleaned_data.get('password_confirm')
+        if not password and password_confirm:
+            raise forms.ValidationError(u'Passwords do not match')
+        return password
 
     def process(self):
         first_name = self.cleaned_data['first_name']
@@ -59,6 +68,7 @@ class UserAddForm(Form):
             self.cleaned_data['dob_day'],
         ])
         join_date = datetime.utcnow()
+        password = self.cleaned_data('password')
 
         temp_user = User(
             first_name=first_name,
@@ -74,9 +84,40 @@ class UserAddForm(Form):
 
         if not User.objects.filter(email=email).values().count() > 0:
             return
-        else:
-            pass
 
         user = User.objects.filter(email=email).values()[0]
 
+        temp_user_login = UserLogin(
+            user_id=user.get('id'),
+            username=user.get('email'),
+            password=password,
+        )
 
+        temp_user_login.save()
+
+        if not UserLogin.objects.filter(username=user.get('email')).values().count() > 0:
+            return
+
+        user_login = UserLogin.objects.filter(username=user.get('email')).values()[0]
+
+        temp_consumer = Consumer(
+            user_id=user.get('id'),
+            location_id=user.get('id'),
+        )
+
+        temp_consumer.save()
+
+        if not Consumer.objects.filter(user_id=user.get('id')).values().count() > 0:
+            return
+
+        consumer = Consumer.objects.filter(user_id=user.get('id')).values()[0]
+
+        temp_chef = Chef(
+            user_id=user.get('id'),
+            location_id=user.get('id'),
+        )
+
+        if not Chef.objects.filter(user_id=user.get('id')).values().count() > 0:
+            return
+
+        chef = Chef.objects.filter(user_id=user.get('id')).values()[0]
