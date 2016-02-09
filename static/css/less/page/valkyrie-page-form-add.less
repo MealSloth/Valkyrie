@@ -3,7 +3,9 @@
 section.valkyrie-page-form-add__section-header
 {
     background-color: rgba(253,253,253,0.9);
-    padding: 50px;
+    padding: 20px;
+
+    @media (max-width: @screen-md-min) { padding: 64px; }
 }
 
 section.valkyrie-page-form-add__section-form
@@ -17,7 +19,7 @@ section.valkyrie-page-form-add__section-form
         margin: 0 auto;
         width: 32%;
 
-        @media (max-width: @screen-md-min) { width: 90%; }
+        @media (max-width: @screen-md-min) { width: 100%; }
 
         > form
         {
@@ -29,19 +31,28 @@ section.valkyrie-page-form-add__section-form
                 margin: 0 auto;
                 padding: 15px;
 
+                @media (max-width: @screen-md-min) { background-color: rgba(240,240,240,1.0); }
+
                 > table
                 {
                     width: 100%;
 
+                    td { @media (max-width: @screen-md-min) { padding: 5px; } }
+
                     label
                     {
                         padding: 5px 0 3px 0;
+
+                        @media (max-width: @screen-md-min) { font-size: 36px; }
+
                     }
 
                     input:not([type="submit"])
                     {
                         padding: 3px;
                         width: 100%;
+
+                        @media (max-width: @screen-md-min) { font-size: 42px; }
                     }
 
                     input[type="submit"]
@@ -52,6 +63,22 @@ section.valkyrie-page-form-add__section-form
                         margin: 15px 10px 10px 10px;
                         padding: 8px 12px 8px 12px;
                         border-radius: 8px;
+
+                        @media (max-width: @screen-md-min)
+                        {
+                            padding: 15px 30px 15px 30px;
+                            font-size: 36px;
+                        }
+                    }
+
+                    select
+                    {
+                        @media (max-width: @screen-md-min)
+                        {
+                            -webkit-appearance: menulist-button;
+                            font-size: 42px;
+                            padding: 5px;
+                        }
                     }
                 }
             }
