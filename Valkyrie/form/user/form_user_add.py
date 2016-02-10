@@ -1,7 +1,7 @@
-from django.forms import *
+from _include.Chimera.Chimera.models import User, UserLogin, Consumer, Chef, Location, Billing, Album, ProfilePhoto
 from _include.Chimera.Chimera.enums import *
-from _include.Chimera.Chimera.models import User, UserLogin, Consumer, Chef
 from datetime import datetime
+from django.forms import *
 
 
 def date(date_list):
@@ -142,8 +142,7 @@ class UserAddForm(Form):
             user_login.delete()
             consumer.delete()
             chef.delete()
-            response = {'result': 9010, 'message': 'Could not save to database'}
-            return HttpResponse(dumps(response), content_type='application/json')
+            return
 
         location = Location.objects.filter(user_id=user.get('id')).values()[0]
 
@@ -162,8 +161,7 @@ class UserAddForm(Form):
             consumer.delete()
             chef.delete()
             location.delete()
-            response = {'result': 9010, 'message': 'Could not save to database'}
-            return HttpResponse(dumps(response), content_type='application/json')
+            return
 
         billing = Billing.objects.filter(user_id=user.get('id')).values()[0]
 
@@ -176,8 +174,7 @@ class UserAddForm(Form):
             chef.delete()
             location.delete()
             billing.delete()
-            response = {'result': 9010, 'message': 'Could not save to database'}
-            return HttpResponse(dumps(response), content_type='application/json')
+            return
 
         album = Album.objects.filter(id=temp_album.id).values()[0]
 
@@ -196,7 +193,6 @@ class UserAddForm(Form):
             location.delete()
             billing.delete()
             album.delete()
-            response = {'result': 9010, 'message': 'Could not save to database'}
-            return HttpResponse(dumps(response), content_type='application/json')
+            return
 
         profile_photo = ProfilePhoto.objects.filter(id=temp_profile_photo.id).values()[0]
