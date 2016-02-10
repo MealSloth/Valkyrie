@@ -71,7 +71,7 @@ class UserAddForm(Form):
         join_date = datetime.utcnow()
         password = self.cleaned_data['password']
 
-        temp_user = User(
+        user = User(
             first_name=first_name,
             last_name=last_name,
             email=email,
@@ -81,86 +81,76 @@ class UserAddForm(Form):
             join_date=join_date
         )
 
-        temp_user.save()
+        user.save()
 
-        if not User.objects.filter(id=temp_user.id).values().count() > 0:
+        if not User.objects.filter(id=user.id):
             return
 
-        user = User.objects.filter(id=temp_user.id).values()[0]
-
-        temp_user_login = UserLogin(
-            id=user.get('user_login_id'),
-            user_id=user.get('id'),
-            username=user.get('email'),
+        user_login = UserLogin(
+            id=user.user_login_id,
+            user_id=user.id,
+            username=user.email,
             password=password,
         )
 
-        temp_user_login.save()
+        user_login.save()
 
-        if not UserLogin.objects.filter(id=temp_user_login.id).values().count() > 0:
+        if not UserLogin.objects.filter(id=user_login.id):
             user.delete()
             return
 
-        user_login = UserLogin.objects.filter(id=temp_user_login.id).values()[0]
-
-        temp_location = Location(
-            id=user.get('location_id'),
-            user_id=user.get('id'),
+        location = Location(
+            id=user.location_id,
+            user_id=user.id,
         )
 
-        temp_location.save()
+        location.save()
 
-        if not Location.objects.filter(id=temp_location.id).values().count() > 0:
+        if not Location.objects.filter(id=location.id):
             user.delete()
             user_login.delete()
             return
 
-        location = Location.objects.filter(id=temp_location.id).values()[0]
-
-        temp_consumer = Consumer(
-            id=user.get('consumer_id'),
-            user_id=user.get('id'),
-            location_id=location.get('id'),
+        consumer = Consumer(
+            id=user.consumer_id,
+            user_id=user.id,
+            location_id=location.id,
         )
 
-        temp_consumer.save()
+        consumer.save()
 
-        if not Consumer.objects.filter(id=temp_consumer.id).values().count() > 0:
+        if not Consumer.objects.filter(id=consumer.id):
             user.delete()
             user_login.delete()
             location.delete()
             return
 
-        consumer = Consumer.objects.filter(id=temp_consumer.id).values()[0]
-
-        temp_chef = Chef(
-            id=user.get('chef_id'),
-            user_id=user.get('id'),
-            location_id=location.get('id'),
+        chef = Chef(
+            id=user.chef_id,
+            user_id=user.id,
+            location_id=location.id,
         )
 
-        temp_chef.save()
+        chef.save()
 
-        if not Chef.objects.filter(id=temp_chef.id).values().count() > 0:
+        if not Chef.objects.filter(id=chef.id):
             user.delete()
             user_login.delete()
             location.delete()
             consumer.delete()
             return
 
-        chef = Chef.objects.filter(id=temp_chef.id).values()[0]
-
-        temp_billing = Billing(
-            id=user.get('billing_id'),
-            user_id=user.get('id'),
-            consumer_id=consumer.get('id'),
-            chef_id=chef.get('id'),
-            location_id=location.get('id')
+        billing = Billing(
+            id=user.billing_id,
+            user_id=user.id,
+            consumer_id=consumer.id,
+            chef_id=chef.id,
+            location_id=location.id,
         )
 
-        temp_billing.save()
+        billing.save()
 
-        if not Billing.objects.filter(id=temp_billing.id).values().count() > 0:
+        if not Billing.objects.filter(id=billing.id):
             user.delete()
             user_login.delete()
             consumer.delete()
@@ -168,11 +158,11 @@ class UserAddForm(Form):
             location.delete()
             return
 
-        billing = Billing.objects.filter(id=temp_billing.id).values()[0]
+        album = Album()
 
-        temp_album = Album()
+        album.save()
 
-        if not Album.objects.filter(id=temp_album.id).values().count() > 0:
+        if not Album.objects.filter(id=album.id):
             user.delete()
             user_login.delete()
             consumer.delete()
@@ -181,17 +171,15 @@ class UserAddForm(Form):
             billing.delete()
             return
 
-        album = Album.objects.filter(id=temp_album.id).values()[0]
-
-        temp_profile_photo = ProfilePhoto(
-            id=user.get('profile_photo_id'),
-            album_id=album.get('id'),
-            user_id=user.get('id'),
+        profile_photo = ProfilePhoto(
+            id=user.profile_photo_id,
+            album_id=album.id,
+            user_id=user.id,
         )
 
-        temp_profile_photo.save()
+        profile_photo.save()
 
-        if not ProfilePhoto.objects.filter(id=temp_profile_photo.id).values().count() > 0:
+        if not ProfilePhoto.objects.filter(id=profile_photo.id):
             user.delete()
             user_login.delete()
             consumer.delete()
@@ -200,5 +188,3 @@ class UserAddForm(Form):
             billing.delete()
             album.delete()
             return
-
-        profile_photo = ProfilePhoto.objects.filter(id=temp_profile_photo.id).values()[0]
