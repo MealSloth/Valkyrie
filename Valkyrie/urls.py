@@ -15,6 +15,7 @@ urlpatterns = patterns(
     url(r'^tools/', views.tools, name='tools'),
     url(r'^user/([^/]+)/', views.user, name='user'),
     url(r'^user-add/', views.user_add, name='user-add'),
+    url(r'^user-delete/([^/]+)/', views.user_delete, name='user-delete'),
     url(r'^post/([^/]+)/', views.post, name='post'),
     url(r'^post-add/([^/]+)/', views.post_add, name='post-add'),
     url(r'^order/([^/]+)/', views.order, name='order'),

@@ -78,7 +78,7 @@ class UserAddForm(Form):
             phone_number=phone_number,
             date_of_birth=date_of_birth,
             gender=gender,
-            join_date=join_date
+            join_date=join_date,
         )
 
         user.save()

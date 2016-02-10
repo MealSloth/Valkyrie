@@ -28,13 +28,46 @@
                             </a>
                         </div>
                         <div class="col-xs-12 col-md-4">
-                            <h2>{% entry_for_key user 'id' %}</h2>
+                            <h2>{% entry_for_key user 'id' %}
+                                <a data-toggle="modal" data-target="#valkyrie-page-single-listable__user-delete-modal">
+                                    <span class="glyphicon glyphicon-trash"></span></a>
+                            </h2>
                             <br />
                             <div class="valkyrie-page-single-listable__section-header__basic-info">
                                 <h3>{% entry_for_key user 'first_name' %} {% entry_for_key user 'last_name' %}</h3>
                                 <h4>{% entry_for_user_gender user %}</h4>
                                 <h4>Date of Birth: {% entry_for_date user 'date_of_birth' %}</h4>
                                 <h4>Join Date: {% entry_for_date user 'join_date' %}</h4>
+                            </div>
+                        </div>
+                        <!-- User Delete Modal -->
+                        <div class="modal fade" id="valkyrie-page-single-listable__user-delete-modal" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Delete User</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Deleting this user also deletes all of the following associated items:</h4>
+                                        <ul>
+                                            <li><h5>user_login</h5></li>
+                                            <li><h5>location</h5></li>
+                                            <li><h5>chef</h5></li>
+                                            <li><h5>consumer</h5></li>
+                                            <li><h5>billing</h5></li>
+                                            <li><h5>profile_photo</h5></li>
+                                        </ul>
+                                        <h4>Are you sure you would like to delete this user?</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="/user-delete/{% entry_for_key user 'id' %}">
+                                            Delete User
+                                        </a>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
