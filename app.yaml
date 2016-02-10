@@ -11,6 +11,8 @@ skip_files:
 - ^(.*/)?.*\.pack$
 - ^(.*/)?.*\.DS_Store$
 - ^(.*/)?.*\.csslintrc$
+- ^(.*/)?.*/\.idea/.*$
+- ^(.*/)?.*/Siren/static/.*$
 
 
 handlers:

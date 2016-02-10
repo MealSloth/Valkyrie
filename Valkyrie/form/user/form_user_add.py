@@ -44,17 +44,18 @@ class UserAddForm(Form):
     password_confirm = CharField(max_length=255, required=True, widget=PasswordInput())
 
     def clean_email(self):
-        email = self.cleaned_data.get('email')
+        email = self.cleaned_data['email']
         if email and User.objects.filter(email=email).count():
-            raise forms.ValidationError(u'This email address is already in use.')
+            raise forms.ValidationError('This email address is already in use.')
         return email
 
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        password_confirm = self.cleaned_data.get('password_confirm')
-        if not password and password_confirm:
-            raise forms.ValidationError(u'Passwords do not match')
-        return password
+    def clean(self):
+        cleaned_data = super(UserAddForm, self).clean()
+        password = cleaned_data.get('password')
+        password_confirm = cleaned_data.get('password_confirm')
+        if not password == password_confirm:
+            raise forms.ValidationError('Passwords do not match')
+        return cleaned_data
 
     def process(self):
         first_name = self.cleaned_data['first_name']
@@ -68,7 +69,7 @@ class UserAddForm(Form):
             self.cleaned_data['dob_day'],
         ])
         join_date = datetime.utcnow()
-        password = self.cleaned_data('password')
+        password = self.cleaned_data['password']
 
         temp_user = User(
             first_name=first_name,
@@ -96,6 +97,7 @@ class UserAddForm(Form):
         temp_user_login.save()
 
         if not UserLogin.objects.filter(username=user.get('email')).values().count() > 0:
+            user.delete()
             return
 
         user_login = UserLogin.objects.filter(username=user.get('email')).values()[0]
@@ -108,6 +110,8 @@ class UserAddForm(Form):
         temp_consumer.save()
 
         if not Consumer.objects.filter(user_id=user.get('id')).values().count() > 0:
+            user.delete()
+            user_login.delete()
             return
 
         consumer = Consumer.objects.filter(user_id=user.get('id')).values()[0]
@@ -117,7 +121,82 @@ class UserAddForm(Form):
             location_id=user.get('id'),
         )
 
+        temp_chef.save()
+
         if not Chef.objects.filter(user_id=user.get('id')).values().count() > 0:
+            user.delete()
+            user_login.delete()
+            consumer.delete()
             return
 
         chef = Chef.objects.filter(user_id=user.get('id')).values()[0]
+
+        temp_location = Location(
+            user_id=user.get('id'),
+        )
+
+        temp_location.save()
+
+        if not Location.objects.filter(user_id=user.get('id')).values().count() > 0:
+            user.delete()
+            user_login.delete()
+            consumer.delete()
+            chef.delete()
+            response = {'result': 9010, 'message': 'Could not save to database'}
+            return HttpResponse(dumps(response), content_type='application/json')
+
+        location = Location.objects.filter(user_id=user.get('id')).values()[0]
+
+        temp_billing = Billing(
+            user_id=user.get('id'),
+            consumer_id=consumer.get('id'),
+            chef_id=chef.get('id'),
+            location_id=location.get('id')
+        )
+
+        temp_billing.save()
+
+        if not Billing.objects.filter(user_id=user.get('id')).values().count() > 0:
+            user.delete()
+            user_login.delete()
+            consumer.delete()
+            chef.delete()
+            location.delete()
+            response = {'result': 9010, 'message': 'Could not save to database'}
+            return HttpResponse(dumps(response), content_type='application/json')
+
+        billing = Billing.objects.filter(user_id=user.get('id')).values()[0]
+
+        temp_album = Album()
+
+        if not Album.objects.filter(id=temp_album.id).values().count() > 0:
+            user.delete()
+            user_login.delete()
+            consumer.delete()
+            chef.delete()
+            location.delete()
+            billing.delete()
+            response = {'result': 9010, 'message': 'Could not save to database'}
+            return HttpResponse(dumps(response), content_type='application/json')
+
+        album = Album.objects.filter(id=temp_album.id).values()[0]
+
+        temp_profile_photo = ProfilePhoto(
+            album_id=album.get('id'),
+            user_id=user.get('id'),
+        )
+
+        temp_profile_photo.save()
+
+        if not ProfilePhoto.objects.filter(id=temp_profile_photo.id).values().count() > 0:
+            user.delete()
+            user_login.delete()
+            consumer.delete()
+            chef.delete()
+            location.delete()
+            billing.delete()
+            album.delete()
+            response = {'result': 9010, 'message': 'Could not save to database'}
+            return HttpResponse(dumps(response), content_type='application/json')
+
+        profile_photo = ProfilePhoto.objects.filter(id=temp_profile_photo.id).values()[0]
