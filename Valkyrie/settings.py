@@ -124,3 +124,26 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+# Google Cloud Storage
+
+GCS_CLIENT_ID = 'mealsloth-chimera-ap01-cloudstorage-bu01'
+
+GCS_CLIENT_KEY = 'GOOG257P2OBJ6JUKAPST'
+
+GCS_CLIENT_SECRET = '3i8tSK69upv1aWEW0tCxBwj0/HST0/ladjxNpjG8'
+
+LIBCLOUD_PROVIDERS = {
+    'google': {
+        'type': 'libcloud.storage.types.Provider.GOOGLE_STORAGE',
+        'user': 'mealsloth-chimera-ap01',
+        'key': GCS_CLIENT_KEY,
+        'bucket': GCS_CLIENT_ID,
+    }
+}
+
+GOOGLE_CLOUD_STORAGE_BUCKET = '/' + GCS_CLIENT_ID
+GOOGLE_CLOUD_STORAGE_URL = 'http://storage.googleapis.com/'
+GOOGLE_CLOUD_STORAGE_DEFAULT_CACHE_CONTROL = 'public, max-age: 7200'
+
+DEFAULT_FILE_STORAGE = 'google.storage.google_cloud.GoogleCloudStorage'
