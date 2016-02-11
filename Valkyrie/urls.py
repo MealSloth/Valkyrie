@@ -20,6 +20,6 @@ urlpatterns = patterns(
     url(r'^post-add/([^/]+)/', views.post_add, name='post-add'),
     url(r'^order/([^/]+)/', views.order, name='order'),
     url(r'^blog-post-add/', views.blog_post_add, name='blog-post-add'),
-    url(r'^test-photo-upload/', views.test_photo_upload, name='test-photo-upload'),
-    url(r'^test-photo-view/', views.test_photo_view, name='test-photo-view'),
+    url(r'^blob-photo-upload/', views.blob_photo_upload, name='blob-photo-upload'),
+    url(r'^blob-photo-view/([^/]+)/', views.blob_photo_view, name='blob-photo-view'),
 ) + staticfiles_urlpatterns()

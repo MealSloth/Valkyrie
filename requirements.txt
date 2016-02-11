@@ -1,3 +1,5 @@
+boto
 django
 mysql-python
 python-memcached
+gcs_oauth2_boto_plugin
