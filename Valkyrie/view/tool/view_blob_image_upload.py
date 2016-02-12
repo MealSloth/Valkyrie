@@ -11,11 +11,13 @@ def blob_image_upload(request):
         form = BlobImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                with open(form.file) as image:
+                with request.FILES['file'] as image:
                     response = urllib2.urlopen('http://api.mealsloth.com/blob-image-upload/',
-                                               urllib.urlencode({'file': image}))
+                                               urllib.urlencode(
+                                                   {'file': str(image.read()),
+                                                    'content_type': 'image/jpeg',
+                                                    }))
                     result = response.read()
-                    print(result)
                     return HttpResponseRedirect('/tools')
             except IOError:
                 return HttpResponseRedirect('/users')

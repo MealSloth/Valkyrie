@@ -124,3 +124,8 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+FILE_UPLOAD_HANDLERS = (
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+)
