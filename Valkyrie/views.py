@@ -2,7 +2,7 @@ from view.home import view_home
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add, view_user_delete
-from view.tool import view_tools, view_blog_post_add, view_blob_photo_upload, view_blob_photo_view
+from view.tool import view_tools, view_blog_post_add, view_blob_image_upload, view_blob_image_view
 from view.auth import view_login, view_logout, view_auth_user_add
 
 from django.contrib.auth.decorators import login_required
@@ -94,10 +94,10 @@ def blog_post_add(request):
 
 
 @login_required
-def blob_photo_upload(request):
-    return view_blob_photo_upload.blob_photo_upload(request)
+def blob_image_upload(request):
+    return view_blob_image_upload.blob_image_upload(request)
 
 
 @login_required
-def blob_photo_view(request, blob_id):
-    return view_blob_photo_view.blob_photo_view(request, blob_id)
+def blob_image_view(request, blob_id):
+    return view_blob_image_view.blob_photo_view(request, blob_id)
