@@ -18,9 +18,10 @@ def blob_image_upload(request):
                                                     'content_type': 'image/jpeg',
                                                     }))
                     result = response.read()
+                    print(result)
                     return HttpResponseRedirect('/tools')
             except IOError:
-                return HttpResponseRedirect('/users')
+                return HttpResponse('No response from server')
         else:
             return HttpResponse("Invalid form")
     else:
