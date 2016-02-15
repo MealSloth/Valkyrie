@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.forms import *
+from datetime import datetime
 
 
 class AuthUserAddForm(Form):
@@ -15,6 +16,7 @@ class AuthUserAddForm(Form):
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
         password_confirm = self.cleaned_data['password_confirm']
+        date_joined = datetime.utcnow()
 
         if password == password_confirm:
             pass
@@ -25,6 +27,7 @@ class AuthUserAddForm(Form):
             first_name=first_name,
             last_name=last_name,
             username=username,
+            date_joined=date_joined,
         )
 
         user.set_password(password)
