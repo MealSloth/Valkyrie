@@ -6,7 +6,7 @@ from django.template import Context
 
 def blog_post_add(request):
     if request.method == 'POST':
-        form = BlogPostAddForm(request.POST)
+        form = BlogPostAddForm(request.POST, request.FILES)
         if form.is_valid():
             form.process()
             return HttpResponseRedirect('/tools')

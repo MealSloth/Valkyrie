@@ -87,7 +87,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'Valkyrie',
     '_include.Chimera.Chimera',
-    '_include.Siren.Siren',
     '_include.Hydra.Hydra',
 )
 

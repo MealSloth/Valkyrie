@@ -67,6 +67,15 @@
                                 <td>{{ form.long_description }}</td>
                             </tr>
                             <tr>
+                                <td><label for="image">Image:</label></td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.image.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.image }}</td>
+                            </tr>
+                            <tr>
                                 <td><input type="submit" value="Submit"/></td>
                             </tr>
                         </table>
