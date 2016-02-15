@@ -91,13 +91,3 @@ def tools(request):
 @login_required
 def blog_post_add(request):
     return view_blog_post_add.blog_post_add(request)
-
-
-@login_required
-def blob_image_upload(request):
-    return view_blob_image_upload.blob_image_upload(request)
-
-
-@login_required
-def blob_image_view(request, blob_id):
-    return view_blob_image_view.blob_photo_view(request, blob_id)
