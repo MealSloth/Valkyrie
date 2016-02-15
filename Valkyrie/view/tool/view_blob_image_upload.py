@@ -2,8 +2,8 @@ from _include.Hydra.Hydra.form.image.form_blob_image_upload import BlobImageUplo
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import Context
+from json import dumps, loads
 from base64 import b64encode
-from json import dumps
 import urllib2
 import imghdr
 
@@ -14,8 +14,11 @@ def blob_image_upload(request):
         request.FILES['file'].seek(0)
         if form.is_valid():
             data = dumps({'file': b64encode(request.FILES['file'].read())})
-            re = urllib2.urlopen('http://api.mealsloth.com/blob-image-upload/', data)
-            return HttpResponseRedirect('/tools')
+            re = loads(urllib2.urlopen('http://api.mealsloth.com/blob-image-upload/', data))
+            if re['result'] == 1000:
+                return HttpResponseRedirect('/tools')
+            else:
+                return HttpResponseRedirect('/')
         else:
             response = render(request, 'page/tool/blob-image-upload.html', Context({'form': BlobImageUploadForm()}))
             return HttpResponse(response)
