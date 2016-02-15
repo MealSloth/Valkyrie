@@ -39,6 +39,8 @@ class BlogPostAddForm(Form):
         blog_post.save()
 
         data = dumps({'file': b64encode(image.read()), 'album_id': str(blog_post.album_id), })
-        re = loads(urllib2.urlopen('http://api.mealsloth.com/blog-image-upload/', data))
-        if re['result'] != 1000:
+        try:
+            urllib2.urlopen('http://api.mealsloth.com/blog-image-upload/', data)
+        except urllib2.HTTPError, error:
             blog_post.delete()
+            raise ValidationError(error)
