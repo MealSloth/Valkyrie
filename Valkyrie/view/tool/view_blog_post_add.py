@@ -12,10 +12,10 @@ def blog_post_add(request):
             form.process()
             return HttpResponseRedirect('/tools')
         else:
-            'Invalid form'
+            error = 'Invalid form'
 
-    return render(
+    return HttpResponse(render(
         request,
         'page/tool/blog-post-add.html',
         Context({'form': BlogPostAddForm(), 'error': error})
-    )
+    ))

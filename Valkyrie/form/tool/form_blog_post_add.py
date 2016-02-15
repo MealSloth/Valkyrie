@@ -38,7 +38,7 @@ class BlogPostAddForm(Form):
 
         blog_post.save()
 
-        data = dumps({'file': b64encode(image.read()), 'album_id': blog_post.album_id, })
+        data = dumps({'file': b64encode(image.read()), 'album_id': str(blog_post.album_id), })
         re = loads(urllib2.urlopen('http://api.mealsloth.com/blog-image-upload/', data))
         if re['result'] != 1000:
             blog_post.delete()
