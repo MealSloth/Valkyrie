@@ -5,12 +5,17 @@ from django.template import Context
 
 
 def blog_post_add(request):
+    error = ''
     if request.method == 'POST':
         form = BlogPostAddForm(request.POST, request.FILES)
         if form.is_valid():
             form.process()
             return HttpResponseRedirect('/tools')
         else:
-            return HttpResponse("Invalid form")
-    else:
-        return render(request, 'page/tool/blog-post-add.html', Context({'form': BlogPostAddForm()}))
+            'Invalid form'
+
+    return render(
+        request,
+        'page/tool/blog-post-add.html',
+        Context({'form': BlogPostAddForm(), 'error': error})
+    )

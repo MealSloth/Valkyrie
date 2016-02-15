@@ -27,7 +27,7 @@
         <section class="valkyrie-page-form-add__section-form">
 
             <div>
-                <form action="/blog-post-add/" method="post"> {% csrf_token %}
+                <form action="/blog-post-add/" method="post" enctype="multipart/form-data"> {% csrf_token %}
                     <div>
                         <table>
                             <tr>
@@ -78,6 +78,11 @@
                             <tr>
                                 <td><input type="submit" value="Submit"/></td>
                             </tr>
+                            {% if error %}
+                            <tr>
+                                <td>{{ error }}</td>
+                            </tr>
+                            {% endif %}
                         </table>
                     </div>
                 </form>
