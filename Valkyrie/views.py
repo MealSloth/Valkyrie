@@ -2,7 +2,7 @@ from view.home import view_home
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add, view_user_delete
-from view.tool import view_tools, view_blog_post_add, view_blob_image_upload, view_blob_image_view
+from view.tool import view_tools, view_blog_post_add
 from view.auth import view_login, view_logout, view_auth_user_add
 
 from django.contrib.auth.decorators import login_required
