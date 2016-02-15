@@ -87,7 +87,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'Valkyrie',
     '_include.Chimera.Chimera',
-    '_include.Hydra.Hydra',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
