@@ -1,9 +1,8 @@
 from _include.Chimera.Chimera.models import BlogPost, Author
-from django.http import HttpResponse
 from datetime import datetime
-from json import dumps, loads
 from base64 import b64encode
 from django.forms import *
+from json import dumps
 import urllib2
 
 
