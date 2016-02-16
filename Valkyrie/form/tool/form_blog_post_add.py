@@ -17,7 +17,7 @@ class BlogPostAddForm(Form):
     author_id = ChoiceField(choices=authors(), required=True)
     title = CharField(max_length=100, required=True)
     short_description = CharField(max_length=500, required=True)
-    long_description = CharField(max_length=10000, required=True)
+    long_description = CharField(max_length=10000, required=True, widget=Textarea)
     image = FileField(required=True)
 
     def process(self):
