@@ -11,20 +11,32 @@ class SingleListableView:
     widget = []
     listable = []
 
-    def __init__(self, image, id, info, id_pool, widget, listable):
-        self.image = image
-        self.id = id
-        self.info = info
-        self.id_pool = id_pool
-        self.widget = widget
-        self.listable = listable
+    def __init__(self, **kwargs):
+        if kwargs.get('image'):
+            self.image = kwargs['image']
+        if kwargs.get('id'):
+            self.id = kwargs['id']
+        if kwargs.get('info'):
+            self.info = kwargs['info']
+        if kwargs.get('id_pool'):
+            self.id_pool = kwargs['id_pool']
+        if kwargs.get('widget'):
+            self.widget = kwargs['widget']
+        if kwargs.get('listable'):
+            self.listable = kwargs['listable']
 
     def get_elements(self):
-        return {
-            'image': self.image,
-            'id': self.id,
-            'info': self.info,
-            'id_pool': self.id_pool,
-            'widget': self.widget,
-            'listable': self.listable,
-        }
+        response = {}
+        if self.image:
+            response['image'] = self.image
+        if self.id:
+            response['id'] = self.id
+        if self.info:
+            response['info'] = self.info
+        if self.id_pool:
+            response['id_pool'] = self.id_pool
+        if self.widget:
+            response['widget'] = self.widget
+        if self.listable:
+            response['listable'] = self.listable
+        return response

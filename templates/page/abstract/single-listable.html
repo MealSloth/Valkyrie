@@ -17,6 +17,7 @@
 
         {% include './fragment/navbar.html' %}
 
+        {% if id %}
         <section class="valkyrie-page-single-listable__section-header">
 
             <div class="container">
@@ -85,7 +86,7 @@
                         <h3>ID Pool</h3>
                         <div class="valkyrie-page-single-listable__section-header__id-pool">
                             {% for id_entry in id_pool %}
-                            <h5>{{ id_entry.0 }}
+                            <h5>{{ id_entry.0 }}:
                                 <a href="/{{ id_entry.2 }}/{{ id_entry.1 }}">{{ id_entry.1 }}</a>
                             </h5>
                             {% endfor %}
@@ -144,6 +145,15 @@
 
         </section>
         {% endfor %}
+        {% endif %}
+        {% else %}
+        <section class="valkyrie-page-single-listable__section-header">
+
+            <div>
+                <h1>No entry for this ID!</h1>
+            </div>
+
+        </section>
         {% endif %}
 
     </body>

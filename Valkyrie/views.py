@@ -1,7 +1,12 @@
 from view.home import view_home
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
-from view.user import view_user, view_users, view_user_add, view_user_delete
+from view.user import view_user, view_users, view_user_add, view_user_delete, view_user_login
+from view.consumer import view_consumer
+from view.chef import view_chef
+from view.location import view_location
+from view.billing import view_billing
+from view.profile_photo import view_profile_photo
 from view.tool import view_tools, view_blog_post_add
 from view.auth import view_login, view_logout, view_auth_user_add
 
@@ -50,6 +55,48 @@ def user_add(request):
 @login_required
 def user_delete(request, user_id):
     return view_user_delete.user_delete(request, user_id)
+
+
+# user_login
+
+@login_required
+def user_login(request, user_login_id):
+    return view_user_login.user_login(request, user_login_id)
+
+
+# consumer
+
+@login_required
+def consumer(request, consumer_id):
+    return view_consumer.consumer(request, consumer_id)
+
+
+# chef
+
+@login_required
+def chef(request, chef_id):
+    return view_chef.chef(request, chef_id)
+
+
+# location
+
+@login_required
+def location(request, location_id):
+    return view_location.location(request, location_id)
+
+
+# billing
+
+@login_required
+def billing(request, billing_id):
+    return view_billing.billing(request, billing_id)
+
+
+# profile_photo
+
+@login_required
+def profile_photo(request, profile_photo_id):
+    return view_profile_photo.profile_photo(request, profile_photo_id)
 
 
 # post

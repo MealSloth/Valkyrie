@@ -14,7 +14,11 @@ def user(request, user_id):
 
 class UserView(SingleListableView):
     def __init__(self, user_id):
-        current_user = User.objects.get(pk=user_id)
+        current_user = User.objects.filter(pk=user_id)
+        if not current_user.values().count() > 0:
+            return
+        else:
+            current_user = current_user[0]
 
         gcs_id = Blob.objects.filter(
             album_id=Album.objects.get(
@@ -64,6 +68,15 @@ class UserView(SingleListableView):
             ('Posts', post_array, 'post', 'true'),
         ]
 
+        kwargs = {
+            'image': image,
+            'id': id,
+            'info': info,
+            'widget': widget,
+            'id_pool': id_pool,
+            'listable': listable,
+        }
+
         SingleListableView.__init__(
-            self, image=image, id=id, info=info, id_pool=id_pool, widget=widget, listable=listable
+            self, **kwargs
         )

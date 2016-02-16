@@ -13,9 +13,11 @@ def order(request, order_id):
 
 class OrderView(SingleListableView):
     def __init__(self, order_id):
-        current_order = Order.objects.get(pk=order_id)
-
-        image = []
+        current_order = Order.objects.filter(pk=order_id)
+        if not current_order.values().count() > 0:
+            return
+        else:
+            current_order = current_order[0]
 
         id = [current_order.id, ]
 
@@ -35,8 +37,13 @@ class OrderView(SingleListableView):
             ('Order Summary ID', current_order.order_summary_id, 'order-summary'),
         ]
 
-        listable = []
+        kwargs = {
+            'id': id,
+            'info': info,
+            'widget': widget,
+            'id_pool': id_pool,
+        }
 
         SingleListableView.__init__(
-            self, image=image, id=id, info=info, widget=widget, id_pool=id_pool, listable=listable
+            self, **kwargs
         )
