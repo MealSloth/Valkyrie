@@ -1,6 +1,6 @@
-from django.forms import *
-from _include.Chimera.Chimera.models import Post, User
+from _include.Chimera.Chimera.models import Post, User, Album
 from datetime import datetime, timedelta
+from django.forms import *
 
 
 class PostAddForm(Form):
@@ -21,11 +21,15 @@ class PostAddForm(Form):
         post_time = datetime.utcnow()
         expire_time = datetime.utcnow() + timedelta(hours=4)
 
+        album = Album()
+        album.save()
+
         post = Post(
             chef_id=chef_id,
             location_id=location_id,
             name=name,
             description=description,
+            album_id=album.id,
             capacity=capacity,
             post_time=post_time,
             expire_time=expire_time,

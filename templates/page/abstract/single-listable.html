@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load staticfiles %}
+    {% load tags_users %}
+    {% load tags %}
+
+    <head>
+        <meta charset="UTF-8">
+        <title>MealSloth Admin</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+    </head>
+
+    <body>
+
+        {% include './fragment/navbar.html' %}
+
+        <section class="valkyrie-page-single-listable__section-header">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-7">
+                        {% if image %}
+                        {% for url in image %}
+                        <div class="col-xs-12 col-md-3">
+                            <a href="{{ url }}" target="_blank">
+                                <img src="{{ url }}" />
+                            </a>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% if id or image %}
+                        <div class="col-xs-12 col-md-4">
+                            {% if id %}
+                            <h2>{{ id.0 }}
+{#                                <a data-toggle="modal" data-target="#valkyrie-page-single-listable__user-delete-modal">#}
+{#                                    <span class="glyphicon glyphicon-trash"></span></a>#}
+                            </h2>
+                            <br />
+                            {% endif %}
+                            {% if info %}
+                            <div class="valkyrie-page-single-listable__section-header__basic-info">
+                                {% for point in info %}
+                                <h4>{{ point.0 }}: {{ point.1 }}</h4>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        <!-- User Delete Modal -->
+{#                        <div class="modal fade" id="valkyrie-page-single-listable__user-delete-modal" role="dialog">#}
+{#                            <div class="modal-dialog">#}
+{#                                <div class="modal-content">#}
+{#                                    <div class="modal header">#}
+{#                                        <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#                                        <h4 class="modal-title">Delete User</h4>#}
+{#                                    </div>#}
+{#                                    <div class="modal-body">#}
+{#                                        <h4>Deleting this user also deletes all of the following associated items:</h4>#}
+{#                                        <ul>#}
+{#                                            <li><h5>user_login</h5></li>#}
+{#                                            <li><h5>location</h5></li>#}
+{#                                            <li><h5>chef</h5></li>#}
+{#                                            <li><h5>consumer</h5></li>#}
+{#                                            <li><h5>billing</h5></li>#}
+{#                                            <li><h5>profile_photo</h5></li>#}
+{#                                        </ul>#}
+{#                                        <h4>Are you sure you would like to delete this user?</h4>#}
+{#                                    </div>#}
+{#                                    <div class="modal-footer">#}
+{#                                        <a class="btn btn-danger" href="/user-delete/{% entry_for_key user 'id' %}">#}
+{#                                            Delete User#}
+{#                                        </a>#}
+{#                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close#}
+{#                                        </button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                    {% if id_pool %}
+                    <div class="col-xs-12 col-md-5">
+                        <h3>ID Pool</h3>
+                        <div class="valkyrie-page-single-listable__section-header__id-pool">
+                            {% for id_entry in id_pool %}
+                            <h5>{{ id_entry.0 }}
+                                <a href="/{{ id_entry.2 }}/{{ id_entry.1 }}">{{ id_entry.1 }}</a>
+                            </h5>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% if widget %}
+                {% for widget_entry in widget %}
+                {% include widget_entry.0 with value=widget_entry.1 %}
+                {% endfor %}
+                {% endif %}
+            </div>
+
+        </section>
+
+        {% if listable %}
+        {% for item in listable %}
+        <section class="valkyrie-page-single-listable__section-listable">
+
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <h3>{{ item.0 }}</h3>
+                        </td>
+                    </tr>
+                 </table>
+                {% for subitem in item.1 %}
+                <div>
+                    <div>
+                        <div>
+                            <h4>
+                                {% if item.3 %}
+                                <a href="/{{ item.2 }}/{{ subitem.0 }}">
+                                    {{ subitem.0 }}
+                                </a>
+                                {% elif item.2 %}
+                                <a href="/{{ item.2 }}/{{ subitem }}">
+                                    {{ subitem }}
+                                </a>
+                                {% else %}
+                                {{ subitem }}
+                                {% endif %}
+                            </h4>
+                        </div>
+                        {% if item.3 %}
+                        <div class="valkyrie-page-single-listable__section-listable__{{ item.2 }}-status-{{ subitem.1 }}">
+                            <h4>{{ subitem.2 }}</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </section>
+        {% endfor %}
+        {% endif %}
+
+    </body>
+
+</html>

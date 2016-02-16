@@ -1,5 +1,6 @@
 from Valkyrie.form.tool.form_blog_post_add import BlogPostAddForm
 from django.http import HttpResponse, HttpResponseRedirect
+from _include.Chimera.Chimera.settings import PROTOCOL
 from django.shortcuts import render
 from django.template import Context
 
@@ -10,7 +11,7 @@ def blog_post_add(request):
         form = BlogPostAddForm(request.POST, request.FILES)
         if form.is_valid():
             form.process()
-            return HttpResponseRedirect('/tools')
+            return HttpResponseRedirect(PROTOCOL + 'test.mealsloth.com/blog/')
         else:
             error = 'Invalid form'
 
