@@ -33,7 +33,7 @@ class UserView(SingleListableView):
         else:
             image = []
 
-        id = [current_user.id, ]
+        id = [('User', current_user.id), ]
 
         info = [
             ('Name', current_user.first_name + ' ' + current_user.last_name),

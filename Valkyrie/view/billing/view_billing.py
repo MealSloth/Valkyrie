@@ -1,5 +1,5 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from _include.Chimera.Chimera.models import Billing
+from _include.Chimera.Chimera.models import Billing, User
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -19,10 +19,27 @@ class BillingView(SingleListableView):
         else:
             current_billing = current_billing[0]
 
-        id = [current_billing.id, ]
+        id = [('Billing', current_billing.id), ]
+
+        associated_user = User.objects.filter(pk=current_billing.user_id)
+
+        if associated_user.values().count() > 0:
+            associated_user = associated_user[0]
+            info = [('Associated User', associated_user.first_name + ' ' + associated_user.last_name), ]
+        else:
+            info = []
+
+        id_pool = [
+            ('User ID', current_billing.user_id, 'user'),
+            ('Consumer ID', current_billing.consumer_id, 'consumer'),
+            ('Chef ID', current_billing.chef_id, 'chef'),
+            ('Location ID', current_billing.location_id, 'location'),
+        ]
 
         kwargs = {
             'id': id,
+            'info': info,
+            'id_pool': id_pool,
         }
 
         SingleListableView.__init__(self, **kwargs)

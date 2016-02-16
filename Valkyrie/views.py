@@ -1,4 +1,5 @@
 from view.home import view_home
+from view.album import view_album
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
 from view.user import view_user, view_users, view_user_add, view_user_delete, view_user_login
@@ -126,6 +127,13 @@ def orders(request):
 @login_required
 def order(request, order_id):
     return view_order.order(request, order_id)
+
+
+# album
+
+@login_required
+def album(request, album_id):
+    return view_album.album(request, album_id)
 
 
 # tools

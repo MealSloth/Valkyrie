@@ -35,16 +35,19 @@
                         {% if id or image %}
                         <div class="col-xs-12 col-md-4">
                             {% if id %}
-                            <h2>{{ id.0 }}
+                            {% for id_entry in id %}
+                            <h1>{{ id_entry.0 }}</h1>
+                            <h2>{{ id_entry.1 }}
 {#                                <a data-toggle="modal" data-target="#valkyrie-page-single-listable__user-delete-modal">#}
 {#                                    <span class="glyphicon glyphicon-trash"></span></a>#}
                             </h2>
                             <br />
+                            {% endfor %}
                             {% endif %}
                             {% if info %}
                             <div class="valkyrie-page-single-listable__section-header__basic-info">
                                 {% for point in info %}
-                                <h4>{{ point.0 }}: {{ point.1 }}</h4>
+                                <h4>{% if point.0 %}{{ point.0 }}: {% endif %}{{ point.1 }}</h4>
                                 {% endfor %}
                             </div>
                             {% endif %}

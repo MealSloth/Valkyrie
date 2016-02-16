@@ -19,7 +19,7 @@ class UserLoginView(SingleListableView):
         else:
             current_user_login = current_user_login[0]
 
-        id = [current_user_login.id, ]
+        id = [('User Login', current_user_login.id), ]
 
         info = []
 

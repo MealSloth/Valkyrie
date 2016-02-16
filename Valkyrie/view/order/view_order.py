@@ -19,7 +19,7 @@ class OrderView(SingleListableView):
         else:
             current_order = current_order[0]
 
-        id = [current_order.id, ]
+        id = [('Order', current_order.id), ]
 
         info = [
             ('Order Type', current_order.get_order_type_display()),

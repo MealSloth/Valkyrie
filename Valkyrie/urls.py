@@ -29,6 +29,7 @@ urlpatterns = patterns(
     url(r'^location/([^/]+)/', views.location, name='location'),
     url(r'^billing/([^/]+)/', views.billing, name='billing'),
     url(r'^profile-photo/([^/]+)/', views.profile_photo, name='profile-photo'),
+    url(r'^album/([^/]+)/', views.album, name='album'),
 
     # Add Forms
     url(r'^user-add/', views.user_add, name='user-add'),
