@@ -1,34 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'valkyrie.html' %}
 
-    {% load staticfiles %}
+{% block title %}Home{% endblock %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>MealSloth Admin</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-    </head>
+{% block body %}
 
-    <body>
+<section class="valkyrie-page-home__section-header">
 
-        {% include './fragment/navbar.html' %}
+    <div>
+        <div>
+            <h1>MealSloth</h1>
+            <h4>
+                Welcome to MealSloth! We provide a mobile application platform for people to buy and sell
+                homemade meals in their local area. You can learn more <a href="http://mealsloth.com/">here</a>.
+            </h4>
+        </div>
+    </div>
 
-        <section class="valkyrie-page-home__section-header">
+</section>
 
-            <div>
-                <div>
-                    <h1>MealSloth</h1>
-                    <h4>
-                        Welcome to MealSloth! We provide a mobile application platform for people to buy and sell
-                        homemade meals in their local area. You can learn more <a href="http://mealsloth.com/">here</a>.
-                    </h4>
-                </div>
-            </div>
-
-        </section>
-
-    </body>
-
-</html>
+{% endblock %}

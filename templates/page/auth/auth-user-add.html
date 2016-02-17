@@ -1,89 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'valkyrie.html' %}
 
-    {% load staticfiles %}
+{% block title %}Add Auth User{% endblock %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>MealSloth Admin</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-    </head>
+{% block body %}
 
-    <body>
+<section class="valkyrie-page-form-add__section-header">
 
-        {% include 'fragment/navbar.html' %}
+    <div>
 
-        <section class="valkyrie-page-form-add__section-header">
+    </div>
 
+</section>
+
+<section class="valkyrie-page-form-add__section-form">
+
+    <div>
+        <form action="/auth-user-add/" method="post"> {% csrf_token %}
             <div>
-
+                <table>
+                    <tr>
+                        <td><label for="first_name">First Name:</label></td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.first_name.errors }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><label for="last_name">Last Name:</label></td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.last_name.errors }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><label for="username">Username:</label></td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.username.errors }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.errors }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    <tr>
+                        <td><label for="password_confirm">Confirm password:</label></td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password_confirm.errors }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password_confirm }}</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Submit"/></td>
+                    </tr>
+                </table>
             </div>
+        </form>
+    </div>
 
-        </section>
+</section>
 
-        <section class="valkyrie-page-form-add__section-form">
-
-            <div>
-                <form action="/auth-user-add/" method="post"> {% csrf_token %}
-                    <div>
-                        <table>
-                            <tr>
-                                <td><label for="first_name">First Name:</label></td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.first_name.errors }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.first_name }}</td>
-                            </tr>
-                            <tr>
-                                <td><label for="last_name">Last Name:</label></td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.last_name.errors }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.last_name }}</td>
-                            </tr>
-                            <tr>
-                                <td><label for="username">Username:</label></td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.username.errors }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.username }}</td>
-                            </tr>
-                            <tr>
-                                <td><label for="password">Password:</label></td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.password.errors }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.password }}</td>
-                            </tr>
-                            <tr>
-                                <td><label for="password_confirm">Confirm password:</label></td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.password_confirm.errors }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ form.password_confirm }}</td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" value="Submit"/></td>
-                            </tr>
-                        </table>
-                    </div>
-                </form>
-            </div>
-
-        </section>
-
-    </body>
-
-</html>
+{% endblock %}

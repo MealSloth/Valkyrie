@@ -1,59 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'valkyrie.html' %}
 
-    {% load staticfiles %}
+{% block title %}Login{% endblock %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>MealSloth Admin</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-        <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
-    </head>
+{% block body %}
 
-    <body>
+<section class="valkyrie-page-login__section-body-1">
 
-        {% include './fragment/navbar.html' %}
+    <div>
+        <h2>Please login</h2>
 
-        <section class="valkyrie-page-login__section-body-1">
-
+        <form action="/login/" method="post"> {% csrf_token %}
+            <table>
+                <tr>
+                    <td>
+                        {{ form.username }}
+                    </td>
+                    <td>
+                        {{ form.username.errors }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.password }}
+                    </td>
+                    <td>
+                        {{ form.password.errors }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Login" id="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        {% if reply %}
             <div>
-                <h2>Please login</h2>
-
-                <form action="/login/" method="post"> {% csrf_token %}
-                    <table>
-                        <tr>
-                            <td>
-                                {{ form.username }}
-                            </td>
-                            <td>
-                                {{ form.username.errors }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                {{ form.password }}
-                            </td>
-                            <td>
-                                {{ form.password.errors }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="submit" value="Login" id="submit">
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-                {% if reply %}
-                <div>
-                    <h5>{{ reply }}</h5>
-                </div>
-                {% endif %}
+                <h5>{{ reply }}</h5>
             </div>
+        {% endif %}
+    </div>
 
-        </section>
+</section>
 
-    </body>
-
-</html>
+{% endblock %}
