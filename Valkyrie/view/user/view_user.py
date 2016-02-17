@@ -80,7 +80,7 @@ class UserView(SingleListableView):
         for i in range(0, posts.count()):
             post_array.append([posts[i].id, posts[i].post_status, posts[i].get_post_status_display()])
 
-        post_button_add = [
+        post_add_button = [
                 'fragment/modal/form/form-modal.html',              # Modal template
                 'fragment/modal/form/add-form/post-add-form.html',  # Form template
                 PostAddForm(),                                      # Form instance
@@ -95,7 +95,7 @@ class UserView(SingleListableView):
                 '',                                                 # Form enctype
             ]
 
-        post_buttons = [post_button_add, ]
+        post_buttons = [post_add_button, ]
 
         listable = [
             ('Email Addresses', email_addresses),

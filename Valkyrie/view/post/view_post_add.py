@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
 from Valkyrie.form.post.form_post_add import PostAddForm
+from django.core.urlresolvers import reverse
 
 
 def post_add(request, user_id):
@@ -13,6 +13,4 @@ def post_add(request, user_id):
         else:
             return HttpResponse("Invalid form")
     else:
-        form = PostAddForm()
-
-    return render(request, 'page/post/post-add.html', {'form': form, 'user_id': user_id})
+        return HttpResponseRedirect(reverse('user', args=[user_id, ]))
