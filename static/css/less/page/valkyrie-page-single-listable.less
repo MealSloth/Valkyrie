@@ -39,6 +39,20 @@ section.valkyrie-page-single-listable__section-header
                 {
                     white-space: nowrap;
 
+                    h1
+                    {
+                        font-size: 28px;
+
+                        @media (max-width: @screen-md-min) { font-size: 72px; }
+
+                        span
+                        {
+                            font-size: 24px;
+
+                            @media (max-width: @screen-md-min) { font-size: 56px; }
+                        }
+                    }
+
                     h2
                     {
                         font-size: 24px;
@@ -196,7 +210,7 @@ section.valkyrie-page-single-listable__section-listable
     background-color: rgba(225,225,225,0.9);
     padding: 30px;
 
-    > div
+    > div.valkyrie-page-single-listable__section-listable__div-container
     {
         overflow: auto;
         width: 100%;
@@ -221,6 +235,14 @@ section.valkyrie-page-single-listable__section-listable
 
                         @media (max-width: @screen-md-min) { font-size: 42px; }
                     }
+
+                    a
+                    {
+                        span
+                        {
+                            font-size: 24px;
+                        }
+                    }
                 }
 
                 td:last-child
@@ -243,7 +265,7 @@ section.valkyrie-page-single-listable__section-listable
             }
         }
 
-        > div
+        > div.valkyrie-page-single-listable__section-listable__div-row
         {
             background-color: rgba(215,215,215,0.9);
             border: 3px solid rgba(0,0,0,0.2);
@@ -259,7 +281,7 @@ section.valkyrie-page-single-listable__section-listable
 
                 @media (max-width: @screen-md-min) { height: 75px; }
 
-                > div:first-child
+                > div:first-of-type
                 {
                     padding: 5px 5px 5px 20px;
                     position: absolute;
@@ -268,7 +290,7 @@ section.valkyrie-page-single-listable__section-listable
 
                     @media (max-width: @screen-md-min) { height: 75px; }
 
-                    a{ @media (max-width: @screen-md-min) { font-size: 36px; } }
+                    h4, a{ @media (max-width: @screen-md-min) { font-size: 36px; } }
 
                     a:hover
                     {
@@ -310,6 +332,11 @@ section.valkyrie-page-single-listable__section-listable
                     background-color: rgba(255,0,0,0.9);
                 }
             }
+        }
+
+        a, a:hover, a:active, a:link, a:visited
+        {
+            cursor: pointer;
         }
     }
 }

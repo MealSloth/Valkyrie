@@ -1,5 +1,6 @@
 from _include.Chimera.Chimera.models import User, Post, Album, Blob, ProfilePhoto
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
+from Valkyrie.form.post.form_post_add import PostAddForm
 from _include.Chimera.Chimera.settings import GCS_URL
 from django.http import HttpResponse
 from django.template import Context
@@ -62,11 +63,35 @@ class UserView(SingleListableView):
         for i in range(0, posts.count()):
             post_array.append([posts[i].id, posts[i].post_status, posts[i].get_post_status_display()])
 
+        post_button_add = [
+                'fragment/modal/form/form-modal.html',              # Modal template
+                'fragment/modal/form/add-form/post-add-form.html',  # Form template
+                PostAddForm(),                                      # Form instance
+                current_user.id,                                    # ID parameter for action
+                'valkyrie-page-single-listable__post-add-modal',    # Modal ID
+                'Add Post',                                         # Modal title text
+                'btn btn-primary',                                  # Button style
+                'post-add',                                         # Form action
+                'Add Post',                                         # Submit button text
+                'glyphicon glyphicon-plus',                         # Listable button style
+                'valkyrie-fragment-form__section-form',             # Form CSS class
+                '',                                                 # Form enctype
+            ]
+
+        post_buttons = [post_button_add, ]
+
         listable = [
             ('Email Addresses', email_addresses),
             ('Phone Numbers', phone_numbers),
-            ('Posts', post_array, 'post', 'true'),
+            ('Posts', post_array, 'post', 'status', post_buttons),
         ]
+
+        modal = [(
+            'fragment/modal/delete-confirmation/user-delete-confirmation-modal.html',
+            'valkyrie-page-single-listable__user-delete-modal',
+            'glyphicon glyphicon-trash',
+            current_user.id,
+        )]
 
         kwargs = {
             'image': image,
@@ -75,6 +100,7 @@ class UserView(SingleListableView):
             'widget': widget,
             'id_pool': id_pool,
             'listable': listable,
+            'modal': modal,
         }
 
         SingleListableView.__init__(
