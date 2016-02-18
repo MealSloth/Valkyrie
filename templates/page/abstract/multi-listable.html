@@ -1,0 +1,54 @@
+{% extends 'valkyrie.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+
+<section class="valkyrie-page-multi-listable__section-searchbar">
+
+    <div>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div>
+            <a class="btn btn-primary pull-right" href="/user-add">Add User</a>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="valkyrie-page-multi-listable__section-listables">
+
+    <div>
+        <table>
+            <tr>
+                {% for header_column in header %}
+                <td {% if header_column.2 %}{% else %}class="valkyrie-page-multi-listable__section-listables__desktop-only"{% endif %}>
+                    <h4>{{ header_column.0 }}</h4>
+                </td>
+                {% endfor %}
+            </tr>
+            {% for entry_row in entry %}
+            <tr>
+                {% for entry_column in entry_row %}
+                <td {% if entry_column.1.2 %}{% else %}class="valkyrie-page-multi-listable__section-listables__desktop-only"{% endif %}>
+                    {% if entry_column.1.1 %}<a href="/{{ entry_column.1.1 }}/{{ entry_column.0 }}">{% endif %}
+                        {{ entry_column.0 }}
+                    {% if entry_column.1.1 %}</a>{% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</section>
+
+{% endblock %}

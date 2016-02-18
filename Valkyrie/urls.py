@@ -18,6 +18,13 @@ urlpatterns = patterns(
     url(r'^users/', views.users, name='users'),
     url(r'^posts/', views.posts, name='posts'),
     url(r'^orders/', views.orders, name='orders'),
+    url(r'^user-logins/', views.user_logins, name='user-logins'),
+    url(r'^consumers/', views.consumers, name='consumers'),
+    url(r'^chefs/', views.chefs, name='chefs'),
+    url(r'^locations/', views.locations, name='locations'),
+    url(r'^billings/', views.billings, name='billings'),
+    url(r'^profile-photos/', views.profile_photos, name='profile-photos'),
+    url(r'^albums/', views.albums, name='albums'),
 
     # Single listables
     url(r'^user/([^/]+)/', views.user, name='user'),

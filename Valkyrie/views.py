@@ -1,17 +1,18 @@
+from django.contrib.auth.decorators import login_required
+
+from Valkyrie.view.user_login import view_user_login, view_user_logins
+from view.album import view_album, view_albums
+from view.auth import view_login, view_logout, view_auth_user_add
+from view.billing import view_billing, view_billings
+from view.chef import view_chef, view_chefs
+from view.consumer import view_consumer, view_consumers
 from view.home import view_home
-from view.album import view_album
+from view.location import view_location, view_locations
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add
-from view.user import view_user, view_users, view_user_add, view_user_delete, view_user_login
-from view.consumer import view_consumer
-from view.chef import view_chef
-from view.location import view_location
-from view.billing import view_billing
-from view.profile_photo import view_profile_photo
+from view.profile_photo import view_profile_photo, view_profile_photos
 from view.tool import view_tools, view_blog_post_add
-from view.auth import view_login, view_logout, view_auth_user_add
-
-from django.contrib.auth.decorators import login_required
+from view.user import view_user, view_users, view_user_add, view_user_delete
 
 
 # home
@@ -65,11 +66,21 @@ def user_login(request, user_login_id):
     return view_user_login.user_login(request, user_login_id)
 
 
+@login_required
+def user_logins(request):
+    return view_user_logins.user_logins(request)
+
+
 # consumer
 
 @login_required
 def consumer(request, consumer_id):
     return view_consumer.consumer(request, consumer_id)
+
+
+@login_required
+def consumers(request):
+    return view_consumers.consumers(request)
 
 
 # chef
@@ -79,11 +90,21 @@ def chef(request, chef_id):
     return view_chef.chef(request, chef_id)
 
 
+@login_required
+def chefs(request):
+    return view_chefs.chefs(request)
+
+
 # location
 
 @login_required
 def location(request, location_id):
     return view_location.location(request, location_id)
+
+
+@login_required
+def locations(request):
+    return view_locations.locations(request)
 
 
 # billing
@@ -93,11 +114,21 @@ def billing(request, billing_id):
     return view_billing.billing(request, billing_id)
 
 
+@login_required
+def billings(request):
+    return view_billings.billings(request)
+
+
 # profile_photo
 
 @login_required
 def profile_photo(request, profile_photo_id):
     return view_profile_photo.profile_photo(request, profile_photo_id)
+
+
+@login_required
+def profile_photos(request):
+    return view_profile_photos.profile_photos(request)
 
 
 # post
@@ -134,6 +165,11 @@ def order(request, order_id):
 @login_required
 def album(request, album_id):
     return view_album.album(request, album_id)
+
+
+@login_required
+def albums(request):
+    return view_albums.albums(request)
 
 
 # tools

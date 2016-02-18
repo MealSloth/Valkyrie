@@ -10,7 +10,6 @@ class SingleListableView:
     id_pool = []
     widget = []
     listable = []
-    modal = []
 
     def __init__(self, **kwargs):
         if kwargs.get('image'):
@@ -25,8 +24,6 @@ class SingleListableView:
             self.widget = kwargs['widget']
         if kwargs.get('listable'):
             self.listable = kwargs['listable']
-        if kwargs.get('modal'):
-            self.modal = kwargs['modal']
 
     def get_elements(self):
         response = {}
@@ -42,6 +39,4 @@ class SingleListableView:
             response['widget'] = self.widget
         if self.listable:
             response['listable'] = self.listable
-        if self.modal:
-            response['modal'] = self.modal
         return response
