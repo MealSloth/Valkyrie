@@ -36,3 +36,5 @@ class PostAddForm(Form):
         )
 
         post.save()
+
+        return post.id

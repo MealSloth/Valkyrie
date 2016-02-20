@@ -8,8 +8,8 @@ def post_add(request, user_id):
         keys = {'user_id': user_id}
         form = PostAddForm(request.POST)
         if form.is_valid():
-            form.process(**keys)
-            return HttpResponseRedirect('/posts/')
+            post_id = form.process(**keys)
+            return HttpResponseRedirect(reverse('post', args=[post_id, ]))
         else:
             return HttpResponse("Invalid form")
     else:
