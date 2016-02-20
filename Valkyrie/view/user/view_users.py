@@ -15,6 +15,8 @@ class UsersView(MultiListableView):
     def __init__(self):
         current_users_list = User.objects.all().order_by('join_date')
 
+        title = "Users"
+
         header = [
             ('ID', 'user', True),           # ('Column Title', 'URL parameter (if linked)', Boolean display on mobile)
             ('Name', '', False),
@@ -39,6 +41,7 @@ class UsersView(MultiListableView):
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

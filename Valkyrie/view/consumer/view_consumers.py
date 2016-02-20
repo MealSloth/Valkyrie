@@ -15,8 +15,12 @@ class ConsumersView(MultiListableView):
     def __init__(self):
         current_consumers_list = Consumer.objects.all()
 
+        title = "Consumers"
+
         header = [
             ('ID', 'consumer', True),
+            ('User', 'user', False),
+            ('Location', 'location', False),
         ]
 
         entry = []
@@ -25,10 +29,13 @@ class ConsumersView(MultiListableView):
             entry.append(
                 [
                     (consumer.id, header[0]),
+                    (consumer.user_id, header[1]),
+                    (consumer.location_id, header[2]),
                 ]
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

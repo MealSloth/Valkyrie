@@ -15,6 +15,8 @@ class PostsView(MultiListableView):
     def __init__(self):
         current_posts_list = Post.objects.all().order_by('post_time')
 
+        title = "Posts"
+
         header = [
             ('ID', 'post', True),
             ('Name', '', True),
@@ -39,6 +41,7 @@ class PostsView(MultiListableView):
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

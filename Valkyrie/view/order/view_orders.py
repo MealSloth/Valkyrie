@@ -15,6 +15,8 @@ class OrdersView(MultiListableView):
     def __init__(self):
         current_orders_list = Order.objects.all().order_by('order_time')
 
+        title = "Orders"
+
         header = [
             ('ID', 'order', True),
             ('Chef', 'chef', False),
@@ -41,6 +43,7 @@ class OrdersView(MultiListableView):
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

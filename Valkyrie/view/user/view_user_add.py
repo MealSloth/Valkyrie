@@ -12,4 +12,4 @@ def user_add(request):
     else:
         form = UserAddForm()
 
-    return render(request, 'page/user/user-add.html', {'form': form})
+    return render(request, 'page/user/../../../templates/fragment/modal/form/add-form/user-add.html', {'form': form})

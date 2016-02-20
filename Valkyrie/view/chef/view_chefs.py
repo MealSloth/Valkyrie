@@ -15,8 +15,12 @@ class ChefsView(MultiListableView):
     def __init__(self):
         current_chefs_list = Chef.objects.all()
 
+        title = "Chefs"
+
         header = [
             ('ID', 'chef', True),
+            ('User', 'user', False),
+            ('Location', 'location', False),
         ]
 
         entry = []
@@ -25,10 +29,13 @@ class ChefsView(MultiListableView):
             entry.append(
                 [
                     (chef.id, header[0]),
+                    (chef.user_id, header[1]),
+                    (chef.location_id, header[2]),
                 ]
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

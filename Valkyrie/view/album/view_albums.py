@@ -1,5 +1,5 @@
 from Valkyrie.view.abstract.view_multi_listable import MultiListableView
-from _include.Chimera.Chimera.models import Album
+from _include.Chimera.Chimera.models import Album, Blob
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -15,6 +15,8 @@ class AlbumsView(MultiListableView):
     def __init__(self):
         current_albums_list = Album.objects.all()
 
+        title = "Albums"
+
         header = [
             ('ID', 'album', True),
         ]
@@ -29,6 +31,7 @@ class AlbumsView(MultiListableView):
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

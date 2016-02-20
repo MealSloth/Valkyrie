@@ -15,8 +15,14 @@ class BillingsView(MultiListableView):
     def __init__(self):
         current_billings_list = Billing.objects.all()
 
+        title = "Billings"
+
         header = [
             ('ID', 'billing', True),
+            ('User', 'user', False),
+            ('Chef', 'chef', False),
+            ('Consumer', 'consumer', False),
+            ('Location', 'location', False),
         ]
 
         entry = []
@@ -25,10 +31,15 @@ class BillingsView(MultiListableView):
             entry.append(
                 [
                     (billing.id, header[0]),
+                    (billing.user_id, header[1]),
+                    (billing.chef_id, header[2]),
+                    (billing.consumer_id, header[3]),
+                    (billing.location_id, header[4]),
                 ]
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

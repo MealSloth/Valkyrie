@@ -15,8 +15,14 @@ class ProfilePhotosView(MultiListableView):
     def __init__(self):
         current_profile_photos_list = ProfilePhoto.objects.all()
 
+        title = "Profile Photos"
+
         header = [
             ('ID', 'profile-photo', True),
+            ('Album', 'album', False),
+            ('User', 'user', True),
+            ('Consumer', 'consumer', False),
+            ('Chef', 'chef', False),
         ]
 
         entry = []
@@ -25,10 +31,15 @@ class ProfilePhotosView(MultiListableView):
             entry.append(
                 [
                     (profile_photo.id, header[0]),
+                    (profile_photo.album_id, header[1]),
+                    (profile_photo.user_id, header[2]),
+                    (profile_photo.consumer_id, header[3]),
+                    (profile_photo.chef_id, header[4]),
                 ]
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }

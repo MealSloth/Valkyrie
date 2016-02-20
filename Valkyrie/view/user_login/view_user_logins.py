@@ -15,6 +15,8 @@ class UserLoginsView(MultiListableView):
     def __init__(self):
         current_user_logins_list = UserLogin.objects.all()
 
+        title = "User Logins"
+
         header = [
             ('ID', 'user-login', True),
         ]
@@ -29,6 +31,7 @@ class UserLoginsView(MultiListableView):
             )
 
         kwargs = {
+            'title': title,
             'header': header,
             'entry': entry,
         }
