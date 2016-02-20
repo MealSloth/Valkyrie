@@ -19,8 +19,13 @@ class PostView(SingleListableView):
         else:
             current_post = current_post[0]
 
+        associated_items = [
+                    'Album',
+                    'Location',
+                ]
+
         post_delete_button = [
-                'fragment/modal/delete-confirmation/post-delete-confirmation-modal.html',   # Modal template
+                'fragment/modal/delete-confirmation-modal.html',                            # Modal template
                 '',                                                                         # Form template
                 '',                                                                         # Form instance
                 current_post.id,                                                            # ID parameter for action
@@ -32,6 +37,9 @@ class PostView(SingleListableView):
                 'glyphicon glyphicon-trash',                                                # Listable button style
                 '',                                                                         # Form CSS class
                 '',                                                                         # Form enctype
+                'Deleting this post also deletes all of the following associated items:',   # Modal body header
+                associated_items,                                                           # Modal body list
+                'Are you sure you would like to delete this post?',                         # Modal body footer
             ]
 
         post_buttons = [post_delete_button, ]

@@ -34,19 +34,32 @@ class UserView(SingleListableView):
         else:
             image = []
 
+        associated_items = [
+                    'User Login',
+                    'Consumer',
+                    'Chef',
+                    'Album',
+                    'Billing',
+                    'Location',
+                    'Profile Photo',
+                ]
+
         user_delete_button = [
-                'fragment/modal/delete-confirmation/user-delete-confirmation-modal.html',   # Modal template
+                'fragment/modal/delete-confirmation-modal.html',                            # Modal template
                 '',                                                                         # Form template
                 '',                                                                         # Form instance
                 current_user.id,                                                            # ID parameter for action
                 'valkyrie-page-single-listable__user-delete-modal',                         # Modal ID
                 '',                                                                         # Modal title text
                 'btn btn-danger',                                                           # Button style
-                'post-delete',                                                              # Submit action
+                'user-delete',                                                              # Submit action
                 '',                                                                         # Submit button text
                 'glyphicon glyphicon-trash',                                                # Listable button style
                 '',                                                                         # Form CSS class
                 '',                                                                         # Form enctype
+                'Deleting this user also deletes all of the following associated items:',   # Modal body header
+                associated_items,                                                           # Modal body list
+                'Are you sure you would like to delete this user?',                         # Modal body footer
             ]
 
         user_buttons = [user_delete_button, ]
