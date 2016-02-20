@@ -15,7 +15,7 @@ class AlbumsView(MultiListableView):
     def __init__(self):
         current_albums_list = Album.objects.all()
 
-        title = "Albums"
+        title = ["Albums", ]
 
         header = [
             ('ID', 'album', True),

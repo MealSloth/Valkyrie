@@ -15,7 +15,7 @@ class BillingsView(MultiListableView):
     def __init__(self):
         current_billings_list = Billing.objects.all()
 
-        title = "Billings"
+        title = ["Billings", ]
 
         header = [
             ('ID', 'billing', True),

@@ -4,7 +4,7 @@ from abc import ABCMeta
 class MultiListableView:
     __metaclass__ = ABCMeta
 
-    title = ""
+    title = []
     header = []
     entry = []
 

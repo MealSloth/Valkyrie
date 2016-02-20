@@ -15,7 +15,7 @@ class ChefsView(MultiListableView):
     def __init__(self):
         current_chefs_list = Chef.objects.all()
 
-        title = "Chefs"
+        title = ["Chefs", ]
 
         header = [
             ('ID', 'chef', True),

@@ -15,7 +15,7 @@ class PostsView(MultiListableView):
     def __init__(self):
         current_posts_list = Post.objects.all().order_by('post_time')
 
-        title = "Posts"
+        title = ["Posts", ]
 
         header = [
             ('ID', 'post', True),

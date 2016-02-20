@@ -1,4 +1,5 @@
 from Valkyrie.view.abstract.view_multi_listable import MultiListableView
+from Valkyrie.form.user.form_user_add import UserAddForm
 from _include.Chimera.Chimera.models import User
 from django.http import HttpResponse
 from django.template import Context
@@ -15,7 +16,24 @@ class UsersView(MultiListableView):
     def __init__(self):
         current_users_list = User.objects.all().order_by('join_date')
 
-        title = "Users"
+        user_add_button = [
+                'fragment/modal/form/form-modal.html',              # Modal template
+                'fragment/modal/form/add-form/user-add-form.html',  # Form template
+                UserAddForm(),                                      # Form instance
+                '',                                                 # ID parameter for action
+                'valkyrie-page-single-listable__user-add-modal',    # Modal ID
+                'Add User',                                         # Modal title text
+                'btn btn-primary',                                  # Button style
+                'user-add',                                         # Form action
+                'Add User',                                         # Submit button text
+                'btn btn-primary pull-right',                       # Header button style
+                'valkyrie-fragment-form__section-form',             # Form CSS class
+                '',                                                 # Form enctype
+            ]
+
+        user_buttons = [user_add_button, ]
+
+        title = ["Users", user_buttons, ]
 
         header = [
             ('ID', 'user', True),           # ('Column Title', 'URL parameter (if linked)', Boolean display on mobile)

@@ -15,7 +15,7 @@ class ProfilePhotosView(MultiListableView):
     def __init__(self):
         current_profile_photos_list = ProfilePhoto.objects.all()
 
-        title = "Profile Photos"
+        title = ["Profile Photos", ]
 
         header = [
             ('ID', 'profile-photo', True),

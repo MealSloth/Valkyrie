@@ -1,6 +1,6 @@
 {% extends 'valkyrie.html' %}
 
-{% block title %}{% if title %}{{ title }}{% endif %}{% endblock %}
+{% block title %}{% if title %}{{ title.0 }}{% endif %}{% endblock %}
 
 {% block body %}
 
@@ -18,14 +18,21 @@
         </table>
         <div>
             <h5>
-                {% if this %}
-                {% for id_button_entry in id_entry.2 %}
-                <a data-toggle="modal" data-target="#{{ id_button_entry.4 }}">
-                    <span class="{{ id_button_entry.9 }}"></span>
+                {% if title.1 %}
+                {% for button_entry in title.1 %}
+                <a data-toggle="modal" data-target="#{{ button_entry.4 }}">
+                    <span class="{{ button_entry.9 }}">{{ button_entry.8 }}</span>
                 </a>
                 {% endfor %}
                 {% endif %}
             </h5>
+        </div>
+        <div>
+            {% if title.1 %}
+            {% for modal_entry in title.1 %}
+            {% include modal_entry.0 with embedded_form=modal_entry.1 form=modal_entry.2 id=modal_entry.3 id_name=modal_entry.4 formal_name=modal_entry.5 button_class=modal_entry.6 submit_action=modal_entry.7 formal_action=modal_entry.8 form_class_name=modal_entry.10 form_enctype=modal_entry.11 %}
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 

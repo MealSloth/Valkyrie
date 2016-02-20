@@ -15,7 +15,7 @@ class ConsumersView(MultiListableView):
     def __init__(self):
         current_consumers_list = Consumer.objects.all()
 
-        title = "Consumers"
+        title = ["Consumers", ]
 
         header = [
             ('ID', 'consumer', True),

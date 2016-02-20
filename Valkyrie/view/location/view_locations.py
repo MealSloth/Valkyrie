@@ -15,7 +15,7 @@ class LocationsView(MultiListableView):
     def __init__(self):
         current_locations_list = Location.objects.all()
 
-        title = "Locations"
+        title = ["Locations", ]
 
         header = [
             ('ID', 'location', True),
