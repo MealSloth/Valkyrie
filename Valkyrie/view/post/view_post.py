@@ -19,7 +19,24 @@ class PostView(SingleListableView):
         else:
             current_post = current_post[0]
 
-        id = [('Post', current_post.id), ]
+        post_delete_button = [
+                'fragment/modal/delete-confirmation/post-delete-confirmation-modal.html',   # Modal template
+                '',                                                                         # Form template
+                '',                                                                         # Form instance
+                current_post.id,                                                            # ID parameter for action
+                'valkyrie-page-single-listable__post-delete-modal',                         # Modal ID
+                '',                                                                         # Modal title text
+                '',                                                                         # Button style
+                '',                                                                         # Form action
+                '',                                                                         # Submit button text
+                'glyphicon glyphicon-trash',                                                # Listable button style
+                '',                                                                         # Form CSS class
+                '',                                                                         # Form enctype
+            ]
+
+        post_buttons = [post_delete_button, ]
+
+        id = [('Post', current_post.id, post_buttons), ]
 
         info = [
             ('Name', current_post.name),

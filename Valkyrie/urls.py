@@ -45,6 +45,7 @@ urlpatterns = patterns(
 
     # Delete Forms
     url(r'^user-delete/([^/]+)/', views.user_delete, name='user-delete'),
+    url(r'^post-delete/([^/]+)/', views.post_delete, name='post-delete'),
 
     # Tools
     url(r'^tools/', views.tools, name='tools'),

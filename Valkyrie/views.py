@@ -9,7 +9,7 @@ from view.consumer import view_consumer, view_consumers
 from view.home import view_home
 from view.location import view_location, view_locations
 from view.order import view_order, view_orders
-from view.post import view_post, view_posts, view_post_add
+from view.post import view_post, view_posts, view_post_add, view_post_delete
 from view.profile_photo import view_profile_photo, view_profile_photos
 from view.tool import view_tools, view_blog_post_add
 from view.user import view_user, view_users, view_user_add, view_user_delete
@@ -146,6 +146,11 @@ def post(request, post_id):
 @login_required
 def post_add(request, user_id):
     return view_post_add.post_add(request, user_id)
+
+
+@login_required
+def post_delete(request, post_id):
+    return view_post_delete.post_delete(request, post_id)
 
 
 # order

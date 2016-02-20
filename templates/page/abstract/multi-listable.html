@@ -17,7 +17,15 @@
             </tr>
         </table>
         <div>
-            <a class="btn btn-primary pull-right" href="/user-add">Add User</a>
+            <h5>
+                {% if this %}
+                {% for id_button_entry in id_entry.2 %}
+                <a data-toggle="modal" data-target="#{{ id_button_entry.4 }}">
+                    <span class="{{ id_button_entry.9 }}"></span>
+                </a>
+                {% endfor %}
+                {% endif %}
+            </h5>
         </div>
     </div>
 
