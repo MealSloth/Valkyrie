@@ -1,8 +1,9 @@
 from Valkyrie.view.abstract.view_multi_listable import MultiListableView
+from Valkyrie.form.blog_post.form_blog_post_add import BlogPostAddForm
 from _include.Chimera.Chimera.models import BlogPost, Author
 from django.http import HttpResponse
-from django.template import Context
 from django.shortcuts import render
+from django.template import Context
 
 
 def blog_posts(request):
@@ -15,7 +16,24 @@ class BlogPostsView(MultiListableView):
     def __init__(self):
         current_blog_posts_list = BlogPost.objects.all()
 
-        title = ["Blog Posts", ]
+        blog_post_add_button = [
+                'fragment/modal/form/form-modal.html',                              # Modal template
+                'fragment/modal/form/add-form/blog-post-add-edit-form.html',        # Form template
+                BlogPostAddForm(),                                                  # Form instance
+                '',                                                                 # ID parameter for action
+                'valkyrie-page-single-listable__blog-post-add-modal',               # Modal ID
+                'Make a Blog Post',                                                 # Modal title text
+                'btn btn-primary',                                                  # Button style
+                'blog-post-add',                                                    # Form action
+                'Add Blog Post',                                                    # Submit button text
+                'btn btn-primary pull-right',                                       # Header button style
+                'valkyrie-fragment-form__section-form',                             # Form CSS class
+                '',                                                                 # Form enctype
+            ]
+
+        blog_post_buttons = [blog_post_add_button, ]
+
+        title = ["Blog Posts", blog_post_buttons, ]
 
         header = [
             ('ID', 'blog-post', True),

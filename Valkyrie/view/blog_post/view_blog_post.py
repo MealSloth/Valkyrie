@@ -1,10 +1,10 @@
+from Valkyrie.form.blog_post.form_blog_post_edit import BlogPostEditForm
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from Valkyrie.form.tool.form_blog_post_edit import BlogPostEditForm
 from _include.Chimera.Chimera.models import BlogPost, Blob, Author
 from _include.Chimera.Chimera.settings import GCS_URL
 from django.http import HttpResponse
-from django.template import Context
 from django.shortcuts import render
+from django.template import Context
 
 
 def blog_post(request, blog_post_id):

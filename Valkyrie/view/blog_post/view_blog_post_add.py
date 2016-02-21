@@ -1,6 +1,7 @@
-from Valkyrie.form.tool.form_blog_post_add import BlogPostAddForm
-from _include.Chimera.Chimera.settings import PROTOCOL
 from django.http import HttpResponseRedirect
+
+from Valkyrie.form.blog_post.form_blog_post_add import BlogPostAddForm
+from _include.Chimera.Chimera.settings import PROTOCOL
 
 
 def blog_post_add(request):
