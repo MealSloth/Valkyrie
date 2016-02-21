@@ -40,6 +40,7 @@ urlpatterns = patterns(
     url(r'^profile-photo/([^/]+)/', views.profile_photo, name='profile-photo'),
     url(r'^album/([^/]+)/', views.album, name='album'),
     url(r'^blog-post/([^/]+)/', views.blog_post, name='blog-post'),
+    url(r'^blob/([^/]+)/', views.blob, name='blob'),
 
     # Add Forms
     url(r'^user-add/', views.user_add, name='user-add'),
@@ -52,6 +53,7 @@ urlpatterns = patterns(
     # Delete Forms
     url(r'^user-delete/([^/]+)/', views.user_delete, name='user-delete'),
     url(r'^post-delete/([^/]+)/', views.post_delete, name='post-delete'),
+    url(r'^blob-delete/([^/]+)/', views.blob_delete, name='blob-delete'),
 
     # Tools
     url(r'^tools/', views.tools, name='tools'),
