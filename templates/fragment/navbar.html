@@ -14,7 +14,7 @@
                             <span>More</span>
                             <span class="caret"> </span>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navmoredropdown">
+                        <ul class="dropdown-menu valkyrie-fragment-navbar__ul-more" aria-labelledby="navmoredropdown">
                             <li><a href="/user-logins">User Logins</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/consumers">Consumers</a></li>
@@ -42,8 +42,8 @@
                             <span>{{ request.user.first_name }} {{ request.user.last_name }} </span>
                             <span class="caret"> </span>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navnamedropdown">
-                            <li><a href="">Change Password</a></li>
+                        <ul class="dropdown-menu valkyrie-fragment-navbar__ul-name" aria-labelledby="navnamedropdown">
+                            <li><a href="/change-password">Change Password</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
@@ -74,7 +74,7 @@
         {% if request.user.is_authenticated %}
         <ul>
             <li role="separator"></li>
-            <li><a>Change Password</a></li>
+            <li><a href="/change-password">Change Password</a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
         {% endif %}

@@ -128,3 +128,7 @@ FILE_UPLOAD_HANDLERS = (
     "django.core.files.uploadhandler.MemoryFileUploadHandler",
     "django.core.files.uploadhandler.TemporaryFileUploadHandler",
 )
+
+# For testing authentication
+AUTH_TEST_USER_USERNAME = 'authtestuser'
+AUTH_TEST_USER_PASSWORD = 's5dfBekmGW48KfNxb7q8Je2N'

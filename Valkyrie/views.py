@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 
 from Valkyrie.view.user_login import view_user_login, view_user_logins
 from view.album import view_album, view_albums
-from view.auth import view_login, view_logout, view_auth_user_add
+from view.auth import view_login, view_logout, view_auth_user_add, view_change_password
 from view.billing import view_billing, view_billings
 from view.chef import view_chef, view_chefs
 from view.consumer import view_consumer, view_consumers
@@ -35,6 +35,11 @@ def logout(request):
 @login_required
 def auth_user_add(request):
     return view_auth_user_add.auth_user_add(request)
+
+
+@login_required
+def change_password(request):
+    return view_change_password.change_password(request)
 
 
 # user
