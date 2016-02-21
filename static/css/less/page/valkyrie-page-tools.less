@@ -39,7 +39,7 @@ section.valkyrie-page-tools__section-body-1
             border-top: 1px solid rgba(50,50,50,0.9);
         }
 
-        > div
+        > div.valkyrie-page-tools__section-listables
         {
             table
             {
@@ -71,9 +71,10 @@ section.valkyrie-page-tools__section-body-1
                                 @media (max-width: @screen-md-min) { font-size: 42px; }
                             }
 
-                            a:hover
+                            a:hover, a:hover, a:active, a:link, a:visited
                             {
                                 text-decoration: none;
+                                cursor: pointer;
                             }
                         }
                     }
