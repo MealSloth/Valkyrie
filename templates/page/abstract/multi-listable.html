@@ -30,7 +30,7 @@
         <div>
             {% if title.1 %}
             {% for modal_entry in title.1 %}
-            {% include modal_entry.0 with embedded_form=modal_entry.1 form=modal_entry.2 id=modal_entry.3 id_name=modal_entry.4 formal_name=modal_entry.5 button_class=modal_entry.6 submit_action=modal_entry.7 formal_action=modal_entry.8 form_class_name=modal_entry.10 form_enctype=modal_entry.11 %}
+            {% include modal_entry.0 with embedded_form=modal_entry.1 form=modal_entry.2 id=modal_entry.3 id_name=modal_entry.4 modal_title=modal_entry.5 button_class=modal_entry.6 submit_action=modal_entry.7 formal_action=modal_entry.8 form_class_name=modal_entry.10 form_enctype=modal_entry.11 %}
             {% endfor %}
             {% endif %}
         </div>
