@@ -26,6 +26,7 @@ urlpatterns = patterns(
     url(r'^billings/', views.billings, name='billings'),
     url(r'^profile-photos/', views.profile_photos, name='profile-photos'),
     url(r'^albums/', views.albums, name='albums'),
+    url(r'^blog-posts/', views.blog_posts, name='blog-posts'),
 
     # Single listables
     url(r'^user/([^/]+)/', views.user, name='user'),
@@ -38,11 +39,15 @@ urlpatterns = patterns(
     url(r'^billing/([^/]+)/', views.billing, name='billing'),
     url(r'^profile-photo/([^/]+)/', views.profile_photo, name='profile-photo'),
     url(r'^album/([^/]+)/', views.album, name='album'),
+    url(r'^blog-post/([^/]+)/', views.blog_post, name='blog-post'),
 
     # Add Forms
     url(r'^user-add/', views.user_add, name='user-add'),
     url(r'^post-add/([^/]+)/', views.post_add, name='post-add'),
     url(r'^blog-post-add/', views.blog_post_add, name='blog-post-add'),
+
+    # Edit Forms
+    url(r'^blog-post-edit/([^/]+)/', views.blog_post_edit, name='blog-post-edit'),
 
     # Delete Forms
     url(r'^user-delete/([^/]+)/', views.user_delete, name='user-delete'),

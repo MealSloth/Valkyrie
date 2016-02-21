@@ -1,0 +1,70 @@
+from Valkyrie.view.abstract.view_single_listable import SingleListableView
+from Valkyrie.form.tool.form_blog_post_edit import BlogPostEditForm
+from _include.Chimera.Chimera.models import BlogPost, Blob, Author
+from _include.Chimera.Chimera.settings import GCS_URL
+from django.http import HttpResponse
+from django.template import Context
+from django.shortcuts import render
+
+
+def blog_post(request, blog_post_id):
+    blog_post_view = BlogPostView(blog_post_id=blog_post_id)
+    response = render(request, 'page/abstract/single-listable.html', Context(blog_post_view.get_elements()))
+    return HttpResponse(response)
+
+
+class BlogPostView(SingleListableView):
+    def __init__(self, blog_post_id):
+        current_blog_post = BlogPost.objects.filter(pk=blog_post_id)
+        if not current_blog_post.values().count() > 0:
+            return
+        else:
+            current_blog_post = current_blog_post[0]
+
+        blog_post_edit_button = [
+                'fragment/modal/form/form-modal.html',                          # Modal template
+                'fragment/modal/form/add-form/blog-post-add-edit-form.html',    # Form template
+                BlogPostEditForm({                                              # Form instance
+                    'author_id': current_blog_post.author_id,
+                    'title': current_blog_post.title,
+                    'short_description': current_blog_post.short_description,
+                    'long_description': current_blog_post.long_description,
+                }),
+                current_blog_post.id,                                           # ID parameter for action
+                'valkyrie-page-single-listable__blog-post-edit-modal',          # Modal ID
+                'Edit Post',                                                    # Modal title text
+                'btn btn-primary',                                              # Button style
+                'blog-post-edit',                                               # Form action
+                'Save Edit',                                                    # Submit button text
+                'glyphicon glyphicon-pencil',                                   # Listable button style
+                'valkyrie-fragment-form__section-form',                         # Form CSS class
+                '',                                                             # Form enctype
+            ]
+
+        blog_post_buttons= [blog_post_edit_button, ]
+
+        id = [('Blog Post', current_blog_post.id, blog_post_buttons), ]
+
+        author = Author.objects.get(pk=current_blog_post.author_id)
+
+        info = [
+            ('Title', current_blog_post.title),
+            ('Author', author.first_name + ' ' + author.last_name),
+            ('Short Description', current_blog_post.short_description[:30] + ' ...'),
+            ('Long Description', current_blog_post.long_description[:50] + ' ...'),
+        ]
+
+        id_pool = [
+            ('Album ID', current_blog_post.album_id, 'album'),
+        ]
+
+        blobs = [GCS_URL, Blob.objects.filter(album_id=current_blog_post.album_id)]
+
+        kwargs = {
+            'id': id,
+            'info': info,
+            'id_pool': id_pool,
+            'blobs': blobs,
+        }
+
+        SingleListableView.__init__(self, **kwargs)

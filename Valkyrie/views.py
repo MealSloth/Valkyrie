@@ -1,9 +1,10 @@
 from django.contrib.auth.decorators import login_required
 
-from Valkyrie.view.user_login import view_user_login, view_user_logins
+from view.user_login import view_user_login, view_user_logins
 from view.album import view_album, view_albums
 from view.auth import view_login, view_logout, view_auth_user_add, view_change_password
 from view.billing import view_billing, view_billings
+from view.blog_post import view_blog_post, view_blog_posts, view_blog_post_add, view_blog_post_edit
 from view.chef import view_chef, view_chefs
 from view.consumer import view_consumer, view_consumers
 from view.home import view_home
@@ -11,7 +12,7 @@ from view.location import view_location, view_locations
 from view.order import view_order, view_orders
 from view.post import view_post, view_posts, view_post_add, view_post_delete
 from view.profile_photo import view_profile_photo, view_profile_photos
-from view.tool import view_tools, view_blog_post_add
+from view.tool import view_tools
 from view.user import view_user, view_users, view_user_add, view_user_delete
 
 
@@ -182,13 +183,30 @@ def albums(request):
     return view_albums.albums(request)
 
 
-# tools
+# blog
 
 @login_required
-def tools(request):
-    return view_tools.tools(request)
+def blog_post(request, blog_post_id):
+    return view_blog_post.blog_post(request, blog_post_id)
+
+
+@login_required
+def blog_posts(request):
+    return view_blog_posts.blog_posts(request)
 
 
 @login_required
 def blog_post_add(request):
     return view_blog_post_add.blog_post_add(request)
+
+
+@login_required
+def blog_post_edit(request, blog_post_id):
+    return view_blog_post_edit.blog_post_edit(request, blog_post_id)
+
+
+# tools
+
+@login_required
+def tools(request):
+    return view_tools.tools(request)

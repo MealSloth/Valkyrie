@@ -16,18 +16,18 @@ class ToolsView:
 
     def __init__(self):
         blog_post_add_button = [
-                'fragment/modal/form/form-modal.html',                      # Modal template
-                'fragment/modal/form/add-form/blog-post-add-form.html',     # Form template
-                BlogPostAddForm(),                                          # Form instance
-                '',                                                         # ID parameter for action
-                'valkyrie-page-single-listable__blog-post-add-modal',       # Modal ID
-                'Make a Blog Post',                                         # Modal title text
-                'btn btn-primary',                                          # Button style
-                'blog-post-add',                                            # Form action
-                'Make a Blog Post',                                         # Submit button text
-                '',                                                         # Listable button style
-                'valkyrie-fragment-form__section-form',                     # Form CSS class
-                'multipart/form-data',                                      # Form enctype
+                'fragment/modal/form/form-modal.html',                          # Modal template
+                'fragment/modal/form/add-form/blog-post-add-edit-form.html',    # Form template
+                BlogPostAddForm(),                                              # Form instance
+                '',                                                             # ID parameter for action
+                'valkyrie-page-single-listable__blog-post-add-modal',           # Modal ID
+                'Make a Blog Post',                                             # Modal title text
+                'btn btn-primary',                                              # Button style
+                'blog-post-add',                                                # Form action
+                'Make a Blog Post',                                             # Submit button text
+                '',                                                             # Listable button style
+                'valkyrie-fragment-form__section-form',                         # Form CSS class
+                'multipart/form-data',                                          # Form enctype
             ]
 
         auth_user_add_button = [

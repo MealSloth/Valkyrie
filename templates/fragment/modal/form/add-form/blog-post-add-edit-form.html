@@ -37,6 +37,7 @@
         <tr>
             <td>{{ form.long_description }}</td>
         </tr>
+        {% if form.image %}
         <tr>
             <td><label for="image">Image:</label></td>
         </tr>
@@ -46,6 +47,7 @@
         <tr>
             <td>{{ form.image }}</td>
         </tr>
+        {% endif %}
         {% if error %}
             <tr>
                 <td>{{ error }}</td>
