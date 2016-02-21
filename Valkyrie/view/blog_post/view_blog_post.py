@@ -41,7 +41,27 @@ class BlogPostView(SingleListableView):
                 '',                                                             # Form enctype
             ]
 
-        blog_post_buttons= [blog_post_edit_button, ]
+        associated_items = ['Album', ]
+
+        blog_post_delete_button = [
+                'fragment/modal/delete-confirmation-modal.html',                                # Modal template
+                '',                                                                             # Form template
+                '',                                                                             # Form instance
+                current_blog_post.id,                                                           # ID parameter
+                'valkyrie-page-single-listable__blog-post-delete-modal',                        # Modal ID
+                'Delete Blog Post',                                                             # Modal title text
+                'btn btn-danger',                                                               # Button style
+                'blog-post-delete',                                                             # Submit action
+                '',                                                                             # Submit button text
+                'glyphicon glyphicon-trash',                                                    # Listable button style
+                '',                                                                             # Form CSS class
+                '',                                                                             # Form enctype
+                'Deleting this blog post also deletes all of the following associated items:',  # Modal body header
+                associated_items,                                                               # Modal body list
+                'Are you sure you would like to delete this user?',                             # Modal body footer
+            ]
+
+        blog_post_buttons= [blog_post_edit_button, blog_post_delete_button, ]
 
         id = [('Blog Post', current_blog_post.id, blog_post_buttons), ]
 

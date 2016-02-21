@@ -4,7 +4,8 @@ from view.user_login import view_user_login, view_user_logins
 from view.album import view_album, view_albums
 from view.auth import view_login, view_logout, view_auth_user_add, view_change_password
 from view.billing import view_billing, view_billings
-from view.blog_post import view_blog_post, view_blog_posts, view_blog_post_add, view_blog_post_edit
+from view.blog_post import view_blog_post, view_blog_posts, view_blog_post_add, view_blog_post_edit,\
+    view_blog_post_delete
 from view.chef import view_chef, view_chefs
 from view.consumer import view_consumer, view_consumers
 from view.home import view_home
@@ -203,6 +204,11 @@ def blog_post_add(request):
 @login_required
 def blog_post_edit(request, blog_post_id):
     return view_blog_post_edit.blog_post_edit(request, blog_post_id)
+
+
+@login_required
+def blog_post_delete(request, blog_post_id):
+    return view_blog_post_delete.blog_post_delete(request, blog_post_id)
 
 
 # tools

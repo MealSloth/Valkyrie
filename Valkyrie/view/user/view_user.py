@@ -50,7 +50,7 @@ class UserView(SingleListableView):
                 '',                                                                         # Form instance
                 current_user.id,                                                            # ID parameter for action
                 'valkyrie-page-single-listable__user-delete-modal',                         # Modal ID
-                '',                                                                         # Modal title text
+                'Delete User',                                                              # Modal title text
                 'btn btn-danger',                                                           # Button style
                 'user-delete',                                                              # Submit action
                 '',                                                                         # Submit button text
