@@ -131,6 +131,32 @@
 </section>
 {% endfor %}
 {% endif %}
+
+{% if blobs %}
+<section class="valkyrie-page-single-listable__section-blobs">
+
+    <div>
+        <h2>Associated Blobs</h2>
+        <div>
+            <table>
+                {% for blob in blobs.1 %}
+                <tr>
+                    <td>
+                        <img src="{{ blobs.0 }}{{ blob.gcs_id }}" />
+                    </td>
+                    <td>
+                        <h4><a href="/blob/{{ blob.id }}/">{{ blob.id }}</a></h4>
+                    </td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</section>
+{% endif %}
+
 {% else %}
 <section class="valkyrie-page-single-listable__section-header">
 

@@ -1,5 +1,6 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from _include.Chimera.Chimera.models import Album
+from _include.Chimera.Chimera.models import Album, Blob
+from _include.Chimera.Chimera.settings import GCS_URL
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -21,8 +22,11 @@ class AlbumView(SingleListableView):
 
         id = [('Album', current_album.id), ]
 
+        blobs = [GCS_URL, Blob.objects.filter(album_id=current_album.id)]
+
         kwargs = {
             'id': id,
+            'blobs': blobs,
         }
 
         SingleListableView.__init__(self, **kwargs)

@@ -10,6 +10,7 @@ class SingleListableView:
     id_pool = []
     widget = []
     listable = []
+    blobs = []
 
     def __init__(self, **kwargs):
         if kwargs.get('image'):
@@ -24,6 +25,8 @@ class SingleListableView:
             self.widget = kwargs['widget']
         if kwargs.get('listable'):
             self.listable = kwargs['listable']
+        if kwargs.get('blobs'):
+            self.blobs = kwargs['blobs']
 
     def get_elements(self):
         response = {}
@@ -39,4 +42,6 @@ class SingleListableView:
             response['widget'] = self.widget
         if self.listable:
             response['listable'] = self.listable
+        if self.blobs:
+            response['blobs'] = self.blobs
         return response
