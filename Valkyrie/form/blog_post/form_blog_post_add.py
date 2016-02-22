@@ -40,7 +40,7 @@ class BlogPostAddForm(Form):
 
         data = dumps({'file': b64encode(image.read()), 'album_id': str(blog_post.album_id), })
         try:
-            urllib2.urlopen('http://api.mealsloth.com/blog-image-upload/', data)
+            urllib2.urlopen('http://api.mealsloth.com/blog/image/upload/', data)
         except urllib2.HTTPError, error:
             blog_post.delete()
             raise ValidationError(error)
