@@ -55,7 +55,7 @@ class PostView(SingleListableView):
             ('Expire Time', current_post.expire_time[:10]),
         ]
 
-        widget = [('fragment/single-listable-widget/post-status-widget.html', current_post.post_status), ]
+        widget = [('fragment/widget/single-listable/post-status-widget.html', current_post.post_status), ]
 
         id_pool = [
             ('Chef ID', current_post.chef_id, 'chef'),

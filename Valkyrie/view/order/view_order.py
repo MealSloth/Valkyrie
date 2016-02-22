@@ -26,7 +26,7 @@ class OrderView(SingleListableView):
             ('Amount', current_order.amount,)
         ]
 
-        widget = [('fragment/single-listable-widget/order-status-widget.html', current_order.order_status), ]
+        widget = [('fragment/widget/single-listable/order-status-widget.html', current_order.order_status), ]
 
         id_pool = [
             ('Post ID', current_order.post_id, 'post'),
