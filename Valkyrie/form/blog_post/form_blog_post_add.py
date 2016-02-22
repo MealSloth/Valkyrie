@@ -26,7 +26,7 @@ class BlogPostAddForm(Form):
         short_description = self.cleaned_data['short_description']
         long_description = self.cleaned_data['long_description']
         image = self.cleaned_data['image']
-        post_time = datetime.utcnow()
+        post_time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
         blog_post = BlogPost(
             author_id=author_id,

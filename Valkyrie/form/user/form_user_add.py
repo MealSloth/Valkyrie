@@ -68,7 +68,7 @@ class UserAddForm(Form):
             self.cleaned_data['dob_month'],
             self.cleaned_data['dob_day'],
         ])
-        join_date = datetime.utcnow()
+        join_date = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
         password = self.cleaned_data['password']
 
         user = User(

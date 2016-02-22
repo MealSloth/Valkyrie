@@ -18,8 +18,8 @@ class PostAddForm(Form):
         name = self.cleaned_data['name']
         description = self.cleaned_data['description']
         capacity = self.cleaned_data['capacity']
-        post_time = datetime.utcnow()
-        expire_time = datetime.utcnow() + timedelta(hours=4)
+        post_time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        expire_time = (datetime.utcnow() + timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%S.%f")
 
         album = Album()
         album.save()
