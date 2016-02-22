@@ -19,7 +19,27 @@ class OrderView(SingleListableView):
         else:
             current_order = current_order[0]
 
-        id = [('Order', current_order.id), ]
+        order_delete_button = [
+                'fragment/modal/delete-confirmation-modal.html',                            # Modal template
+                '',                                                                         # Form template
+                '',                                                                         # Form instance
+                current_order.id,                                                           # ID parameter for action
+                'valkyrie-page-single-listable__order-delete-modal',                        # Modal ID
+                '',                                                                         # Modal title text
+                'btn btn-danger',                                                           # Button style
+                'order-delete',                                                             # Submit action
+                '',                                                                         # Submit button text
+                'glyphicon glyphicon-trash',                                                # Listable button style
+                '',                                                                         # Form CSS class
+                '',                                                                         # Form enctype
+                '',                                                                         # Modal body header
+                '',                                                                         # Modal body list
+                'Are you sure you would like to delete this order?',                        # Modal body footer
+            ]
+
+        order_buttons = [order_delete_button, ]
+
+        id = [('Order', current_order.id, order_buttons), ]
 
         info = [
             ('Order Type', current_order.get_order_type_display()),
