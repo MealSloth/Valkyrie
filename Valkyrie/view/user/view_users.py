@@ -54,7 +54,7 @@ class UsersView(MultiListableView):
                     (user.get_gender_display(), header[2]),
                     (user.email, header[3]),
                     (user.phone_number, header[4]),
-                    (user.date_of_birth, header[5]),
+                    (user.date_of_birth[:10], header[5]),
                 ]
             )
 
