@@ -1,18 +1,13 @@
-from _include.Chimera.Chimera.models import Order
+from _include.Chimera.Chimera.view.order.view_order_delete import order_delete as delete_order
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 
 def order_delete(request, order_id):
-    order = Order.objects.filter(pk=order_id)
-    if order.count() > 0:
-        order = order[0]
-    else:
-        return HttpResponseRedirect('/orders')
-
+    order_delete_kwargs = {'order_id': order_id}
     try:
-        order.delete()
+        delete_order(request=None, **order_delete_kwargs)
     except StandardError:
-        return HttpResponseRedirect(reverse('order', args=[order.id, ]))
+        return HttpResponseRedirect(reverse('order', args=[order_id, ]))
 
     return HttpResponseRedirect('/orders')
