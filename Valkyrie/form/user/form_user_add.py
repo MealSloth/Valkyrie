@@ -158,7 +158,7 @@ class UserAddForm(Form):
             location.delete()
             return
 
-        album = Album()
+        album = Album(time=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f"))
 
         album.save()
 
