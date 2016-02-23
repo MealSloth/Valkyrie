@@ -1,5 +1,5 @@
 from _include.Chimera.Chimera.storage_url_suffixes import StorageURLSuffixes
-from _include.Chimera.Chimera.view.blob.view_blob_upload import blob_upload
+from _include.Chimera.Chimera.view.blob.view_blob_upload import blob_upload as upload_blob
 from base64 import b64encode
 from django.forms import *
 
@@ -26,4 +26,4 @@ class BlobAddForm(Form):
             'url_suffix': url_suffix,
         }
 
-        blob_upload(request=None, **blob_upload_kwargs)
+        upload_blob(request=None, **blob_upload_kwargs)

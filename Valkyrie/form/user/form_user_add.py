@@ -1,4 +1,5 @@
-from _include.Chimera.Chimera.models import User, UserLogin, Consumer, Chef, Location, Billing, Album, ProfilePhoto
+from _include.Chimera.Chimera.view.user.view_user_create import user_create as create_user
+from _include.Chimera.Chimera.models import User
 from _include.Chimera.Chimera.enums import *
 from datetime import datetime
 from django.forms import *
@@ -68,123 +69,23 @@ class UserAddForm(Form):
             self.cleaned_data['dob_month'],
             self.cleaned_data['dob_day'],
         ])
-        join_date = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
         password = self.cleaned_data['password']
 
-        user = User(
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            phone_number=phone_number,
-            date_of_birth=date_of_birth,
-            gender=gender,
-            join_date=join_date,
-        )
+        user_kwargs = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'email': email,
+            'phone_number': phone_number,
+            'gender': gender,
+            'date_of_birth': date_of_birth,
+            'password': password,
+        }
 
-        user.save()
+        create_user(request=None, **user_kwargs)
 
-        if not User.objects.filter(id=user.id):
-            return
-
-        user_login = UserLogin(
-            id=user.user_login_id,
-            user_id=user.id,
-            username=user.email,
-            password=password,
-        )
-
-        user_login.save()
-
-        if not UserLogin.objects.filter(id=user_login.id):
-            user.delete()
-            return
-
-        location = Location(
-            id=user.location_id,
-            user_id=user.id,
-        )
-
-        location.save()
-
-        if not Location.objects.filter(id=location.id):
-            user.delete()
-            user_login.delete()
-            return
-
-        consumer = Consumer(
-            id=user.consumer_id,
-            user_id=user.id,
-            location_id=location.id,
-        )
-
-        consumer.save()
-
-        if not Consumer.objects.filter(id=consumer.id):
-            user.delete()
-            user_login.delete()
-            location.delete()
-            return
-
-        chef = Chef(
-            id=user.chef_id,
-            user_id=user.id,
-            location_id=location.id,
-        )
-
-        chef.save()
-
-        if not Chef.objects.filter(id=chef.id):
-            user.delete()
-            user_login.delete()
-            location.delete()
-            consumer.delete()
-            return
-
-        billing = Billing(
-            id=user.billing_id,
-            user_id=user.id,
-            consumer_id=consumer.id,
-            chef_id=chef.id,
-            location_id=location.id,
-        )
-
-        billing.save()
-
-        if not Billing.objects.filter(id=billing.id):
-            user.delete()
-            user_login.delete()
-            consumer.delete()
-            chef.delete()
-            location.delete()
-            return
-
-        album = Album(time=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f"))
-
-        album.save()
-
-        if not Album.objects.filter(id=album.id):
-            user.delete()
-            user_login.delete()
-            consumer.delete()
-            chef.delete()
-            location.delete()
-            billing.delete()
-            return
-
-        profile_photo = ProfilePhoto(
-            id=user.profile_photo_id,
-            album_id=album.id,
-            user_id=user.id,
-        )
-
-        profile_photo.save()
-
-        if not ProfilePhoto.objects.filter(id=profile_photo.id):
-            user.delete()
-            user_login.delete()
-            consumer.delete()
-            chef.delete()
-            location.delete()
-            billing.delete()
-            album.delete()
+        user = User.objects.filter(email=email)
+        if user.count() > 0:
+            user = user[0]
+            return user.id
+        else:
             return
