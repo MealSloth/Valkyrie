@@ -46,6 +46,7 @@ class BlobView(SingleListableView):
 
         info = [
             ('Content-Type', current_blob.content_type),
+            ('Date Created', current_blob.time),
         ]
 
         id_pool = [
