@@ -21,18 +21,16 @@ class UserView(SingleListableView):
         else:
             current_user = current_user[0]
 
-        gcs_id = Blob.objects.filter(
-            album_id=Album.objects.get(
-                pk=ProfilePhoto.objects.get(
-                    pk=current_user.profile_photo_id).album_id
-            )
-        ).values()
+        profile_photo = ProfilePhoto.objects.get(pk=current_user.profile_photo_id)
+        album = Album.objects.get(pk=profile_photo.album_id)
+        blob_list = Blob.objects.filter(album_id=album.id)
 
-        if gcs_id.count() > 0:
-            gcs_id = gcs_id.get('gcs_id')
-            image = [GCS_URL + gcs_id, ]
-        else:
-            image = []
+        image = []
+
+        if blob_list.count() > 0:
+            blob = blob_list[0]
+            gcs_id = blob.gcs_id
+            image.append(GCS_URL + gcs_id)
 
         associated_items = [
                     'User Login',

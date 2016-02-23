@@ -30,7 +30,7 @@ class AlbumView(SingleListableView):
         blobs_array = []
 
         for i in range(0, blobs_list.count()):
-            blobs_array.append([blobs_list[i].id, ])
+            blobs_array.append(blobs_list[i].id)
 
         blob_add_button = [
                 'fragment/modal/form/form-modal.html',              # Modal template
