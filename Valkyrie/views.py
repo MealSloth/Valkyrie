@@ -11,7 +11,7 @@ from view.chef import view_chef, view_chefs
 from view.consumer import view_consumer, view_consumers
 from view.home import view_home
 from view.location import view_location, view_locations
-from view.order import view_order, view_orders, view_order_delete
+from view.order import view_order, view_orders, view_order_add, view_order_delete
 from view.post import view_post, view_posts, view_post_add, view_post_delete
 from view.profile_photo import view_profile_photo, view_profile_photos
 from view.tool import view_tools
@@ -171,6 +171,11 @@ def orders(request):
 @login_required
 def order(request, order_id):
     return view_order.order(request, order_id)
+
+
+@login_required
+def order_add(request, post_id):
+    return view_order_add.order_add(request, post_id)
 
 
 @login_required

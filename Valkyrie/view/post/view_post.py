@@ -1,5 +1,6 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from _include.Chimera.Chimera.models import Post
+from Valkyrie.form.order.form_order_add import OrderAddForm
+from _include.Chimera.Chimera.models import Post, Order
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -63,11 +64,40 @@ class PostView(SingleListableView):
             ('Album ID', current_post.album_id, 'album'),
         ]
 
+        orders = Order.objects.filter(post_id=current_post.id)
+
+        order_array = []
+
+        for i in range(0, orders.count()):
+            order_array.append([orders[i].id, orders[i].order_status, orders[i].get_order_status_display()])
+
+        order_add_button = [
+                'fragment/modal/form/form-modal.html',                  # Modal template
+                'fragment/modal/form/add-form/order-add-form.html',     # Form template
+                OrderAddForm(),                                         # Form instance
+                current_post.id,                                        # ID parameter for action
+                'valkyrie-page-single-listable__order-add-modal',       # Modal ID
+                'Add Test Order',                                       # Modal title text
+                'btn btn-primary',                                      # Button style
+                'order-add',                                            # Form action
+                'Add Test Order',                                       # Submit button text
+                'glyphicon glyphicon-plus',                             # Header button style
+                'valkyrie-fragment-form__section-form',                 # Form CSS class
+                '',                                                     # Form enctype
+            ]
+
+        order_buttons = [order_add_button, ]
+
+        listable = [
+            ('Orders', order_array, 'order', 'status', order_buttons),
+        ]
+
         kwargs = {
             'id': id,
             'info': info,
             'widget': widget,
             'id_pool': id_pool,
+            'listable': listable,
         }
 
         SingleListableView.__init__(

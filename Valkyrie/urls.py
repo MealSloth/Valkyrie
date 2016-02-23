@@ -45,6 +45,7 @@ urlpatterns = patterns(
     # Add Forms
     url(r'^user-add/', views.user_add, name='user-add'),
     url(r'^post-add/([^/]+)/', views.post_add, name='post-add'),
+    url(r'^order-add/([^/]+)/', views.order_add, name='order-add'),
     url(r'^blog-post-add/', views.blog_post_add, name='blog-post-add'),
 
     # Edit Forms

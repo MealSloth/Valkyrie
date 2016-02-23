@@ -116,13 +116,6 @@ class UserView(SingleListableView):
             ('Posts', post_array, 'post', 'status', post_buttons),
         ]
 
-        # modal = [(
-        #     'fragment/modal/delete-confirmation/user-delete-confirmation-modal.html',
-        #     'valkyrie-page-single-listable__user-delete-modal',
-        #     'glyphicon glyphicon-trash',
-        #     current_user.id,
-        # )]
-
         kwargs = {
             'image': image,
             'id': id,
@@ -130,7 +123,6 @@ class UserView(SingleListableView):
             'widget': widget,
             'id_pool': id_pool,
             'listable': listable,
-            # 'modal': modal,
         }
 
         SingleListableView.__init__(
