@@ -1,6 +1,6 @@
 {% extends 'valkyrie.html' %}
 
-{% block title %}{% if id %}{{ id.0.0 }}{% endif %}{% endblock %}
+{% block title %}{% if id %}{{ id.0.0 }}{% else %}No entry!{% endif %}{% endblock %}
 
 {% block body %}
 
