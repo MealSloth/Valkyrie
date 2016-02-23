@@ -21,7 +21,7 @@ class PostAddForm(Form):
         post_time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
         expire_time = (datetime.utcnow() + timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%S.%f")
 
-        album = Album()
+        album = Album(time=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f"))
         album.save()
 
         post = Post(
