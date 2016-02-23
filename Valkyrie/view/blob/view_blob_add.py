@@ -7,7 +7,7 @@ def blob_add(request, album_id):
     if request.method == 'POST':
         form = BlobAddForm(request.POST, request.FILES)
         if form.is_valid():
-            form.process(album_id)
+            form.process(album_id=album_id)
             return HttpResponseRedirect(reverse('album', args=[album_id, ]))
         else:
             return HttpResponseRedirect(reverse('album', args=[album_id, ]))
