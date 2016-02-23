@@ -25,10 +25,10 @@ class OrderView(SingleListableView):
                 '',                                                                         # Form instance
                 current_order.id,                                                           # ID parameter for action
                 'valkyrie-page-single-listable__order-delete-modal',                        # Modal ID
-                '',                                                                         # Modal title text
+                'Delete Order',                                                             # Modal title text
                 'btn btn-danger',                                                           # Button style
                 'order-delete',                                                             # Submit action
-                '',                                                                         # Submit button text
+                'Delete Order',                                                             # Submit button text
                 'glyphicon glyphicon-trash',                                                # Listable button style
                 '',                                                                         # Form CSS class
                 '',                                                                         # Form enctype

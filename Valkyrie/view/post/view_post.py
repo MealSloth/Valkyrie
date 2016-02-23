@@ -31,7 +31,7 @@ class PostView(SingleListableView):
                 '',                                                                         # Form instance
                 current_post.id,                                                            # ID parameter for action
                 'valkyrie-page-single-listable__post-delete-modal',                         # Modal ID
-                '',                                                                         # Modal title text
+                'Delete Post',                                                              # Modal title text
                 'btn btn-danger',                                                           # Button style
                 'post-delete',                                                              # Submit action
                 '',                                                                         # Submit button text
