@@ -1,6 +1,9 @@
 from _include.Chimera.Chimera.models import User, UserLogin, Consumer, Chef, Location, Billing, Album, ProfilePhoto
+from _include.Chimera.Chimera.settings import PROTOCOL
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from json import dumps
+import urllib2
 
 
 def user_delete(request, user_id):
@@ -51,7 +54,12 @@ def user_delete(request, user_id):
         profile_photo.delete()
 
     if album:
-        album.delete()
+        try:
+            data = {'album_id': album.id}
+            data = dumps(data)
+            urllib2.urlopen(PROTOCOL + 'api.mealsloth.com/album/delete/', data)
+        except urllib2.HTTPError:
+            return
 
     if billing:
         billing.delete()
