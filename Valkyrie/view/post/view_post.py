@@ -22,7 +22,7 @@ class PostView(SingleListableView):
 
         associated_items = [
                     'Album',
-                    'Location',
+                    'Order',
                 ]
 
         post_delete_button = [
@@ -34,7 +34,7 @@ class PostView(SingleListableView):
                 'Delete Post',                                                              # Modal title text
                 'btn btn-danger',                                                           # Button style
                 'post-delete',                                                              # Submit action
-                '',                                                                         # Submit button text
+                'Delete Post',                                                                         # Submit button text
                 'glyphicon glyphicon-trash',                                                # Listable button style
                 '',                                                                         # Form CSS class
                 '',                                                                         # Form enctype
