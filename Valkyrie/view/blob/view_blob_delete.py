@@ -1,21 +1,11 @@
-from _include.Chimera.Chimera.settings import PROTOCOL
-from _include.Chimera.Chimera.models import Blob
+from _include.Chimera.Chimera.view.blob.view_blob_delete import blob_delete as chimera_blob_delete
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from json import dumps
-import urllib2
 
 
 def blob_delete(request, blob_id):
-    blob = Blob.objects.filter(pk=blob_id)
-    if blob.count() > 0:
-        blob = blob[0]
-    else:
-        return HttpResponseRedirect(reverse('blob', args=[blob_id, ]))
+    blob_delete_kwargs = {'blob_id': blob_id}
     try:
-        data = {'blob_id': blob.id}
-        data = dumps(data)
-        urllib2.urlopen(PROTOCOL + 'api.mealsloth.com/blob/delete/', data)
-        return HttpResponseRedirect('/albums')
-    except urllib2.HTTPError:
-        return HttpResponseRedirect(reverse('blob', args=[blob_id, ]))
+        chimera_blob_delete(request=None, **blob_delete_kwargs)
+    except StandardError:
+        HttpResponseRedirect('/albums')
+    return HttpResponseRedirect('/')
