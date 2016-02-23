@@ -14,8 +14,8 @@ def consumers():
 
 class OrderAddForm(Form):
     consumer_id = ChoiceField(choices=consumers(), required=True)
-    amount = IntegerField()
     order_type = ChoiceField(choices=OrderType.OrderType)
+    amount = IntegerField()
 
     def process(self, post_id):
         post = Post.objects.filter(pk=post_id)
