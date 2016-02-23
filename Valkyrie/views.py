@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 
 from view.user_login import view_user_login, view_user_logins
 from view.album import view_album, view_albums
-from view.blob import view_blob, view_blob_delete
+from view.blob import view_blob, view_blob_add, view_blob_delete
 from view.auth import view_login, view_logout, view_auth_user_add, view_change_password
 from view.billing import view_billing, view_billings
 from view.blog_post import view_blog_post, view_blog_posts, view_blog_post_add, view_blog_post_edit,\
@@ -200,6 +200,11 @@ def albums(request):
 @login_required
 def blob(request, blob_id):
     return view_blob.blob(request, blob_id)
+
+
+@login_required
+def blob_add(request, album_id):
+    return view_blob_add.blob_add(request, album_id)
 
 
 @login_required

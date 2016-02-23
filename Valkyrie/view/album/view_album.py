@@ -1,4 +1,5 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
+from Valkyrie.form.blob.form_blob_add import BlobAddForm
 from _include.Chimera.Chimera.models import Album, Blob
 from _include.Chimera.Chimera.settings import GCS_URL
 from django.http import HttpResponse
@@ -24,11 +25,40 @@ class AlbumView(SingleListableView):
 
         info = [('Date Created', current_album.time), ]
 
-        blobs = [GCS_URL, Blob.objects.filter(album_id=current_album.id)]
+        blobs_list = Blob.objects.filter(album_id=current_album.id)
+
+        blobs_array = []
+
+        for i in range(0, blobs_list.count()):
+            blobs_array.append([blobs_list[i].id, ])
+
+        blob_add_button = [
+                'fragment/modal/form/form-modal.html',              # Modal template
+                'fragment/modal/form/add-form/blob-add-form.html',  # Form template
+                BlobAddForm(),                                      # Form instance
+                current_album.id,                                   # ID parameter for action
+                'valkyrie-page-single-listable__blob-add-modal',    # Modal ID
+                'Add Blob',                                         # Modal title text
+                'btn btn-primary',                                  # Button style
+                'blob-add',                                         # Form action
+                'Add Blob',                                         # Submit button text
+                'glyphicon glyphicon-plus',                         # Listable button style
+                'valkyrie-fragment-form__section-form',             # Form CSS class
+                'multipart/form-data',                              # Form enctype
+            ]
+
+        blob_buttons = [blob_add_button, ]
+
+        listable = [
+            ('Blobs', blobs_array, 'blob', '', blob_buttons),
+        ]
+
+        blobs = [GCS_URL, blobs_list]
 
         kwargs = {
             'id': id,
             'info': info,
+            'listable': listable,
             'blobs': blobs,
         }
 
