@@ -1,4 +1,4 @@
-from _include.Chimera.Chimera.models import Post, Order, Album
+from _include.Chimera.Chimera.models import Post, Order
 from _include.Chimera.Chimera.settings import PROTOCOL
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse

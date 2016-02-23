@@ -44,7 +44,7 @@ class BlogPostAddForm(Form):
             'url_suffix': 'siren/blog/'
         })
         try:
-            urllib2.urlopen('http://api.mealsloth.com/blog/image/upload/', data)
+            urllib2.urlopen('http://api.mealsloth.com/blob/upload/', data)
         except urllib2.HTTPError, error:
             blog_post.delete()
             raise ValidationError(error)

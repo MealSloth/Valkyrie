@@ -18,10 +18,13 @@ class BlobAddForm(Form):
     image = FileField(required=True)
 
     def process(self, album_id):
+        image = self.cleaned_data['image']
+        url_suffix = self.cleaned_data['url_suffix']
+
         data = dumps({
-            'file': b64encode(self.cleaned_data['image'].read()),
+            'file': b64encode(image.read()),
             'album_id': str(album_id),
-            'url_suffix': self.cleaned_data['url_suffix'],
+            'url_suffix': url_suffix,
         })
         try:
             urllib2.urlopen('http://api.mealsloth.com/blob/upload/', data)
