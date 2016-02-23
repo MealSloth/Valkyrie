@@ -31,7 +31,7 @@ class BlobView(SingleListableView):
                 'Delete Blob',                                                                  # Modal title text
                 'btn btn-danger',                                                               # Button style
                 'blob-delete',                                                                  # Submit action
-                '',                                                                             # Submit button text
+                'Delete Blob',                                                                  # Submit button text
                 'glyphicon glyphicon-trash',                                                    # Listable button style
                 '',                                                                             # Form CSS class
                 '',                                                                             # Form enctype

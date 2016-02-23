@@ -24,6 +24,6 @@ class BlobAddForm(Form):
             'url_suffix': self.cleaned_data['url_suffix'],
         })
         try:
-            urllib2.urlopen('http://api.mealsloth.com/blog/image/upload/', data)
+            urllib2.urlopen('http://api.mealsloth.com/blob/upload/', data)
         except urllib2.HTTPError, error:
             raise ValidationError(error)
