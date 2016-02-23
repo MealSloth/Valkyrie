@@ -22,10 +22,13 @@ class AlbumView(SingleListableView):
 
         id = [('Album', current_album.id), ]
 
+        info = [('Date Created', current_album.time), ]
+
         blobs = [GCS_URL, Blob.objects.filter(album_id=current_album.id)]
 
         kwargs = {
             'id': id,
+            'info': info,
             'blobs': blobs,
         }
 

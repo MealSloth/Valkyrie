@@ -19,6 +19,7 @@ class AlbumsView(MultiListableView):
 
         header = [
             ('ID', 'album', True),
+            ('Date Created', '', True),
         ]
 
         entry = []
@@ -27,6 +28,7 @@ class AlbumsView(MultiListableView):
             entry.append(
                 [
                     (album.id, header[0]),
+                    (album.time, header[1]),
                 ]
             )
 
