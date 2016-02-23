@@ -1,8 +1,7 @@
 from _include.Chimera.Chimera.storage_url_suffixes import StorageURLSuffixes
+from _include.Chimera.Chimera.view.blob.view_blob_upload import blob_upload
 from base64 import b64encode
 from django.forms import *
-from json import dumps
-import urllib2
 
 
 def url_suffixes():
@@ -21,12 +20,10 @@ class BlobAddForm(Form):
         image = self.cleaned_data['image']
         url_suffix = self.cleaned_data['url_suffix']
 
-        data = dumps({
+        blob_upload_kwargs = {
             'file': b64encode(image.read()),
             'album_id': str(album_id),
             'url_suffix': url_suffix,
-        })
-        try:
-            urllib2.urlopen('http://api.mealsloth.com/blob/upload/', data)
-        except urllib2.HTTPError, error:
-            raise ValidationError(error)
+        }
+
+        blob_upload(request=None, **blob_upload_kwargs)
