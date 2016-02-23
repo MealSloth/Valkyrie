@@ -41,6 +41,7 @@ class OrderAddForm(Form):
         chef_id = post.chef_id
         location_id = consumer.location_id
         billing_id = user.billing_id
+        order_type = self.cleaned_data['order_type']
         order_time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
         amount = self.cleaned_data['amount']
 
@@ -53,6 +54,7 @@ class OrderAddForm(Form):
             chef_id=chef_id,
             location_id=location_id,
             billing_id=billing_id,
+            order_type=order_type,
             order_time=order_time,
             amount=amount,
         )
