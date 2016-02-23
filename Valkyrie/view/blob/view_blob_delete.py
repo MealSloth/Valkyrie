@@ -7,5 +7,5 @@ def blob_delete(request, blob_id):
     try:
         chimera_blob_delete(request=None, **blob_delete_kwargs)
     except StandardError:
-        HttpResponseRedirect('/albums')
+        return HttpResponseRedirect('/albums')
     return HttpResponseRedirect('/')

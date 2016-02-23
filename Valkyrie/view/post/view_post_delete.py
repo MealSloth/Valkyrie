@@ -8,5 +8,5 @@ def post_delete(request, post_id):
     try:
         chimera_post_delete(request=None, **post_delete_kwargs)
     except StandardError:
-        HttpResponseRedirect(reverse('post', args=[post_id, ]))
+        return HttpResponseRedirect(reverse('post', args=[post_id, ]))
     return HttpResponseRedirect('/posts')
