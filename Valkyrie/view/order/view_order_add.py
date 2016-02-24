@@ -7,8 +7,8 @@ def order_add(request, post_id):
     if request.method == 'POST':
         form = OrderAddForm(request.POST)
         if form.is_valid():
-            order_id = form.process(post_id)
-            return HttpResponseRedirect(reverse('order', args=[order_id, ]))
+            order = form.process(post_id)
+            return HttpResponseRedirect(reverse('order', args=[order.id, ]))
         else:
             return HttpResponse("Invalid form")
     else:

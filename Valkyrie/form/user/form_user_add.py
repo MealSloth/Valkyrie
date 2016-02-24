@@ -86,6 +86,6 @@ class UserAddForm(Form):
         user = User.objects.filter(email=email)
         if user.count() > 0:
             user = user[0]
-            return user.id
+            return user
         else:
             return

@@ -25,4 +25,6 @@ class OrderAddForm(Form):
             'amount': self.cleaned_data['amount'],
         }
 
-        create_order(request=None, **order_create_kwargs)
+        order = create_order(request=None, **order_create_kwargs)
+
+        return order
