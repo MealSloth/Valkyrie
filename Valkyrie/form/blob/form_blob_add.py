@@ -8,7 +8,7 @@ def url_suffixes():
     response = []
     dictionary = StorageURLSuffixes.get_url_suffixes()
     for key in dictionary:
-        response.append((key, dictionary.get(key)))
+        response.append([key, dictionary.get(key)])
     return tuple(response)
 
 
@@ -23,7 +23,7 @@ class BlobAddForm(Form):
         blob_upload_kwargs = {
             'file': b64encode(image.read()),
             'album_id': str(album_id),
-            'url_suffix': StorageURLSuffixes.get_url_suffix(url_suffix),
+            'url_suffix': StorageURLSuffixes.get_url_suffix(storage_url_suffix=int(url_suffix)),
         }
 
         upload_blob(request=None, **blob_upload_kwargs)
