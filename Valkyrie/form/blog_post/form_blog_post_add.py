@@ -1,10 +1,10 @@
 from _include.Chimera.Chimera.view.blob.view_blob_upload import blob_upload as upload_blob
+from _include.Chimera.Chimera.view.album.view_album_create import album_create as create_album
+from _include.Chimera.Chimera.storage_url_suffixes import StorageURLSuffixes
 from _include.Chimera.Chimera.models import BlogPost, Author
 from datetime import datetime
 from base64 import b64encode
 from django.forms import *
-from json import dumps
-import urllib2
 
 
 def authors():
@@ -29,7 +29,12 @@ class BlogPostAddForm(Form):
         image = self.cleaned_data['image']
         post_time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
+        album_create_kwargs = {'Please': 'Thank you', }
+
+        album = create_album(request=None, **album_create_kwargs)
+
         blog_post = BlogPost(
+            album_id=album.id,
             author_id=author_id,
             title=title,
             short_description=short_description,
@@ -42,7 +47,7 @@ class BlogPostAddForm(Form):
         blob_upload_kwargs = {
             'file': b64encode(image.read()),
             'album_id': str(blog_post.album_id),
-            'url_suffix': 'siren/blog/'
+            'url_suffix': StorageURLSuffixes.get_url_suffix(StorageURLSuffixes.SIREN_BLOG),
         }
 
         upload_blob(request=None, **blob_upload_kwargs)
