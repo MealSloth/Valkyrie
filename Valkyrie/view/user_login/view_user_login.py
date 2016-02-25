@@ -1,3 +1,4 @@
+from Valkyrie.form.user_login.form_user_login_password_change import UserLoginPasswordChangeForm
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
 from _include.Chimera.Chimera.models import UserLogin, User
 from django.http import HttpResponse
@@ -19,7 +20,24 @@ class UserLoginView(SingleListableView):
         else:
             current_user_login = current_user_login[0]
 
-        id = [('User Login', current_user_login.id), ]
+        user_login_edit_button = [
+                'fragment/modal/form/form-modal.html',                                  # Modal template
+                'fragment/modal/form/edit-form/user-login-password-change-form.html',   # Form template
+                UserLoginPasswordChangeForm(),                                          # Form instance
+                current_user_login.id,                                                  # ID parameter for action
+                'valkyrie-page-single-listable__user-login-edit-modal',                 # Modal ID
+                'Change Password',                                                      # Modal title text
+                'btn btn-primary',                                                      # Button style
+                'user-login-password-change',                                           # Form action
+                'Change Password',                                                      # Submit button text
+                'glyphicon glyphicon-pencil',                                           # Listable button style
+                'valkyrie-fragment-form__section-form',                                 # Form CSS class
+                '',                                                                     # Form enctype
+            ]
+
+        user_login_buttons = [user_login_edit_button, ]
+
+        id = [('User Login', current_user_login.id, user_login_buttons), ]
 
         info = []
 

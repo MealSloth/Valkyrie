@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 
-from view.user_login import view_user_login, view_user_logins
+from view.user_login import view_user_login, view_user_logins, view_user_login_password_change
 from view.album import view_album, view_albums
 from view.blob import view_blob, view_blobs, view_blob_add, view_blob_delete
 from view.auth import view_login, view_logout, view_auth_user_add, view_change_password
@@ -77,6 +77,11 @@ def user_login(request, user_login_id):
 @login_required
 def user_logins(request):
     return view_user_logins.user_logins(request)
+
+
+@login_required
+def user_login_password_change(request, user_login_id):
+    return view_user_login_password_change.user_login_password_change(request, user_login_id)
 
 
 # consumer
