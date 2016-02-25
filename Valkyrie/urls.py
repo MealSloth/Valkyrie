@@ -51,6 +51,7 @@ urlpatterns = patterns(
     url(r'^blog-post-add/', views.blog_post_add, name='blog-post-add'),
 
     # Edit Forms
+    url(r'^post-edit/([^/]+)/', views.post_edit, name='post-edit'),
     url(r'^blog-post-edit/([^/]+)/', views.blog_post_edit, name='blog-post-edit'),
 
     # Delete Forms

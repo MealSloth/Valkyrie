@@ -92,18 +92,18 @@ class UserView(SingleListableView):
             post_array.append([posts[i].id, posts[i].post_status, posts[i].get_post_status_display()])
 
         post_add_button = [
-                'fragment/modal/form/form-modal.html',              # Modal template
-                'fragment/modal/form/add-form/post-add-form.html',  # Form template
-                PostAddForm(),                                      # Form instance
-                current_user.id,                                    # ID parameter for action
-                'valkyrie-page-single-listable__post-add-modal',    # Modal ID
-                'Add Post',                                         # Modal title text
-                'btn btn-primary',                                  # Button style
-                'post-add',                                         # Form action
-                'Add Post',                                         # Submit button text
-                'glyphicon glyphicon-plus',                         # Listable button style
-                'valkyrie-fragment-form__section-form',             # Form CSS class
-                '',                                                 # Form enctype
+                'fragment/modal/form/form-modal.html',                      # Modal template
+                'fragment/modal/form/add-form/post-add-edit-form.html',     # Form template
+                PostAddForm(),                                              # Form instance
+                current_user.id,                                            # ID parameter for action
+                'valkyrie-page-single-listable__post-add-modal',            # Modal ID
+                'Add Post',                                                 # Modal title text
+                'btn btn-primary',                                          # Button style
+                'post-add',                                                 # Form action
+                'Add Post',                                                 # Submit button text
+                'glyphicon glyphicon-plus',                                 # Listable button style
+                'valkyrie-fragment-form__section-form',                     # Form CSS class
+                '',                                                         # Form enctype
             ]
 
         post_buttons = [post_add_button, ]
