@@ -1,31 +1,12 @@
-from _include.Chimera.Chimera.models import BlogPost, Album, Blob
+from _include.Chimera.Chimera.view.blog_post.view_blog_post_delete import blog_post_delete as delete_blog_post
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 
 def blog_post_delete(request, blog_post_id):
-    blog_post = BlogPost.objects.filter(pk=blog_post_id)
-    if blog_post.count() > 0:
-        blog_post = blog_post[0]
-    else:
-        return HttpResponseRedirect('/posts')
-
-    album = Album.objects.filter(pk=blog_post.album_id)
-    if album.count() > 0:
-        album = album[0]
-    else:
-        return HttpResponseRedirect('/posts')
-
-    blob_list = Blob.objects.filter(album_id=album.id)
-
-    for blob in blob_list:
-        # TODO: Delete blobs
-        pass
-
+    blog_post_delete_kwargs = {'blog_post_id': blog_post_id}
     try:
-        blog_post.delete()
-        album.delete()
+        delete_blog_post(request=None, **blog_post_delete_kwargs)
+        return HttpResponseRedirect('/blog-posts')
     except StandardError:
-        return HttpResponseRedirect(reverse('blog-post', args=[blog_post.id, ]))
-
-    return HttpResponseRedirect('/posts')
+        return HttpResponseRedirect(reverse('blog-post', args=[blog_post_id, ]))
