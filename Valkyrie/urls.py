@@ -26,6 +26,7 @@ urlpatterns = patterns(
     url(r'^billings/', views.billings, name='billings'),
     url(r'^profile-photos/', views.profile_photos, name='profile-photos'),
     url(r'^albums/', views.albums, name='albums'),
+    url(r'^blobs/', views.blobs, name='blobs'),
     url(r'^blog-posts/', views.blog_posts, name='blog-posts'),
 
     # Single listables
