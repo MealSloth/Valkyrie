@@ -10,6 +10,6 @@ def post_edit(request, post_id):
             post = form.process(post_id)
             return HttpResponseRedirect(reverse('post', args=[post.id, ]))
         else:
-            return HttpResponseRedirect('/posts')
+            return HttpResponseRedirect(reverse('post', args=[post_id, ]))
 
-    return HttpResponseRedirect('/posts')
+    return HttpResponseRedirect(reverse('post', args=[post_id, ]))
