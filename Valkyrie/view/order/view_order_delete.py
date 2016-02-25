@@ -6,8 +6,8 @@ from django.core.urlresolvers import reverse
 def order_delete(request, order_id):
     order_delete_kwargs = {'order_id': order_id}
     try:
-        delete_order(request=None, **order_delete_kwargs)
+        post = delete_order(request=None, **order_delete_kwargs)
     except StandardError:
         return HttpResponseRedirect(reverse('order', args=[order_id, ]))
 
-    return HttpResponseRedirect('/orders')
+    return HttpResponseRedirect(reverse('post', args=[post.id, ]))
