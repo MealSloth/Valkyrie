@@ -58,7 +58,7 @@ class BlogPostView(SingleListableView):
                 '',                                                                             # Form enctype
                 'Deleting this blog post also deletes all of the following associated items:',  # Modal body header
                 associated_items,                                                               # Modal body list
-                'Are you sure you would like to delete this user?',                             # Modal body footer
+                'Are you sure you would like to delete this blog post?',                        # Modal body footer
             ]
 
         blog_post_buttons= [blog_post_edit_button, blog_post_delete_button, ]

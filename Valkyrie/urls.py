@@ -57,6 +57,7 @@ urlpatterns = patterns(
     url(r'^post-delete/([^/]+)/', views.post_delete, name='post-delete'),
     url(r'^blob-delete/([^/]+)/', views.blob_delete, name='blob-delete'),
     url(r'^order-delete/([^/]+)/', views.order_delete, name='order-delete'),
+    url(r'^blog-post-delete/([^/]+)/', views.blog_post_delete, name='blog-post-delete'),
 
 
     # Tools
