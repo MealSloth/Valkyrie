@@ -23,7 +23,7 @@ class BlobAddForm(Form):
         blob_upload_kwargs = {
             'file': b64encode(image.read()),
             'album_id': str(album_id),
-            'url_suffix': url_suffix,
+            'url_suffix': StorageURLSuffixes.get_url_suffix(url_suffix),
         }
 
         upload_blob(request=None, **blob_upload_kwargs)

@@ -52,7 +52,7 @@ class BlogPostView(SingleListableView):
                 'Delete Blog Post',                                                             # Modal title text
                 'btn btn-danger',                                                               # Button style
                 'blog-post-delete',                                                             # Submit action
-                '',                                                                             # Submit button text
+                'Delete Blog Post',                                                             # Submit button text
                 'glyphicon glyphicon-trash',                                                    # Listable button style
                 '',                                                                             # Form CSS class
                 '',                                                                             # Form enctype

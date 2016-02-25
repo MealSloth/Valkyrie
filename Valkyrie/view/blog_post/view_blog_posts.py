@@ -28,7 +28,7 @@ class BlogPostsView(MultiListableView):
                 'Add Blog Post',                                                    # Submit button text
                 'btn btn-primary pull-right',                                       # Header button style
                 'valkyrie-fragment-form__section-form',                             # Form CSS class
-                '',                                                                 # Form enctype
+                'multipart/form-data',                                              # Form enctype
             ]
 
         blog_post_buttons = [blog_post_add_button, ]

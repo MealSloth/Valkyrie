@@ -1,3 +1,4 @@
+from _include.Chimera.Chimera.view.blob.view_blob_upload import blob_upload as upload_blob
 from _include.Chimera.Chimera.models import BlogPost, Author
 from datetime import datetime
 from base64 import b64encode
@@ -38,13 +39,10 @@ class BlogPostAddForm(Form):
 
         blog_post.save()
 
-        data = dumps({
+        blob_upload_kwargs = {
             'file': b64encode(image.read()),
             'album_id': str(blog_post.album_id),
             'url_suffix': 'siren/blog/'
-        })
-        try:
-            urllib2.urlopen('http://api.mealsloth.com/blob/upload/', data)
-        except urllib2.HTTPError, error:
-            blog_post.delete()
-            raise ValidationError(error)
+        }
+
+        upload_blob(request=None, **blob_upload_kwargs)

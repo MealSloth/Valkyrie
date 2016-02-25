@@ -11,4 +11,4 @@ def blog_post_add(request):
             form.process()
             return HttpResponseRedirect(PROTOCOL + 'mealsloth.com/blog/')
 
-    return HttpResponseRedirect('/blogs')
+    return HttpResponseRedirect('/blog-posts')
