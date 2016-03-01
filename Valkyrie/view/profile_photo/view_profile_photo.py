@@ -1,6 +1,6 @@
 from _include.Chimera.Chimera.models import ProfilePhoto, User, Album, Blob
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from _include.Chimera.Chimera.settings import GCS_URL
+from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -28,7 +28,7 @@ class ProfilePhotoView(SingleListableView):
         if blob_list.count() > 0:
             blob = blob_list[0]
             gcs_id = blob.gcs_id
-            image.append(GCS_URL + gcs_id)
+            image.append(PROTOCOL + GCS_URL + gcs_id)
 
         id = [('Profile Photo', current_profile_photo.id), ]
 

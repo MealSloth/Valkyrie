@@ -1,7 +1,7 @@
 from _include.Chimera.Chimera.models import User, Post, Album, Blob, ProfilePhoto
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
+from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from Valkyrie.form.post.form_post_add import PostAddForm
-from _include.Chimera.Chimera.settings import GCS_URL
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -30,7 +30,7 @@ class UserView(SingleListableView):
         if blob_list.count() > 0:
             blob = blob_list[0]
             gcs_id = blob.gcs_id
-            image.append(GCS_URL + gcs_id)
+            image.append(PROTOCOL + GCS_URL + gcs_id)
 
         associated_items = [
                     'User Login',
