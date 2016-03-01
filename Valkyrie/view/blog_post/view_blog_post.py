@@ -1,7 +1,7 @@
 from Valkyrie.form.blog_post.form_blog_post_edit import BlogPostEditForm
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
 from _include.Chimera.Chimera.models import BlogPost, Blob, Author
-from _include.Chimera.Chimera.settings import GCS_URL
+from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import Context
@@ -78,7 +78,7 @@ class BlogPostView(SingleListableView):
             ('Album ID', current_blog_post.album_id, 'album'),
         ]
 
-        blobs = [GCS_URL, Blob.objects.filter(album_id=current_blog_post.album_id)]
+        blobs = [PROTOCOL + GCS_URL, Blob.objects.filter(album_id=current_blog_post.album_id)]
 
         kwargs = {
             'id': id,
