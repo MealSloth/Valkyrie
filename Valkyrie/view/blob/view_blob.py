@@ -1,5 +1,5 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from _include.Chimera.Chimera.settings import GCS_URL
+from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from _include.Chimera.Chimera.models import Blob
 from django.http import HttpResponse
 from django.template import Context
@@ -20,7 +20,7 @@ class BlobView(SingleListableView):
         else:
             current_blob = current_blob[0]
 
-        image = [GCS_URL + current_blob.gcs_id, ]
+        image = [PROTOCOL + GCS_URL + current_blob.gcs_id, ]
 
         blob_delete_button = [
                 'fragment/modal/delete-confirmation-modal.html',                                # Modal template

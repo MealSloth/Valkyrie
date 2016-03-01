@@ -1,7 +1,7 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
+from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from Valkyrie.form.blob.form_blob_add import BlobAddForm
 from _include.Chimera.Chimera.models import Album, Blob
-from _include.Chimera.Chimera.settings import GCS_URL
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -53,7 +53,7 @@ class AlbumView(SingleListableView):
             ('Blobs', blobs_array, 'blob', '', blob_buttons),
         ]
 
-        blobs = [GCS_URL, blobs_list]
+        blobs = [PROTOCOL + GCS_URL, blobs_list]
 
         kwargs = {
             'id': id,
