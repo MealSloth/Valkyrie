@@ -54,7 +54,7 @@ class PostView(SingleListableView):
                 'Delete Post',                                                              # Modal title text
                 'btn btn-danger',                                                           # Button style
                 'post-delete',                                                              # Submit action
-                'Delete Post',                                                                         # Submit button text
+                'Delete Post',                                                              # Submit button text
                 'glyphicon glyphicon-trash',                                                # Listable button style
                 '',                                                                         # Form CSS class
                 '',                                                                         # Form enctype
@@ -72,8 +72,8 @@ class PostView(SingleListableView):
             ('Description', current_post.description),
             ('Order Count', current_post.order_count),
             ('Capacity', current_post.capacity),
-            ('Post Time', current_post.post_time[:10]),
-            ('Expire Time', current_post.expire_time[:10]),
+            ('Post Time', current_post.post_time[5:16].replace("T", " ")),
+            ('Expire Time', current_post.expire_time[5:16].replace("T", " ")),
         ]
 
         widget = [('fragment/widget/single-listable/post-status-widget.html', current_post.post_status), ]

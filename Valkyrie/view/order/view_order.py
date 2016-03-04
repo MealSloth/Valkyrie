@@ -43,7 +43,8 @@ class OrderView(SingleListableView):
 
         info = [
             ('Order Type', current_order.get_order_type_display()),
-            ('Amount', current_order.amount,)
+            ('Amount', current_order.amount),
+            ('Order Time', current_order.order_time[5:16].replace("T", " ")),
         ]
 
         widget = [('fragment/widget/single-listable/order-status-widget.html', current_order.order_status), ]
