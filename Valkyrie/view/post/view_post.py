@@ -123,6 +123,8 @@ class PostView(SingleListableView):
             ('Orders', order_array, 'order', 'status', order_buttons),
         ]
 
+        blobs = [PROTOCOL + GCS_URL, Blob.objects.filter(album_id=current_post.album_id)]
+
         kwargs = {
             'image': image,
             'id': id,
@@ -130,6 +132,7 @@ class PostView(SingleListableView):
             'widget': widget,
             'id_pool': id_pool,
             'listable': listable,
+            'blobs': blobs,
         }
 
         SingleListableView.__init__(
