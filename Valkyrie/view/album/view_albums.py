@@ -13,7 +13,7 @@ def albums(request):
 
 class AlbumsView(MultiListableView):
     def __init__(self):
-        current_albums_list = Album.objects.all()
+        current_albums_list = Album.objects.all().order_by('-time')
 
         title = ["Albums", ]
 

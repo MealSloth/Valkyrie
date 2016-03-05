@@ -13,7 +13,7 @@ def blobs(request):
 
 class BlobsView(MultiListableView):
     def __init__(self):
-        current_blobs_list = Blob.objects.all()
+        current_blobs_list = Blob.objects.all().order_by('-time')
 
         title = ["Blobs", ]
 

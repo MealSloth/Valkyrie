@@ -14,7 +14,7 @@ def blog_posts(request):
 
 class BlogPostsView(MultiListableView):
     def __init__(self):
-        current_blog_posts_list = BlogPost.objects.all()
+        current_blog_posts_list = BlogPost.objects.all().order_by('-post_time')
 
         blog_post_add_button = [
                 'fragment/modal/form/form-modal.html',                              # Modal template

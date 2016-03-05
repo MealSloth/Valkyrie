@@ -13,7 +13,7 @@ def posts(request):
 
 class PostsView(MultiListableView):
     def __init__(self):
-        current_posts_list = Post.objects.all().order_by('post_time')
+        current_posts_list = Post.objects.all().order_by('-post_time')
 
         title = ["Posts", ]
 
