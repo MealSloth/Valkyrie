@@ -1,7 +1,8 @@
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
+from _include.Chimera.Chimera.models import Post, Order, Album, Blob
+from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from Valkyrie.form.order.form_order_add import OrderAddForm
 from Valkyrie.form.post.form_post_edit import PostEditForm
-from _include.Chimera.Chimera.models import Post, Order
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -20,6 +21,16 @@ class PostView(SingleListableView):
             return
         else:
             current_post = current_post[0]
+
+        album = Album.objects.get(pk=current_post.album_id)
+        blob_list = Blob.objects.filter(album_id=album.id)
+
+        image = []
+
+        if blob_list.count() > 0:
+            blob = blob_list[0]
+            gcs_id = blob.gcs_id
+            image.append(PROTOCOL + GCS_URL + gcs_id)
 
         post_edit_button = [
                 'fragment/modal/form/form-modal.html',                          # Modal template
@@ -113,6 +124,7 @@ class PostView(SingleListableView):
         ]
 
         kwargs = {
+            'image': image,
             'id': id,
             'info': info,
             'widget': widget,
