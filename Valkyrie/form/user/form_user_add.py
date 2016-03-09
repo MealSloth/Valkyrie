@@ -1,5 +1,4 @@
 from _include.Chimera.Chimera.view.user.view_user_create import user_create as create_user
-from _include.Chimera.Chimera.utils import format_phone_number
 from _include.Chimera.Chimera.models import User
 from _include.Chimera.Chimera.enums import *
 from datetime import datetime
@@ -63,7 +62,7 @@ class UserAddForm(Form):
         first_name = self.cleaned_data['first_name']
         last_name = self.cleaned_data['last_name']
         email = self.cleaned_data['email']
-        phone_number = format_phone_number(1, self.cleaned_data['phone_number'])
+        phone_number = self.cleaned_data['phone_number']
         gender = self.cleaned_data['gender']
         date_of_birth = date([
             self.cleaned_data['dob_year'],
