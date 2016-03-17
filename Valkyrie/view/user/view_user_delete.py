@@ -9,4 +9,4 @@ def user_delete(request, user_id):
         delete_user(request=None, **user_delete_kwargs)
     except StandardError:
         return HttpResponseRedirect(reverse('user', args=[user_id, ]))
-    return HttpResponseRedirect('/users')
+    return HttpResponseRedirect('/users/')
