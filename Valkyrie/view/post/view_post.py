@@ -125,7 +125,7 @@ class PostView(SingleListableView):
         review_array = []
 
         for i in range(0, reviews.count()):
-            review_array.append([reviews[i].id, ])
+            review_array.append([reviews[i].id, str(reviews[i].rating), str(reviews[i].rating) + ".0"])
 
         review_add_button = [
             'fragment/modal/form/form-modal.html',                  # Modal template
@@ -146,7 +146,7 @@ class PostView(SingleListableView):
 
         listable = [
             ('Orders', order_array, 'order', 'status', order_buttons),
-            ('Reviews', review_array, 'review', '', review_buttons),
+            ('Reviews', review_array, 'review', 'rating', review_buttons),
         ]
 
         blobs = [PROTOCOL + GCS_URL, Blob.objects.filter(album_id=current_post.album_id)]

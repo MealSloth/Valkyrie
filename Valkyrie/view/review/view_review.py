@@ -78,13 +78,14 @@ class ReviewView(SingleListableView):
         id = [('Review', current_review.id, review_buttons), ]
 
         info = [
+            ('Associated Post', post.name),
             ('Rating', current_review.rating),
             ('Title', current_review.title),
             ('Description', current_review.description),
             ('Time', current_review.time),
         ]
 
-        # widget = [('fragment/widget/single-listable/post-status-widget.html', current_review.post_status), ]
+        widget = [('fragment/widget/single-listable/review-rating-widget.html', current_review.rating), ]
 
         id_pool = [
             ('Post ID', current_review.post_id, 'post'),
@@ -97,7 +98,7 @@ class ReviewView(SingleListableView):
             'image': image,
             'id': id,
             'info': info,
-            # 'widget': widget,
+            'widget': widget,
             'id_pool': id_pool,
             'blobs': blobs,
         }
