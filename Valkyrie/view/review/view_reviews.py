@@ -18,7 +18,7 @@ class ReviewsView(MultiListableView):
         title = ["Reviews", ]
 
         header = [
-            ('ID', 'post', True),
+            ('ID', 'review', True),
             ('Rating', '', True),
             ('Title', '', True),
             ('Time', '', False),
