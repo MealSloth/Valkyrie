@@ -14,6 +14,7 @@ from view.location import view_location, view_locations
 from view.order import view_order, view_orders, view_order_add, view_order_delete
 from view.post import view_post, view_posts, view_post_add, view_post_delete, view_post_edit
 from view.profile_photo import view_profile_photo, view_profile_photos
+from view.review import view_review, view_reviews, view_review_add, view_review_edit, view_review_delete
 from view.tool import view_tools
 from view.user import view_user, view_users, view_user_add, view_user_delete
 
@@ -203,6 +204,33 @@ def album(request, album_id):
 @login_required
 def albums(request):
     return view_albums.albums(request)
+
+
+# review
+
+@login_required
+def review(request, review_id):
+    return view_review.review(request, review_id)
+
+
+@login_required
+def reviews(request):
+    return view_reviews.reviews(request)
+
+
+@login_required
+def review_add(request, post_id):
+    return view_review_add.review_add(request, post_id)
+
+
+@login_required
+def review_edit(request, review_id):
+    return view_review_edit.review_edit(request, review_id)
+
+
+@login_required
+def review_delete(request, review_id):
+    return view_review_delete.review_delete(request, review_id)
 
 
 # blob

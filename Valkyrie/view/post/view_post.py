@@ -1,8 +1,9 @@
+from _include.Chimera.Chimera.models import Post, Order, Album, Blob, Review
 from Valkyrie.view.abstract.view_single_listable import SingleListableView
-from _include.Chimera.Chimera.models import Post, Order, Album, Blob
 from _include.Chimera.Chimera.settings import GCS_URL, PROTOCOL
 from Valkyrie.form.order.form_order_add import OrderAddForm
 from Valkyrie.form.post.form_post_edit import PostEditForm
+from Valkyrie.form.review.form_review_add import ReviewAddForm
 from django.http import HttpResponse
 from django.template import Context
 from django.shortcuts import render
@@ -119,8 +120,33 @@ class PostView(SingleListableView):
 
         order_buttons = [order_add_button, ]
 
+        reviews = Review.objects.filter(post_id=current_post.id)
+
+        review_array = []
+
+        for i in range(0, reviews.count()):
+            review_array.append([reviews[i].id, ])
+
+        review_add_button = [
+            'fragment/modal/form/form-modal.html',                  # Modal template
+            'fragment/modal/form/add-form/review-add-form.html',    # Form template
+            ReviewAddForm(),                                        # Form instance
+            current_post.id,                                        # ID parameter for action
+            'valkyrie-page-single-listable__review-add-modal',      # Modal ID
+            'Add Test Review',                                      # Modal title text
+            'btn btn-primary',                                      # Button style
+            'review-add',                                           # Form action
+            'Add Test Review',                                      # Submit button text
+            'glyphicon glyphicon-plus',                             # Header button style
+            'valkyrie-fragment-form__section-form',                 # Form CSS class
+            '',                                                     # Form enctype
+        ]
+
+        review_buttons = [review_add_button, ]
+
         listable = [
             ('Orders', order_array, 'order', 'status', order_buttons),
+            ('Reviews', review_array, 'review', '', review_buttons),
         ]
 
         blobs = [PROTOCOL + GCS_URL, Blob.objects.filter(album_id=current_post.album_id)]

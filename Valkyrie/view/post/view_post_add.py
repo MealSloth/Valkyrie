@@ -5,7 +5,6 @@ from django.core.urlresolvers import reverse
 
 def post_add(request, user_id):
     if request.method == 'POST':
-        keys = {'user_id': user_id}
         form = PostAddForm(request.POST)
         if form.is_valid():
             post = form.process(user_id=user_id)
