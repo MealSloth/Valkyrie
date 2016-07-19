@@ -4,14 +4,14 @@ from django.forms import *
 
 class ReviewEditForm(Form):
     title = CharField(max_length=50, required=True)
-    description = CharField(max_length=500, required=True)
+    summary = CharField(max_length=500, required=True)
     rating = IntegerField(max_value=10)
 
     def process(self, review_id):
         review_edit_kwargs = {
             'review_id': review_id,
             'title': self.cleaned_data['title'],
-            'description': self.cleaned_data['description'],
+            'summary': self.cleaned_data['summary'],
             'rating': self.cleaned_data['rating'],
         }
 

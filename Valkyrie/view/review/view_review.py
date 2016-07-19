@@ -40,7 +40,7 @@ class ReviewView(SingleListableView):
                 ReviewEditForm({                                                # Form instance
                     'title': current_review.title,
                     'rating': current_review.rating,
-                    'description': current_review.description,
+                    'summary': current_review.summary,
                 }),
                 current_review.id,                                              # ID parameter for action
                 'valkyrie-page-single-listable__review-edit-modal',             # Modal ID
@@ -81,7 +81,7 @@ class ReviewView(SingleListableView):
             ('Associated Post', post.name),
             ('Rating', current_review.rating),
             ('Title', current_review.title),
-            ('Description', current_review.description),
+            ('Summary', current_review.summary),
             ('Time', current_review.time),
         ]
 

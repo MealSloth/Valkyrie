@@ -38,7 +38,7 @@ class PostView(SingleListableView):
                 'fragment/modal/form/add-form/post-add-edit-form.html',         # Form template
                 PostEditForm({                                                  # Form instance
                     'name': current_post.name,
-                    'description': current_post.description,
+                    'summary': current_post.summary,
                     'capacity': current_post.capacity,
                 }),
                 current_post.id,                                                # ID parameter for action
@@ -81,7 +81,7 @@ class PostView(SingleListableView):
 
         info = [
             ('Name', current_post.name),
-            ('Description', current_post.description),
+            ('Summary', current_post.summary),
             ('Order Count', current_post.order_count),
             ('Capacity', current_post.capacity),
             ('Post Time', current_post.post_time[5:16].replace("T", " ")),

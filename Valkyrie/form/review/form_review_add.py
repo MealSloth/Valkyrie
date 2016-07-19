@@ -14,7 +14,7 @@ def consumers():
 class ReviewAddForm(Form):
     consumer_id = ChoiceField(choices=consumers(), required=True)
     title = CharField(max_length=50, required=True)
-    description = CharField(max_length=255, required=False)
+    summary = CharField(max_length=255, required=False)
     rating = IntegerField(max_value=20)
 
     def process(self, post_id):
@@ -24,7 +24,7 @@ class ReviewAddForm(Form):
             'consumer_id': self.cleaned_data['consumer_id'],
             'rating': self.cleaned_data['rating'],
             'title': self.cleaned_data['title'],
-            'description': self.cleaned_data['description'],
+            'summary': self.cleaned_data['summary'],
         }
 
         review = create_review(request=None, **review_create_kwargs)

@@ -5,7 +5,7 @@ from django.forms import *
 
 class PostAddForm(Form):
     name = CharField(max_length=50, required=True)
-    description = CharField(max_length=255, required=True)
+    summary = CharField(max_length=255, required=True)
     capacity = IntegerField(max_value=20)
 
     def process(self, user_id):
@@ -13,7 +13,7 @@ class PostAddForm(Form):
         post_create_kwargs = {
             'chef_id': user.chef_id,
             'name': self.cleaned_data['name'],
-            'description': self.cleaned_data['description'],
+            'summary': self.cleaned_data['summary'],
             'capacity': self.cleaned_data['capacity'],
         }
 
