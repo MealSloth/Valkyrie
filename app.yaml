@@ -12,8 +12,9 @@ skip_files:
 - ^(.*/)?.*\.DS_Store$
 - ^(.*/)?.*\.csslintrc$
 - ^(.*/)?.*/\.idea/.*$
-- ^(.*/)?.*/Siren/static/.*$
 
+env_variables:
+  DJANGO_SETTINGS_MODULE: "Valkyrie.settings"
 
 handlers:
 - url: /favicon\.ico
@@ -27,7 +28,9 @@ handlers:
 
 
 libraries:
+- name: ssl
+  version: "latest"
 - name: django
-  version: "latest"
+  version: "1.5"
 - name: MySQLdb
-  version: "latest"
+  version: "1.2.5"
