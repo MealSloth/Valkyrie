@@ -10,8 +10,8 @@ skip_files:
 - ^(.*/)?.*\.pack$
 - ^(.*/)?.*\.DS_Store$
 - ^(.*/)?.*\.csslintrc$
-- ^(.*/)?.*/\.idea/.*$
-- ^(.*/)?.*/\.git/.*$
+- ^(.*/)?.*/\.idea/\.*$
+- ^(.*/)?.*/\.git/\.*$
 
 env_variables:
   DJANGO_SETTINGS_MODULE: "Valkyrie.settings"
@@ -28,8 +28,6 @@ handlers:
 
 
 libraries:
-- name: ssl
-  version: "latest"
 - name: django
   version: "1.5"
 - name: MySQLdb
