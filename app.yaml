@@ -4,7 +4,6 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-
 skip_files:
 - ^(.*/)?.*\.pyc$
 - ^(.*/)?.*\.less$
@@ -12,6 +11,7 @@ skip_files:
 - ^(.*/)?.*\.DS_Store$
 - ^(.*/)?.*\.csslintrc$
 - ^(.*/)?.*/\.idea/.*$
+- ^(.*/)?.*/\.git/.*$
 
 env_variables:
   DJANGO_SETTINGS_MODULE: "Valkyrie.settings"
