@@ -52,10 +52,10 @@
       <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Valkyrie/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#662#711#0" expanded="true" />
+                <element signature="e#0#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -487,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1471830734853</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Clearing junk">
+      <created>1471830781242</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1471830781242</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -534,7 +541,8 @@
     <MESSAGE value="Ignoring git in gae upload" />
     <MESSAGE value="Removing unnecessary ssl library requirement from app.yaml" />
     <MESSAGE value="Dumb untitled stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dumb untitled stuff" />
+    <MESSAGE value="Clearing junk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clearing junk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -681,10 +689,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Valkyrie/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#662#711#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
