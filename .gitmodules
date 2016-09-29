@@ -1,6 +1,6 @@
-[submodule "Valkyrie"]
-	path = Valkyrie
-	url = https://MealSloth@mealsloth.git.cloudforge.com/applicationvalkyrie.git
 [submodule "Chimera"]
 	path = Chimera
-	url = https://MealSloth@mealsloth.git.cloudforge.com/applicationchimera.git
+	url = https://github.com/mealsloth/applicationchimera.git
+[submodule "Valkyrie"]
+	path = Valkyrie
+	url = https://github.com/mealsloth/applicationvalkyrie.git
